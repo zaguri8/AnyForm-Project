@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "40A79A28-7303-4466-83AB-822494CECCDD"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2555CDF9-1238-4548-8842-49748C7B4D06"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnyForm/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "2555CDF9-1238-4548-8842-49748C7B4D06 - 6e840c45ff01a333"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AnyForm.ViewController.loadingAlert.getter : __C.UIAlertController"
+                  moduleName = "AnyForm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s3078/Library/Autosave%20Information/AnyForm/AnyForm/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "226">
+               </Location>
+               <Location
+                  uuid = "2555CDF9-1238-4548-8842-49748C7B4D06 - 526078d034df7777"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AnyForm.ViewController.loadingAlert.setter : __C.UIAlertController"
+                  moduleName = "AnyForm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s3078/Library/Autosave%20Information/AnyForm/AnyForm/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "2555CDF9-1238-4548-8842-49748C7B4D06 - 9d26ef50e68a0cc0"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AnyForm.ViewController.loadingAlert.modify : __C.UIAlertController"
+                  moduleName = "AnyForm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s3078/Library/Autosave%20Information/AnyForm/AnyForm/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "2555CDF9-1238-4548-8842-49748C7B4D06 - f7c507da6356d43d"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AnyForm.ViewController.loadingAlert.modify : __C.UIAlertController with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "AnyForm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s3078/Library/Autosave%20Information/AnyForm/AnyForm/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "2555CDF9-1238-4548-8842-49748C7B4D06 - 2dd7c1bf03add722"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AnyForm.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; AnyForm.ViewController"
+                  moduleName = "AnyForm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s3078/Library/Autosave%20Information/AnyForm/AnyForm/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "623">
+               </Location>
+               <Location
+                  uuid = "2555CDF9-1238-4548-8842-49748C7B4D06 - 2f66ae26a821ebac"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AnyForm.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;AnyForm.ViewController&gt;"
+                  moduleName = "AnyForm"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s3078/Library/Autosave%20Information/AnyForm/AnyForm/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "564">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1F775FCB-F4CE-4D43-95EC-F77718B8E270"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnyForm/models/Positioning.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "init(settings:jobsettings:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "28907068-D5CD-4A4E-9CFB-4DA8D9FB2A56"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnyForm/views/SmartPDFView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "gestureRecognizer(_:shouldRecognizeSimultaneouslyWith:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9FB53054-8ACD-4AA3-A9FE-FDF64C2C93D6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnyForm/coredata/CoreDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "init()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

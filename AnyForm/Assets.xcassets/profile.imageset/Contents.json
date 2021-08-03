@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "146-1468319_edit-profile-female-icon-png-transparent-png.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

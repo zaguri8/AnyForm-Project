@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="formCollectionCell" id="gTV-IL-0wX" customClass="FormCollectionViewCell" customModule="AnyForm">
+            <rect key="frame" x="0.0" y="0.0" width="260" height="240"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="260" height="240"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BkN-Aw-sDk">
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="240"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VEA-E5-7MO" customClass="FormView" customModule="AnyForm" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="260" height="240"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IFa-s2-0hS">
+                                <rect key="frame" x="16" y="200" width="228" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hn-we-eMV">
+                                        <rect key="frame" x="94" y="11" width="40" height="18"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstItem="3Hn-we-eMV" firstAttribute="centerX" secondItem="IFa-s2-0hS" secondAttribute="centerX" id="AFg-Dv-bin"/>
+                                    <constraint firstAttribute="height" constant="40" id="evK-sd-8hQ"/>
+                                    <constraint firstItem="3Hn-we-eMV" firstAttribute="centerY" secondItem="IFa-s2-0hS" secondAttribute="centerY" id="rcX-tP-foO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="VEA-E5-7MO" secondAttribute="bottom" id="1HS-nL-qsS"/>
+                            <constraint firstItem="VEA-E5-7MO" firstAttribute="top" secondItem="BkN-Aw-sDk" secondAttribute="top" id="1L0-S4-vyv"/>
+                            <constraint firstAttribute="trailing" secondItem="VEA-E5-7MO" secondAttribute="trailing" id="4X2-QD-ZUn"/>
+                            <constraint firstItem="VEA-E5-7MO" firstAttribute="leading" secondItem="BkN-Aw-sDk" secondAttribute="leading" id="8Cj-HU-FbI"/>
+                            <constraint firstAttribute="trailing" secondItem="IFa-s2-0hS" secondAttribute="trailing" constant="16" id="MCk-su-SwW"/>
+                            <constraint firstItem="IFa-s2-0hS" firstAttribute="leading" secondItem="BkN-Aw-sDk" secondAttribute="leading" constant="16" id="QKk-kb-mqK"/>
+                            <constraint firstAttribute="bottom" secondItem="IFa-s2-0hS" secondAttribute="bottom" id="d6k-No-t71"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="BkN-Aw-sDk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="AV5-j4-adk"/>
+                <constraint firstItem="BkN-Aw-sDk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dJ8-Kv-rkT"/>
+                <constraint firstAttribute="trailing" secondItem="BkN-Aw-sDk" secondAttribute="trailing" id="hDC-ox-wWt"/>
+                <constraint firstAttribute="bottom" secondItem="BkN-Aw-sDk" secondAttribute="bottom" id="rfY-TG-Ygv"/>
+            </constraints>
+            <size key="customSize" width="260" height="240"/>
+            <connections>
+                <outlet property="formBanner" destination="IFa-s2-0hS" id="eay-c7-Zfk"/>
+                <outlet property="formName" destination="3Hn-we-eMV" id="GBE-J9-SuL"/>
+                <outlet property="formView" destination="VEA-E5-7MO" id="Ekh-Xt-YJC"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="58.258928571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,382 @@
+{
+  "formcheckboxes" : [
+    {
+      "key" : "has_health_insurance",
+      "checked": false,
+      "point" : [
+        124.5,
+        504.5
+      ]
+    },
+    {
+      "key" : "is_alman",
+      "checked": false,
+      "point" : [
+        472,
+        503.5
+      ]
+    },
+    {
+      "key" : "is_not_citizen",
+      "checked": false,
+      "point" : [
+        274.5,
+        502
+      ]
+    },
+    {
+      "key" : "is_kibutz_member",
+      "checked": false,
+      "point" : [
+        194.5,
+        516.5
+      ]
+    },
+    {
+      "key" : "is_monthly_salary",
+      "checked": false,
+      "point" : [
+        237,
+        439
+      ]
+    },
+    {
+      "key" : "has_other_monthly_salary",
+      "checked": false,
+      "point" : [
+        234.5,
+        316.5
+      ]
+    },
+    {
+      "key" : "is_partial_salary",
+      "checked": false,
+      "point" : [
+        237,
+        413
+      ]
+    },
+    {
+      "key" : "has_no_pitzoim",
+      "checked": false,
+      "point" : [
+        233.5,
+        177
+      ]
+    },
+    {
+      "key" : "has_no_health_insurance",
+      "checked": false,
+      "point" : [
+        124.5,
+        517.5
+      ]
+    },
+    {
+      "key" : "is_asking_promotional",
+      "checked": false,
+      "point" : [
+        233.5,
+        259
+      ]
+    },
+    {
+      "key" : "has_other_promotional",
+      "checked": false,
+      "point" : [
+        234.5,
+        234.5
+      ]
+    },
+    {
+      "key" : "is_divorced",
+      "checked": false,
+      "point" : [
+        341.5,
+        516.5
+      ]
+    },
+    {
+      "key" : "is_single",
+      "checked": false,
+      "point" : [
+        472,
+        517.5
+      ]
+    },
+    {
+      "key" : "has_other_scholarship",
+      "checked": false,
+      "point" : [
+        107.5,
+        303.5
+      ]
+    },
+    {
+      "key" : "has_no_keren_pensia",
+      "checked": false,
+      "point" : [
+        233.5,
+        211.5
+      ]
+    },
+    {
+      "key" : "has_other_allowance",
+      "checked": false,
+      "point" : [
+        106.5,
+        314
+      ]
+    },
+    {
+      "key" : "has_maskuret_bead_nosefet",
+      "checked": false,
+      "point" : [
+        234.5,
+        304.5
+      ]
+    },
+    {
+      "key" : "Is_twojob_paycheck",
+      "checked": false,
+      "point" : [
+        237,
+        426
+      ]
+    },
+    {
+      "key" : "is_allowance",
+      "checked": false,
+      "point" : [
+        237,
+        389.5
+      ]
+    },
+    {
+      "key" : "has_other_incomes",
+      "checked": false,
+      "point" : [
+        233.5,
+        327
+      ]
+    },
+    {
+      "key" : "is_citizen",
+      "checked": false,
+      "point" : [
+        274.5,
+        516.5
+      ]
+    },
+    {
+      "key" : "is_female",
+      "checked": false,
+      "point" : [
+        521.5,
+        503.5
+      ]
+    },
+    {
+      "key" : "is_daily_salary",
+      "checked": false,
+      "point" : [
+        237,
+        402.5
+      ]
+    },
+    {
+      "key" : "has_no_other_incomes",
+      "checked": false,
+      "point" : [
+        233.5,
+        342
+      ]
+    },
+    {
+      "key" : "is_not_kibutz_member",
+      "checked": false,
+      "point" : [
+        195,
+        503.5
+      ]
+    },
+    {
+      "key" : "is_scholarship",
+      "checked": false,
+      "point" : [
+        237,
+        377.5
+      ]
+    },
+    {
+      "key" : "has_other_partial_salary",
+      "checked": false,
+      "point" : [
+        234.5,
+        293.5
+      ]
+    },
+    {
+      "key" : "is_married",
+      "checked": false,
+      "point" : [
+        408,
+        517.5
+      ]
+    },
+    {
+      "key" : "is_male",
+      "checked": false,
+      "point" : [
+        520.5,
+        515.5
+      ]
+    },
+    {
+      "key" : "has_other_self_defined_job",
+      "checked": false,
+      "point" : [
+        107.5,
+        293.5
+      ]
+    },
+    {
+      "key" : "is_other_job_daily_worker",
+      "checked": false,
+      "point" : [
+        234.5,
+        283
+      ]
+    },
+    {
+      "key" : "is_seperated",
+      "checked": false,
+      "point" : [
+        420,
+        503.5
+      ]
+    }
+  ],
+  "textfields" : [
+    {
+      "key" : "postal_code",
+      "value" : "",
+      "point" : [
+        35.5,
+        549
+      ]
+    },
+    {
+      "key" : "self_defined_job",
+      "value" : "",
+      "point" : [
+        74,
+        279.5
+      ]
+    },
+    {
+      "key" : "last_name",
+      "value" : "",
+      "point" : [
+        379.5,
+        571.5
+      ]
+    },
+    {
+      "key" : "passport_id",
+      "value" : "",
+      "point" : [
+        413.5,
+        540.5
+      ]
+    },
+    {
+      "key" : "street",
+      "value" : "",
+      "point" : [
+        319,
+        547
+      ]
+    },
+    {
+      "key" : "first_name",
+      "value" : "",
+      "point" : [
+        254,
+        570
+      ]
+    },
+    {
+      "key" : "house_number",
+      "value" : "",
+      "point" : [
+        209,
+        547
+      ]
+    },
+    {
+      "key" : "phone",
+      "value" : "",
+      "point" : [
+        115,
+        480.5
+      ]
+    },
+    {
+      "key" : "id_number",
+      "value" : "",
+      "point" : [
+        458,
+        570
+      ]
+    },
+    {
+      "key" : "birth_date",
+      "value" : "",
+      "point" : [
+        132,
+        570
+      ]
+    },
+    {
+      "key" : "email",
+      "value" : "",
+      "point" : [
+        407.5,
+        478.5
+      ]
+    },
+    {
+      "key" : "phone_prefix",
+      "value" : "",
+      "point" : [
+        32,
+        480.5
+      ]
+    },
+    {
+      "key" : "city",
+      "value" : "",
+      "point" : [
+        154,
+        546
+      ]
+    },
+    {
+      "key" : "health_insurance",
+      "value" : "",
+      "point" : [
+        51.5,
+        503.5
+      ]
+    },
+    {
+      "key" : "pilgrimage_date",
+      "value" : "",
+      "point" : [
+        37,
+        571.5
+      ]
+    }
+  ]
+}

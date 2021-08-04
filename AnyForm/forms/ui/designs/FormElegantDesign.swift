@@ -31,8 +31,16 @@ class FormElegantDesign : FormDesign {
     
     
     func questionTextAttributes(text: String) -> NSAttributedString {
-        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20),NSAttributedString.Key.foregroundColor : UIColor.black])
+        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18),NSAttributedString.Key.foregroundColor : UIColor.white])
     }
+    func questionCheckBoxTextAttributrs(text: String) -> NSAttributedString {
+        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 13),NSAttributedString.Key.foregroundColor : UIColor.black])
+    }
+    
+    func questionBoxHeaderBgColor() -> UIColor {
+        hexStringToUIColor(hex: "0F9A99")
+    }
+    
     func answerTextFieldAttributes(text: String)  -> NSAttributedString {
         NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 13),NSAttributedString.Key.foregroundColor : UIColor.black])
     }
@@ -40,6 +48,7 @@ class FormElegantDesign : FormDesign {
     func buttonsTextAttributes(text: String) -> NSAttributedString {
         NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18),NSAttributedString.Key.foregroundColor : hexStringToUIColor(hex: "F2F4F3")])
     }
+    
     
     func backgroundColor() -> UIColor {
         hexStringToUIColor(hex: "22333B")

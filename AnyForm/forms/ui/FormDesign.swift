@@ -10,6 +10,7 @@ import UIKit
 protocol FormDesign {
     func questionCounterAttributes(text:String) -> NSAttributedString
     func questionTextAttributes(text:String) -> NSAttributedString
+    func questionCheckBoxTextAttributrs(text:String) -> NSAttributedString
     func answerTextFieldAttributes(text:String) -> NSAttributedString
     func buttonsTextAttributes(text:String) -> NSAttributedString
     func backgroundColor() -> UIColor
@@ -19,6 +20,7 @@ protocol FormDesign {
     func holderBorderWidth() -> CGFloat
     
     func questionBoxColor() -> UIColor
+    func questionBoxHeaderBgColor() -> UIColor
     func questionBoxBorderColor() -> CGColor
     func questionBoxBorderWidth() -> CGFloat
     func questionBoxCornerRadius() -> CGFloat

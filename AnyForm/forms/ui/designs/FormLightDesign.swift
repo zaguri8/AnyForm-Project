@@ -32,6 +32,13 @@ class FormLightDesign : FormDesign {
     func questionTextAttributes(text: String) -> NSAttributedString {
         NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20),NSAttributedString.Key.foregroundColor : hexStringToUIColor(hex: "222222")])
     }
+    func questionCheckBoxTextAttributrs(text: String) -> NSAttributedString {
+        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 13),NSAttributedString.Key.foregroundColor : UIColor.black])
+    }
+    func questionBoxHeaderBgColor() -> UIColor {
+        hexStringToUIColor(hex: "FFFFFF")
+    }
+    
     
     func answerTextFieldAttributes(text: String) -> NSAttributedString {
         NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 13),NSAttributedString.Key.foregroundColor : hexStringToUIColor(hex: "222222")])

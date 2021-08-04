@@ -31,7 +31,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
             CoreDataManager.shared.saveContext()
         }else {
             guard let data = user?.data,!data.isEmpty else {
-
+                
                 return}
             let alert = UIAlertController(title: "AnyForm", message: "האם תרצה להשתמש בהיסטוריית הנתונים השמורים?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "כן", style: .default,handler: { (act) in
@@ -148,9 +148,13 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
     }
     func createFieldInput(_ formTextField:FormTextField) {
         let header = UILabel()
-        let question = formTextField.key.replacingOccurrences(of: "_", with: " ").appending(":").capitalized
+        let question = formTextField.key.replacingOccurrences(of: "_", with: " ").capitalized
         header.attributedText = form.getDesign().questionTextAttributes(text: question)
         header.textAlignment = .center
+        header.layoutMargins = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        header.backgroundColor = form.getDesign().questionBoxHeaderBgColor()
+        header.layer.borderColor = UIColor.black.cgColor
+        header.layer.borderWidth = 0.5
         if formTextField.key.contains("תאריך") {
             
             let datePicker = UIDatePickerForm(formTextField)
@@ -198,8 +202,6 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
             textfield.attributedPlaceholder = form.getDesign().answerTextFieldAttributes(text: "הזן תשובה")
             textfield.delegate = self
             textfield.textAlignment = .center
-            textfield.layer.borderWidth = 0.6
-            textfield.layer.borderColor = UIColor.black.cgColor
             self.textFields.append(textfield)
             
             let stack = UIStackView(arrangedSubviews: [header,textfield])
@@ -207,7 +209,6 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
             stack.distribution = .fillProportionally
             stack.contentMode = .center
             stack.spacing = 5.0
-            stack.setCustomSpacing(24, after: header)
             stack.clipsToBounds = true
             stack.layer.borderColor = form.getDesign().questionBoxBorderColor()
             stack.layer.borderWidth = form.getDesign().questionBoxBorderWidth()
@@ -241,12 +242,22 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
         let strVal = value ? "true" : "false"
         form.setFieldValue(for: key, newValue: strVal)
     }
+    static var categoryStack:( ([UIView]) -> UIStackView) = { (views) in
+        let stack = UIStackView(arrangedSubviews: views)
+        stack.distribution = .fillEqually
+        stack.axis = .vertical
+        return stack
+    }
     
     func createFieldInput(_ formCheckBox:FormCheckBox) {
         let header = UILabel()
-        let question = formCheckBox.key.replacingOccurrences(of: "_", with:" ").appending(":").capitalized
+        let question = formCheckBox.key.replacingOccurrences(of: "_", with:" ").capitalized
         header.attributedText = form.getDesign().questionTextAttributes(text: question)
         header.textAlignment = .center
+        header.layoutMargins = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        header.backgroundColor = form.getDesign().questionBoxHeaderBgColor()
+        header.layer.borderColor = UIColor.black.cgColor
+        header.layer.borderWidth = 0.5
         let checkbox = UICheckBoxForm(formCheckBox)
         checkbox.isChecked = false
         checkbox.addAction(UIAction(handler: { [weak self]  (act)in
@@ -296,6 +307,105 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
         NSLayoutConstraint.activate(constraints)
     }
     
+    func createFieldInputCategory(category:String,formCheckBoxes:[FormCheckBox]) {
+        let header = UILabel()
+        
+        let question = category.replacingOccurrences(of: "_", with:" ").capitalized
+        header.attributedText = form.getDesign().questionTextAttributes(text: question)
+        header.layoutMargins = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        header.numberOfLines = 2
+        header.translatesAutoresizingMaskIntoConstraints = false
+        header.backgroundColor = form.getDesign().questionBoxHeaderBgColor()
+        header.layer.cornerRadius = 8
+        header.layer.borderWidth = 0.4
+        header.layer.borderColor = form.getDesign().questionBoxHeaderBgColor().cgColor
+        header.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        header.clipsToBounds = true
+        header.textAlignment = .center
+        var checkboxesStacks:[UIStackView] = []
+        formCheckBoxes.forEach { formCheckBox in
+            let cbx:UICheckBoxForm = UICheckBoxForm(formCheckBox)
+
+            cbx.isChecked = false
+            cbx.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+            cbx.addAction(UIAction(handler: { [weak self]  (act)in
+                guard let strong = self else {return}
+                cbx.isChecked = !cbx.isChecked
+                strong.setCheckBoxFieldValue(for: formCheckBox.key, cbx.isChecked)
+                if cbx.isChecked {
+                    for cb in strong.checkBoxes {
+                        guard let fcb = cb.formcheckbox else {return}
+                        if (fcb.category == formCheckBox.category) && (fcb.key != formCheckBox.key) {
+                            cb.isChecked = !cbx.isChecked
+                            self?.setCheckBoxFieldValue(for: fcb.key, !cbx.isChecked)
+                        }
+                    }
+                }
+            }), for: .touchUpInside)
+            self.checkBoxes.append(cbx)
+            let yes = UILabel()
+            yes.textAlignment = .center
+            let question = formCheckBox.key.replacingOccurrences(of: "_", with:" ").capitalized
+            yes.attributedText = form.getDesign().questionCheckBoxTextAttributrs(text: question)
+            let cstack = UIStackView(arrangedSubviews: [cbx,yes])
+            cstack.distribution = .fill
+            cstack.axis = .horizontal
+            cstack.spacing = 4
+            checkboxesStacks.append(cstack)
+        }
+        
+        
+        let catStack = FormFieldsViewController.categoryStack(checkboxesStacks)
+      
+      
+        catStack.spacing = 0
+        catStack.distribution = .fillEqually
+        catStack.sizeToFit()
+        
+        let stack = UIStackView(arrangedSubviews: [catStack])
+        stack.isUserInteractionEnabled = true
+        stack.axis = .vertical
+        stack.clipsToBounds = true
+    
+        stack.layer.cornerRadius = form.getDesign().questionBoxCornerRadius()
+        stack.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+        
+        stack.backgroundColor = form.getDesign().questionBoxColor()
+        stack.distribution = .fillProportionally
+        stack.contentMode = .center
+        stack.isLayoutMarginsRelativeArrangement = true
+        stack.layoutMargins = UIEdgeInsets(top: 0, left: 48, bottom: 0, right: 48)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        self.fieldStack.append(stack)
+        let holder = UIView()
+        holder.addSubview(stack)
+        holder.backgroundColor = form.getDesign().holderBackgroundColor()
+        let stackconstraints = [stack.centerXAnchor.constraint(equalTo: holder.centerXAnchor),
+                                stack.topAnchor.constraint(equalTo: header.bottomAnchor),
+                                stack.heightAnchor.constraint(equalToConstant: 320),
+                                stack.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.3)]
+        
+        let headerconstraints = [header.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.3),
+                                 header.centerXAnchor.constraint(equalTo: holder.centerXAnchor),
+                                 header.heightAnchor.constraint(equalToConstant:50),
+                                 header.topAnchor.constraint(equalTo: holder.topAnchor)]
+
+        holder.addSubview(header)
+        holder.isHidden = true
+        holder.translatesAutoresizingMaskIntoConstraints = false
+
+        self.view.addSubview(holder)
+
+        self.fieldHolder.append(holder)
+        let constraints = [holder.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                           holder.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+                           holder.heightAnchor.constraint(equalToConstant: 340),
+                           holder.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)]
+        NSLayoutConstraint.activate(constraints)
+        NSLayoutConstraint.activate(headerconstraints)
+        NSLayoutConstraint.activate(stackconstraints)
+    }
+    
     func addNextPrevButtons() {
         let buttonStack = UIStackView(arrangedSubviews: [prevButton,nextButton])
         buttonStack.translatesAutoresizingMaskIntoConstraints = false
@@ -310,15 +420,40 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
     func addFieldQuestionCounter() {
         
         self.view.addSubview(fieldCounter)
-        let fieldCounterConstraints = [fieldCounter.bottomAnchor.constraint(equalTo: self.fieldStack[0].topAnchor, constant: -64),
+        let fieldCounterConstraints = [fieldCounter.bottomAnchor.constraint(equalTo: self.fieldStack[0].topAnchor, constant: -128),
                                        fieldCounter.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)]
         NSLayoutConstraint.activate(fieldCounterConstraints)
     }
+    
     func createAllFieldInputs() {
-        let tfs = form.getTextFields()
-        let cbxs = form.getCheckBoxes()
+        var tfs = form.getTextFields()
+        var cbxs = form.getCheckBoxes()
+        var categories:[String:[FormCheckBox]] = [:]
+        cbxs.sort { fcbx1, fcbx2 in
+            (fcbx1.point.y > fcbx2.point.y)
+        }
+    
+        cbxs.forEach { cbx in
+            if let cbxCat = categories[cbx.category], !cbxCat.isEmpty  {
+                categories[cbx.category]?.append(cbx)
+            }else {
+                categories[cbx.category] = []
+                categories[cbx.category]?.append(cbx)
+            }
+        }
+        tfs.sort { tfs1, tfs2 in
+            (tfs1.point.y > tfs2.point.y)
+        }
+
+
         tfs.forEach(createFieldInput)
-        cbxs.forEach(createFieldInput)
+        categories.forEach { category,boxes in
+            if category.isEmpty {
+                boxes.forEach(createFieldInput)
+            }else {
+                self.createFieldInputCategory(category: category, formCheckBoxes: boxes)
+            }
+        }
     }
     
     func nextField() {
@@ -434,7 +569,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
     
     
     func showNextField() {
-
+        
         self.fieldHolder[self.currentField].isHidden = false
         self.fieldHolder[self.currentField].alpha = 0
         

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 protocol FormPickerDelegate {
     func didPickForm(type:FormType)
 }

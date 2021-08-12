@@ -39,14 +39,22 @@ class CoreDataManager {
     func getUser() -> AnyFormUser? {
         return user
     }
-    func getUserData() -> [String:Any]? {
-        return user?.data
+    func getUserData() -> [UserData]? {
+        return user?.getUserData()
     }
     
     
-    func setUserData(key:String,value:String) {
+    func addUserData(key:String,value:String,category:String) {
         guard let user = self.user,!value.isEmpty else {return}
-        user.data?[key] = value
+        for n in user.getUserData() {
+            if ( (n.category == category) && (n.key == key) ) || ( (n.key == key) && (n.value == value) ) {
+                return
+            }
+        }
+        let data = UserData(context: persistentContainer.viewContext)
+        data.key = key
+        data.value = value
+        data.category = category
         saveContext()
     }
     
@@ -57,7 +65,6 @@ class CoreDataManager {
             let result = try context.fetch(request)
             guard !result.isEmpty else {
                 let newUser  = AnyFormUser(context: context)
-                newUser.data = [:]
                 newUser.firstEntrance = true
                 self.user =  newUser
                 saveContext()

@@ -37,6 +37,7 @@ class FormProudDesign : FormDesign {
     func questionCheckBoxTextAttributrs(text: String) -> NSAttributedString {
         NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 13),NSAttributedString.Key.foregroundColor : UIColor.black])
     }
+    
     func questionBoxHeaderBgColor() -> UIColor {
         hexStringToUIColor(hex: "FFFFFF")
     }

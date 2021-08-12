@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,8 +23,6 @@
 		0617559226AE2F2A0051B18D /* FormProudDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0617559126AE2F2A0051B18D /* FormProudDesign.swift */; };
 		0617559F26B1DFE80051B18D /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0617559E26B1DFE80051B18D /* SplashScreenViewController.swift */; };
 		061755AB26B282210051B18D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061755AA26B282210051B18D /* CoreDataManager.swift */; };
-		061755B526B283490051B18D /* AnyFormUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061755B426B283490051B18D /* AnyFormUser+CoreDataProperties.swift */; };
-		061755B826B2834F0051B18D /* AnyFormUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061755B726B2834F0051B18D /* AnyFormUser+CoreDataClass.swift */; };
 		061755BC26B49B270051B18D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061755BB26B49B270051B18D /* ProfileViewController.swift */; };
 		061755BF26B590510051B18D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061755BE26B590500051B18D /* TabBarController.swift */; };
 		061755C626B743490051B18D /* form101template.json in Resources */ = {isa = PBXBuildFile; fileRef = 061755C526B743490051B18D /* form101template.json */; };
@@ -43,6 +41,13 @@
 		06CB066D26A4673F005DFD49 /* FormFieldsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB066C26A4673F005DFD49 /* FormFieldsHolder.swift */; };
 		06CB068D26A47E06005DFD49 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB068C26A47E06005DFD49 /* Strings.swift */; };
 		06CB069126A480FB005DFD49 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB069026A480FB005DFD49 /* Enums.swift */; };
+		6E94A24D14A759F4AB9623CC /* Pods_AnyForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6A6FD14081D317631F6AD6 /* Pods_AnyForm.framework */; };
+		D219F21E26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219F21D26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift */; };
+		D245779426BB430C00C7FED8 /* AnyFormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245779326BB430C00C7FED8 /* AnyFormHelper.swift */; };
+		D254393526C07D7D00A486DE /* AnyFormUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254393126C07D7D00A486DE /* AnyFormUser+CoreDataClass.swift */; };
+		D254393626C07D7D00A486DE /* AnyFormUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254393226C07D7D00A486DE /* AnyFormUser+CoreDataProperties.swift */; };
+		D254393726C07D7D00A486DE /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254393326C07D7D00A486DE /* UserData+CoreDataClass.swift */; };
+		D254393826C07D7D00A486DE /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254393426C07D7D00A486DE /* UserData+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,8 +68,6 @@
 		0617559126AE2F2A0051B18D /* FormProudDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormProudDesign.swift; sourceTree = "<group>"; };
 		0617559E26B1DFE80051B18D /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		061755AA26B282210051B18D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		061755B426B283490051B18D /* AnyFormUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyFormUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		061755B726B2834F0051B18D /* AnyFormUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyFormUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		061755BB26B49B270051B18D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		061755BE26B590500051B18D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		061755C526B743490051B18D /* form101template.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = form101template.json; sourceTree = "<group>"; };
@@ -85,6 +88,15 @@
 		06CB066C26A4673F005DFD49 /* FormFieldsHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFieldsHolder.swift; sourceTree = "<group>"; };
 		06CB068C26A47E06005DFD49 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		06CB069026A480FB005DFD49 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		C757CB9D303CCAB83547AF27 /* Pods-AnyForm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyForm.debug.xcconfig"; path = "Target Support Files/Pods-AnyForm/Pods-AnyForm.debug.xcconfig"; sourceTree = "<group>"; };
+		D219F21D26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExmplaeViewController.swift; sourceTree = SOURCE_ROOT; };
+		D245779326BB430C00C7FED8 /* AnyFormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFormHelper.swift; sourceTree = "<group>"; };
+		D254393126C07D7D00A486DE /* AnyFormUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyFormUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D254393226C07D7D00A486DE /* AnyFormUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyFormUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D254393326C07D7D00A486DE /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D254393426C07D7D00A486DE /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E4CEEB25EC892A2EAECA5E23 /* Pods-AnyForm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyForm.release.xcconfig"; path = "Target Support Files/Pods-AnyForm/Pods-AnyForm.release.xcconfig"; sourceTree = "<group>"; };
+		FA6A6FD14081D317631F6AD6 /* Pods_AnyForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,12 +104,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E94A24D14A759F4AB9623CC /* Pods_AnyForm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04D8AC29B45FE69CEA0652C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA6A6FD14081D317631F6AD6 /* Pods_AnyForm.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0617553926A86F3B0051B18D /* assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,8 +151,10 @@
 		061755A126B281C90051B18D /* coredata */ = {
 			isa = PBXGroup;
 			children = (
-				061755B426B283490051B18D /* AnyFormUser+CoreDataProperties.swift */,
-				061755B726B2834F0051B18D /* AnyFormUser+CoreDataClass.swift */,
+				D254393126C07D7D00A486DE /* AnyFormUser+CoreDataClass.swift */,
+				D254393226C07D7D00A486DE /* AnyFormUser+CoreDataProperties.swift */,
+				D254393326C07D7D00A486DE /* UserData+CoreDataClass.swift */,
+				D254393426C07D7D00A486DE /* UserData+CoreDataProperties.swift */,
 				061755AA26B282210051B18D /* CoreDataManager.swift */,
 			);
 			path = coredata;
@@ -142,6 +165,8 @@
 			children = (
 				06785F9F26A374B500E565E2 /* AnyForm */,
 				06785F9E26A374B500E565E2 /* Products */,
+				416FBC8299515227F8F05DFC /* Pods */,
+				04D8AC29B45FE69CEA0652C9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,6 +196,7 @@
 				06785FAE26A374B900E565E2 /* LaunchScreen.storyboard */,
 				06785FB126A374B900E565E2 /* Info.plist */,
 				06785FA926A374B500E565E2 /* AnyForm.xcdatamodeld */,
+				D219F21D26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift */,
 			);
 			path = AnyForm;
 			sourceTree = "<group>";
@@ -203,6 +229,7 @@
 				0617559E26B1DFE80051B18D /* SplashScreenViewController.swift */,
 				061755BB26B49B270051B18D /* ProfileViewController.swift */,
 				061755BE26B590500051B18D /* TabBarController.swift */,
+				D245779326BB430C00C7FED8 /* AnyFormHelper.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -239,6 +266,15 @@
 			path = forms;
 			sourceTree = "<group>";
 		};
+		416FBC8299515227F8F05DFC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C757CB9D303CCAB83547AF27 /* Pods-AnyForm.debug.xcconfig */,
+				E4CEEB25EC892A2EAECA5E23 /* Pods-AnyForm.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,9 +282,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 06785FB426A374B900E565E2 /* Build configuration list for PBXNativeTarget "AnyForm" */;
 			buildPhases = (
+				57DF79DDE234271A0FEB22FA /* [CP] Check Pods Manifest.lock */,
 				06785F9926A374B500E565E2 /* Sources */,
 				06785F9A26A374B500E565E2 /* Frameworks */,
 				06785F9B26A374B500E565E2 /* Resources */,
+				CDC5EAF0DD3C2ECA11A14C13 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -307,19 +345,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		57DF79DDE234271A0FEB22FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnyForm-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CDC5EAF0DD3C2ECA11A14C13 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnyForm/Pods-AnyForm-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnyForm/Pods-AnyForm-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AnyForm/Pods-AnyForm-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		06785F9926A374B500E565E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D254393826C07D7D00A486DE /* UserData+CoreDataProperties.swift in Sources */,
 				0617557F26AE1F860051B18D /* FormDesign.swift in Sources */,
+				D245779426BB430C00C7FED8 /* AnyFormHelper.swift in Sources */,
+				D254393626C07D7D00A486DE /* AnyFormUser+CoreDataProperties.swift in Sources */,
 				06785FAB26A374B500E565E2 /* AnyForm.xcdatamodeld in Sources */,
 				0617554226A9A8C90051B18D /* Form101.swift in Sources */,
 				061755BF26B590510051B18D /* TabBarController.swift in Sources */,
-				061755B526B283490051B18D /* AnyFormUser+CoreDataProperties.swift in Sources */,
 				0617559F26B1DFE80051B18D /* SplashScreenViewController.swift in Sources */,
 				0617558C26AE2D5B0051B18D /* FormLightDesign.swift in Sources */,
 				06CB069126A480FB005DFD49 /* Enums.swift in Sources */,
+				D219F21E26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift in Sources */,
 				06785FD226A3ADC300E565E2 /* Extensions.swift in Sources */,
 				0617558726AE23D30051B18D /* FormElegantDesign.swift in Sources */,
 				06785FE426A3FE3400E565E2 /* UIUtils.swift in Sources */,
@@ -331,6 +414,7 @@
 				0617558226AE1FE70051B18D /* FormUIComponents.swift in Sources */,
 				06CB068D26A47E06005DFD49 /* Strings.swift in Sources */,
 				06785FA126A374B500E565E2 /* AppDelegate.swift in Sources */,
+				D254393726C07D7D00A486DE /* UserData+CoreDataClass.swift in Sources */,
 				06785FC826A3A08F00E565E2 /* FormView.swift in Sources */,
 				0617559226AE2F2A0051B18D /* FormProudDesign.swift in Sources */,
 				0617556526AC36B40051B18D /* FormCollectionViewCell.swift in Sources */,
@@ -339,7 +423,7 @@
 				06CB066D26A4673F005DFD49 /* FormFieldsHolder.swift in Sources */,
 				06785FCC26A3A51700E565E2 /* FormViewController.swift in Sources */,
 				0617557026AD01440051B18D /* WhatsAppShare.swift in Sources */,
-				061755B826B2834F0051B18D /* AnyFormUser+CoreDataClass.swift in Sources */,
+				D254393526C07D7D00A486DE /* AnyFormUser+CoreDataClass.swift in Sources */,
 				061755AB26B282210051B18D /* CoreDataManager.swift in Sources */,
 				06785FA326A374B500E565E2 /* SceneDelegate.swift in Sources */,
 			);
@@ -477,6 +561,7 @@
 		};
 		06785FB526A374B900E565E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C757CB9D303CCAB83547AF27 /* Pods-AnyForm.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -496,6 +581,7 @@
 		};
 		06785FB626A374B900E565E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4CEEB25EC892A2EAECA5E23 /* Pods-AnyForm.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

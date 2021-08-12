@@ -1,0 +1,24 @@
+PODS:
+  - MBCircularProgressBar (0.3.5)
+  - PWSwitch (1.1.3)
+  - RoundedSwitch (3.0.0)
+
+DEPENDENCIES:
+  - MBCircularProgressBar
+  - PWSwitch
+  - RoundedSwitch
+
+SPEC REPOS:
+  trunk:
+    - MBCircularProgressBar
+    - PWSwitch
+    - RoundedSwitch
+
+SPEC CHECKSUMS:
+  MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
+  PWSwitch: e20b0dcda15349bb61270a8c5cb6b2196dc440fa
+  RoundedSwitch: 2cfb983d76acc6b5027c14a6e52d148a559c24cf
+
+PODFILE CHECKSUM: 1cc603a337cb0ea29590cc0f6d2ba893b381eb70
+
+COCOAPODS: 1.10.2

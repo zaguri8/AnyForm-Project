@@ -19,20 +19,32 @@ struct FormTextField : Codable {
     var key:String
     var value:String = ""
     var point:CGPoint
-    init(key:String,point:CGPoint) {
+    var props:FormTextFieldProps
+    init(key:String,point:CGPoint,props:FormTextFieldProps) {
         self.key = key
         self.point = point
+        self.props = props
     }
 }
 //// an object type used to reference a check box in a form
 struct FormCheckBox : Codable {
     var key:String
     var point:CGPoint
-    var category:String
-    var checked:Bool = false
-    init(key:String,point:CGPoint,category:String) {
+    var checked:Bool
+    var props:FormCheckBoxProps
+    init(key:String,point:CGPoint,category:String,props:FormCheckBoxProps) {
         self.key = key
         self.point = point
-        self.category = category
+        self.checked = false
+        self.props = props
     }
+}
+
+
+struct FormCheckBoxProps : Codable{
+    var bitmap:String = ""
+    var category:String = ""
+}
+
+struct FormTextFieldProps : Codable {
 }

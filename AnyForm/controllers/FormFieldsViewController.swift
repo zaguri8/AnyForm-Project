@@ -6,8 +6,21 @@
 //
 import UIKit
 import MBCircularProgressBar
-class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocumentInteractionControllerDelegate {
+import RoundedSwitch
+
+
+protocol FormCheckBoxDelegate {
+    func didCheckValue(checkBox:FormCheckBox)
+}
+
+class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBoxDelegate, UIDocumentInteractionControllerDelegate {
+    func didCheckValue(checkBox: FormCheckBox) {
+        setCheckBoxFieldValue(for: checkBox.key, checkBox.checked)
+    }
+    
     var form:Form!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         generateButton.isEnabled = false
@@ -45,6 +58,8 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
         let stack = UIStackView()
         return stack
     }()
+    
+    
     
     lazy var fieldCounter:UILabel = {
         let label = UILabel()
@@ -237,12 +252,16 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
                                holder.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)]
             NSLayoutConstraint.activate(constraints)
         }
-        
     }
+    
+    
     func setCheckBoxFieldValue(for key:String,_ value:Bool) {
         let strVal = value ? "true" : "false"
         form.setFieldValue(for: key, newValue: strVal)
     }
+    
+    
+    
     static var categoryStack:( ([UIView]) -> UIStackView) = { (views) in
         let stack = UIStackView(arrangedSubviews: views)
         stack.distribution = .fillEqually
@@ -279,10 +298,12 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
         stack.isUserInteractionEnabled = true
         stack.axis = .vertical
         stack.clipsToBounds = true
+        
         stack.layer.borderColor = form.getDesign().questionBoxBorderColor()
         stack.layer.borderWidth = form.getDesign().questionBoxBorderWidth()
         stack.layer.cornerRadius = form.getDesign().questionBoxCornerRadius()
         stack.backgroundColor = form.getDesign().questionBoxColor()
+        
         stack.distribution = .fillProportionally
         stack.contentMode = .center
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -308,9 +329,68 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
         NSLayoutConstraint.activate(constraints)
     }
     
+    class AnyFormSwitch  {
+        var theSwitch:Switch
+        var left:FormCheckBox
+        var right:FormCheckBox
+        var delegate:FormCheckBoxDelegate!
+        init (sides:[FormCheckBox], theSwitch:Switch,delegate: FormCheckBoxDelegate) {
+            self.left = sides[0]
+            self.right = sides[1]
+            theSwitch.leftText = left.key.replacingOccurrences(of: "_", with: " ")
+            theSwitch.rightText = right.key.replacingOccurrences(of: "_", with: " ")
+            self.theSwitch = theSwitch
+            self.delegate = delegate
+            setup()
+        }
+        
+        func startFlashing() {
+            if selected().key ==  right.key {
+                theSwitch.leftLabel.alpha = 0.2
+            }else  {
+                theSwitch.rightLabel.alpha = 0.2
+            }
+        
+                stopFlashing()
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: [.repeat,.curveLinear,.autoreverse]) {
+                if self.selected().key ==  self.right.key {
+                    self.theSwitch.leftLabel.alpha = 1.0
+                }else  {
+                    self.theSwitch.rightLabel.alpha = 1.0
+                }
+            }
+        }
+        func stopFlashing() {
+            if selected().key ==  left.key {
+                theSwitch.leftLabel.layer.removeAllAnimations()
+            }else  {
+                theSwitch.rightLabel.layer.removeAllAnimations()
+            }
+            self.theSwitch.rightLabel.backgroundColor = .clear
+            self.theSwitch.leftLabel.backgroundColor = .clear
+        }
+        func selected() -> FormCheckBox {
+            return right.checked ? right : left
+        }
+         func setup(){
+            self.theSwitch.addAction(UIAction(handler: { act in
+                    let rightSideSelected = self.theSwitch.rightSelected
+                    self.right.checked = rightSideSelected
+                    self.left.checked = !rightSideSelected
+                    self.delegate.didCheckValue(checkBox: self.right)
+                    self.delegate.didCheckValue(checkBox: self.left)
+                self.startFlashing()
+            }), for: .touchUpInside)
+        }
+        
+    }
+    
+    
+    var switches:[AnyFormSwitch] = []
+
     func createFieldInputCategory(category:String,formCheckBoxes:[FormCheckBox]) {
         let header = UILabel()
-        
+        let isBinaryQuestion = formCheckBoxes.count == 2
         let question = category.replacingOccurrences(of: "_", with:" ").capitalized
         header.attributedText = form.getDesign().questionTextAttributes(text: question)
         header.layoutMargins = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
@@ -324,50 +404,71 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
         header.clipsToBounds = true
         header.textAlignment = .center
         var checkboxesStacks:[UIStackView] = []
-        formCheckBoxes.forEach { formCheckBox in
-            let cbx:UICheckBoxForm = UICheckBoxForm(formCheckBox)
-
-            cbx.isChecked = false
-            cbx.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-            cbx.addAction(UIAction(handler: { [weak self]  (act)in
-                guard let strong = self else {return}
-                cbx.isChecked = !cbx.isChecked
-                strong.setCheckBoxFieldValue(for: formCheckBox.key, cbx.isChecked)
-                if cbx.isChecked {
-                    for cb in strong.checkBoxes {
-                        guard let fcb = cb.formcheckbox else {return}
-                        if (fcb.props.category == formCheckBox.props.category) && (fcb.key != formCheckBox.key) {
-                            cb.isChecked = !cbx.isChecked
-                            self?.setCheckBoxFieldValue(for: fcb.key, !cbx.isChecked)
+        
+        // binary - 2 options of selection
+        if isBinaryQuestion {
+            let theSwitch = Switch()
+            theSwitch.leftLabel.font = UIFont.boldSystemFont(ofSize: 12)
+            theSwitch.rightLabel.font = UIFont.boldSystemFont(ofSize: 12)
+            let pickSwitch = AnyFormSwitch(sides: formCheckBoxes, theSwitch: theSwitch,delegate: self)
+                switches.append(pickSwitch)
+                var cstack:UIStackView?
+                let v = UIView()
+                v.addSubview(theSwitch)
+                theSwitch.translatesAutoresizingMaskIntoConstraints = false
+                theSwitch.widthAnchor.constraint(equalTo: v.widthAnchor).isActive = true
+                theSwitch.heightAnchor.constraint(equalToConstant: 60).isActive = true
+                theSwitch.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
+                theSwitch.centerYAnchor.constraint(equalTo: v.centerYAnchor).isActive = true
+                cstack = UIStackView(arrangedSubviews: [v])
+                if let cstack = cstack {
+                cstack.axis = .horizontal
+                checkboxesStacks.append(cstack)
+            }
+            // More then 2 options of selection
+        }else  {
+            formCheckBoxes.forEach { formCheckBox in
+                let cbx:UICheckBoxForm = UICheckBoxForm(formCheckBox)
+                cbx.isChecked = false
+                cbx.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+                cbx.addAction(UIAction(handler: { [weak self]  (act)in
+                    guard let strong = self else {return}
+                    cbx.isChecked = !cbx.isChecked
+                    strong.setCheckBoxFieldValue(for: formCheckBox.key, cbx.isChecked)
+                    if cbx.isChecked {
+                        for cb in strong.checkBoxes {
+                            guard let fcb = cb.formcheckbox else {return}
+                            if (fcb.props.category == formCheckBox.props.category) && (fcb.key != formCheckBox.key) {
+                                cb.isChecked = !cbx.isChecked
+                                self?.setCheckBoxFieldValue(for: fcb.key, !cbx.isChecked)
+                            }
                         }
                     }
+                }), for: .touchUpInside)
+                self.checkBoxes.append(cbx)
+                let yes = UILabel()
+                yes.textAlignment = .center
+                let question = formCheckBox.key.replacingOccurrences(of: "_", with:" ").capitalized
+                yes.attributedText = form.getDesign().questionCheckBoxTextAttributrs(text: question)
+                var cstack:UIStackView?
+                if(formCheckBox.props.bitmap.isEmpty) {
+                    cstack = UIStackView(arrangedSubviews: [cbx,yes])
+                }else {
+                    print(formCheckBox.props.bitmap)
+                    let bitmap = UIImageView(image:UIImage(named:formCheckBox.props.bitmap))
+                    bitmap.contentMode = .scaleAspectFit
+                    cstack = UIStackView(arrangedSubviews: [cbx,yes,bitmap])
                 }
-            }), for: .touchUpInside)
-            self.checkBoxes.append(cbx)
-            let yes = UILabel()
-            yes.textAlignment = .center
-            let question = formCheckBox.key.replacingOccurrences(of: "_", with:" ").capitalized
-            yes.attributedText = form.getDesign().questionCheckBoxTextAttributrs(text: question)
-            var cstack:UIStackView?
-            if(formCheckBox.props.bitmap.isEmpty) {
-                cstack = UIStackView(arrangedSubviews: [cbx,yes])
-            }else {
-                print(formCheckBox.props.bitmap)
-                let bitmap = UIImageView(image:UIImage(named:formCheckBox.props.bitmap))
-                bitmap.contentMode = .scaleAspectFit
-                cstack = UIStackView(arrangedSubviews: [cbx,yes,bitmap])
-            }
-            if let cstack = cstack {
-            cstack.distribution = .fill
-            cstack.axis = .horizontal
-            cstack.spacing = 4
-            checkboxesStacks.append(cstack)
+                if let cstack = cstack {
+                cstack.distribution = .fill
+                cstack.axis = .horizontal
+                cstack.spacing = 4
+                checkboxesStacks.append(cstack)
+                }
             }
         }
         
-        
         let catStack = FormFieldsViewController.categoryStack(checkboxesStacks)
-
         
    
         catStack.spacing = 0
@@ -385,36 +486,38 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
         catStack.distribution = .fillProportionally
         catStack.contentMode = .center
         catStack.isLayoutMarginsRelativeArrangement = true
-        catStack.layoutMargins = UIEdgeInsets(top: 0, left: 48, bottom: 0, right: 48)
+        catStack.layoutMargins = UIEdgeInsets(top: 0, left: isBinaryQuestion ? 8 : 48, bottom: 0, right: isBinaryQuestion ? 8 : 48)
         catStack.translatesAutoresizingMaskIntoConstraints = false
         self.fieldStack.append(catStack)
         let holder = UIView()
         holder.addSubview(catStack)
         holder.backgroundColor = form.getDesign().holderBackgroundColor()
+        
         let stackconstraints = [catStack.centerXAnchor.constraint(equalTo: holder.centerXAnchor),
                                 catStack.topAnchor.constraint(equalTo: header.bottomAnchor),
-                                catStack.heightAnchor.constraint(equalToConstant: 320),
+                                catStack.heightAnchor.constraint(equalToConstant: isBinaryQuestion  ? 120 : 320),
                                 catStack.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.3)]
         
         let headerconstraints = [header.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.3),
                                  header.centerXAnchor.constraint(equalTo: holder.centerXAnchor),
                                  header.heightAnchor.constraint(equalToConstant:50),
                                  header.topAnchor.constraint(equalTo: holder.topAnchor)]
-
+        
         holder.addSubview(header)
         holder.isHidden = true
         holder.translatesAutoresizingMaskIntoConstraints = false
 
         self.view.addSubview(holder)
-
         self.fieldHolder.append(holder)
         let constraints = [holder.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                           holder.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+                           holder.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant: isBinaryQuestion ? 72 : 0),
                            holder.heightAnchor.constraint(equalToConstant: 340),
                            holder.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)]
+        
         NSLayoutConstraint.activate(constraints)
         NSLayoutConstraint.activate(headerconstraints)
         NSLayoutConstraint.activate(stackconstraints)
+        
     }
     
     func addNextPrevButtons() {
@@ -618,9 +721,9 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate, UIDocument
 //            text.center = v.convert(v.center, from: v.superview)
 //            self.view.addSubview(v)
 //            v.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16).isActive = true
-//            
+//
 //            v.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 16).isActive = true
-//            
+//
 //            v.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 16).isActive = true
 //            v.widthAnchor.constraint(equalToConstant: 100).isActive = true
 //            v.heightAnchor.constraint(equalToConstant: 70).isActive = true

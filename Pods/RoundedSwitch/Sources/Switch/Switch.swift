@@ -11,7 +11,6 @@ import UIKit
 
     let backgroundLayer = RoundLayer()
     let switchLayer = RoundLayer()
-
     var previousPoint: CGPoint?
     var switchLayerLeftPosition: CGPoint?
     var switchLayerRightPosition: CGPoint?

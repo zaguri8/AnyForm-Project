@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import RoundedSwitch
 class UITextFieldForm : UITextField {
     var formtextfield:FormTextField?
     convenience init(_ field: FormTextField) {
@@ -45,6 +46,4 @@ class UICheckBoxForm : CheckBox {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
 }
-

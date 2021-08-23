@@ -14,11 +14,11 @@ class FormElegantDesign : FormDesign {
     }
     
     func questionBoxColor() -> UIColor {
-       hexStringToUIColor(hex: "F2F4F3")
+       UIUtils.hexStringToUIColor(hex: "F2F4F3")
     }
     
     func questionBoxBorderColor() -> CGColor {
-        hexStringToUIColor(hex: "5E503F").cgColor
+        UIUtils.hexStringToUIColor(hex: "5E503F").cgColor
     }
     
     func questionBoxBorderWidth() -> CGFloat {
@@ -26,7 +26,7 @@ class FormElegantDesign : FormDesign {
     }
     
     func questionCounterAttributes(text: String) -> NSAttributedString {
-        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 24),NSAttributedString.Key.foregroundColor : hexStringToUIColor(hex: "F2F4F3")])
+        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 24),NSAttributedString.Key.foregroundColor : UIUtils.hexStringToUIColor(hex: "F2F4F3")])
     }
     
     
@@ -38,7 +38,7 @@ class FormElegantDesign : FormDesign {
     }
     
     func questionBoxHeaderBgColor() -> UIColor {
-        hexStringToUIColor(hex: "0F9A99")
+        UIUtils.hexStringToUIColor(hex: "0F9A99")
     }
     
     func answerTextFieldAttributes(text: String)  -> NSAttributedString {
@@ -46,16 +46,16 @@ class FormElegantDesign : FormDesign {
     }
     
     func buttonsTextAttributes(text: String) -> NSAttributedString {
-        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18),NSAttributedString.Key.foregroundColor : hexStringToUIColor(hex: "F2F4F3")])
+        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18),NSAttributedString.Key.foregroundColor : UIUtils.hexStringToUIColor(hex: "F2F4F3")])
     }
     
     
     func backgroundColor() -> UIColor {
-        hexStringToUIColor(hex: "22333B")
+        UIUtils.hexStringToUIColor(hex: "22333B")
     }
     
     func holderBackgroundColor() -> UIColor {
-        hexStringToUIColor(hex: "22333B")
+        UIUtils.hexStringToUIColor(hex: "22333B")
     }
     
     func holderBorderColor() -> CGColor {

@@ -2,23 +2,27 @@ PODS:
   - MBCircularProgressBar (0.3.5)
   - PWSwitch (1.1.3)
   - RoundedSwitch (3.0.0)
+  - WMSegmentControl (2.2)
 
 DEPENDENCIES:
   - MBCircularProgressBar
   - PWSwitch
   - RoundedSwitch
+  - WMSegmentControl
 
 SPEC REPOS:
   trunk:
     - MBCircularProgressBar
     - PWSwitch
     - RoundedSwitch
+    - WMSegmentControl
 
 SPEC CHECKSUMS:
   MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
   PWSwitch: e20b0dcda15349bb61270a8c5cb6b2196dc440fa
   RoundedSwitch: 2cfb983d76acc6b5027c14a6e52d148a559c24cf
+  WMSegmentControl: 4bb3a61e28cd0a0fcfcf932bec1f5795835b9f3f
 
-PODFILE CHECKSUM: 1cc603a337cb0ea29590cc0f6d2ba893b381eb70
+PODFILE CHECKSUM: 400e176e1a7fb23c937b04a00f3683c9305f59a3
 
 COCOAPODS: 1.10.2

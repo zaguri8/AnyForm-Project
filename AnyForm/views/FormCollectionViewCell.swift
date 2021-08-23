@@ -47,7 +47,7 @@ class FormCollectionViewCell: UICollectionViewCell {
             }
             strongSelf.formBanner.layer.cornerRadius = 6.0
             strongSelf.formBanner.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
-            strongSelf.formView.backgroundColor = hexStringToUIColor(hex: "FFFFFF")
+            strongSelf.formView.backgroundColor = UIUtils.hexStringToUIColor(hex: "FFFFFF")
             strongSelf.formView.scaleFactor = 0
             strongSelf.formView.minScaleFactor = strongSelf.formView.scaleFactor
             strongSelf.formView.maxScaleFactor = strongSelf.formView.scaleFactor

@@ -95,6 +95,7 @@ import UIKit
         super.init(frame: frame)
         setup()
     }
+    
 
     func setup() {
         backgroundLayer.backgroundColor = UIColor.white.cgColor

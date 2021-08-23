@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController,UIPickerViewDelegate, UIPickerView
     var stackSelection2:UIStackView?
     lazy var SelectionView:UIView =  {
         let view:UIView = UIView(frame: self.view.bounds)
-        view.backgroundColor = hexStringToUIColor(hex: "F7F7F7")
+        view.backgroundColor = UIUtils.hexStringToUIColor(hex: "F7F7F7")
         let label = ViewFactory.blackCenteredLabel("אופן הצגת שדות המספרים:")
         let labelSelection1 = ViewFactory.blackCenteredLabel("גלגל מספרים:")
         let labelSelection2 = ViewFactory.blackCenteredLabel("שדה טקסט מספרי:")
@@ -108,13 +108,13 @@ class ProfileViewController: UIViewController,UIPickerViewDelegate, UIPickerView
     class xButton:UIButton {
         override open var isHighlighted: Bool {
             didSet {
-                backgroundColor = isHighlighted ? UIColor.black : hexStringToUIColor(hex: "32AFB5")
+                backgroundColor = isHighlighted ? UIColor.black : UIUtils.hexStringToUIColor(hex: "32AFB5")
             }
         }
     }
     lazy var Animation:UIView = {
         let view:UIView = UIView(frame: self.view.bounds)
-        view.backgroundColor = hexStringToUIColor(hex: "F7F7F7")
+        view.backgroundColor = UIUtils.hexStringToUIColor(hex: "F7F7F7")
         let im = UIImageView(image: #imageLiteral(resourceName: "profile"))
         view.alpha = 0
         im.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
@@ -130,7 +130,7 @@ class ProfileViewController: UIViewController,UIPickerViewDelegate, UIPickerView
         label.center.y = label.center.y-64
         
         let startButton = xButton()
-        startButton.backgroundColor = hexStringToUIColor(hex: "32AFB5")
+        startButton.backgroundColor = UIUtils.hexStringToUIColor(hex: "32AFB5")
         startButton.layer.borderWidth = 0.3
         startButton.layer.borderColor = UIColor.black.cgColor
         startButton.layer.cornerRadius = 14
@@ -155,7 +155,7 @@ class ProfileViewController: UIViewController,UIPickerViewDelegate, UIPickerView
   
     
     func startAnimation() {
-        animate({
+        UIUtils.animateDuration({
             self.Animation.subviews[0].frame.origin.x =  500
             self.Animation.subviews[1].frame.origin.x =  500
             self.Animation.subviews[2].frame.origin.x =  500
@@ -170,17 +170,17 @@ class ProfileViewController: UIViewController,UIPickerViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = hexStringToUIColor(hex: "F7F7F7")
+        self.view.backgroundColor = UIUtils.hexStringToUIColor(hex: "F7F7F7")
         self.view.addSubview(self.Animation)
         
-        animate({
+        UIUtils.animateDuration({
             self.Animation.alpha = 1
         },completion: { (animC1) in
-            animate({
+            UIUtils.animateDuration({
                 self.Animation.subviews[0].alpha = 1
                 self.Animation.subviews[1].alpha = 1
             },completion: { (animC2) in
-                animate({
+                UIUtils.animateDuration({
                     self.Animation.subviews[2].alpha = 1
                 }, duration: 0.2) // last animation
             },delay:0.2, duration: 0.8) // second animation

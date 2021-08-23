@@ -8,6 +8,7 @@ target 'AnyForm' do
 pod "MBCircularProgressBar"
 pod "PWSwitch"
 pod 'RoundedSwitch'
+pod 'WMSegmentControl'
   # Pods for AnyForm
 
 end

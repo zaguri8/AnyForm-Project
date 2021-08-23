@@ -17,12 +17,12 @@ struct Constraint {
         self.constant = constant
     }
 }
-
-func animate(_ block: @escaping () -> Void,completion:@escaping (Bool) -> Void = { bool in },delay:TimeInterval = 0,duration:TimeInterval) {
+class UIUtils {
+static func animateDuration(_ block: @escaping () -> Void,completion:@escaping (Bool) -> Void = { bool in },delay:TimeInterval = 0,duration:TimeInterval) {
     UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 1, initialSpringVelocity: 0.8, options: [], animations: block, completion: completion)
 }
 
-func hexStringToUIColor (hex:String) -> UIColor {
+static func hexStringToUIColor (hex:String) -> UIColor {
     var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
     if (cString.hasPrefix("#")) {
@@ -60,4 +60,6 @@ func constraints(top:Constraint? = nil,bottom:Constraint? = nil,leading:Constrai
     }
     NSLayoutConstraint.activate(c)
     
+}
+
 }

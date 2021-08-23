@@ -28,7 +28,6 @@
 		061755C626B743490051B18D /* form101template.json in Resources */ = {isa = PBXBuildFile; fileRef = 061755C526B743490051B18D /* form101template.json */; };
 		06785FA126A374B500E565E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06785FA026A374B500E565E2 /* AppDelegate.swift */; };
 		06785FA326A374B500E565E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06785FA226A374B500E565E2 /* SceneDelegate.swift */; };
-		06785FAB26A374B500E565E2 /* AnyForm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 06785FA926A374B500E565E2 /* AnyForm.xcdatamodeld */; };
 		06785FAD26A374B900E565E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06785FAC26A374B900E565E2 /* Assets.xcassets */; };
 		06785FB026A374B900E565E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06785FAE26A374B900E565E2 /* LaunchScreen.storyboard */; };
 		06785FBF26A377E900E565E2 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06785FBE26A377E900E565E2 /* Networking.swift */; };
@@ -43,11 +42,12 @@
 		06CB069126A480FB005DFD49 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB069026A480FB005DFD49 /* Enums.swift */; };
 		6E94A24D14A759F4AB9623CC /* Pods_AnyForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6A6FD14081D317631F6AD6 /* Pods_AnyForm.framework */; };
 		D219F21E26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219F21D26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift */; };
+		D235C93C26D41995002F459A /* AnyForm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D235C93A26D41995002F459A /* AnyForm.xcdatamodeld */; };
+		D235C94126D419AC002F459A /* AnyFormUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235C93D26D419AC002F459A /* AnyFormUser+CoreDataProperties.swift */; };
+		D235C94226D419AC002F459A /* AnyFormUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235C93F26D419AC002F459A /* AnyFormUser+CoreDataClass.swift */; };
+		D235C94326D419AC002F459A /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235C94026D419AC002F459A /* UserData+CoreDataProperties.swift */; };
+		D235C94426D419AC002F459A /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235C93E26D419AC002F459A /* UserData+CoreDataClass.swift */; };
 		D245779426BB430C00C7FED8 /* AnyFormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245779326BB430C00C7FED8 /* AnyFormHelper.swift */; };
-		D254393526C07D7D00A486DE /* AnyFormUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254393126C07D7D00A486DE /* AnyFormUser+CoreDataClass.swift */; };
-		D254393626C07D7D00A486DE /* AnyFormUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254393226C07D7D00A486DE /* AnyFormUser+CoreDataProperties.swift */; };
-		D254393726C07D7D00A486DE /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254393326C07D7D00A486DE /* UserData+CoreDataClass.swift */; };
-		D254393826C07D7D00A486DE /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254393426C07D7D00A486DE /* UserData+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,7 +74,6 @@
 		06785F9D26A374B500E565E2 /* AnyForm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnyForm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06785FA026A374B500E565E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06785FA226A374B500E565E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		06785FAA26A374B500E565E2 /* AnyForm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnyForm.xcdatamodel; sourceTree = "<group>"; };
 		06785FAC26A374B900E565E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06785FAF26A374B900E565E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06785FB126A374B900E565E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,11 +89,12 @@
 		06CB069026A480FB005DFD49 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C757CB9D303CCAB83547AF27 /* Pods-AnyForm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyForm.debug.xcconfig"; path = "Target Support Files/Pods-AnyForm/Pods-AnyForm.debug.xcconfig"; sourceTree = "<group>"; };
 		D219F21D26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExmplaeViewController.swift; sourceTree = SOURCE_ROOT; };
+		D235C93B26D41995002F459A /* AnyForm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnyForm.xcdatamodel; sourceTree = "<group>"; };
+		D235C93D26D419AC002F459A /* AnyFormUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AnyFormUser+CoreDataProperties.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/AnyFormUser+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		D235C93E26D419AC002F459A /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserData+CoreDataClass.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/UserData+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		D235C93F26D419AC002F459A /* AnyFormUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AnyFormUser+CoreDataClass.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/AnyFormUser+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		D235C94026D419AC002F459A /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserData+CoreDataProperties.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/UserData+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		D245779326BB430C00C7FED8 /* AnyFormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFormHelper.swift; sourceTree = "<group>"; };
-		D254393126C07D7D00A486DE /* AnyFormUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyFormUser+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D254393226C07D7D00A486DE /* AnyFormUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyFormUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D254393326C07D7D00A486DE /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D254393426C07D7D00A486DE /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E4CEEB25EC892A2EAECA5E23 /* Pods-AnyForm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyForm.release.xcconfig"; path = "Target Support Files/Pods-AnyForm/Pods-AnyForm.release.xcconfig"; sourceTree = "<group>"; };
 		FA6A6FD14081D317631F6AD6 /* Pods_AnyForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -151,10 +151,10 @@
 		061755A126B281C90051B18D /* coredata */ = {
 			isa = PBXGroup;
 			children = (
-				D254393126C07D7D00A486DE /* AnyFormUser+CoreDataClass.swift */,
-				D254393226C07D7D00A486DE /* AnyFormUser+CoreDataProperties.swift */,
-				D254393326C07D7D00A486DE /* UserData+CoreDataClass.swift */,
-				D254393426C07D7D00A486DE /* UserData+CoreDataProperties.swift */,
+				D235C93E26D419AC002F459A /* UserData+CoreDataClass.swift */,
+				D235C94026D419AC002F459A /* UserData+CoreDataProperties.swift */,
+				D235C93F26D419AC002F459A /* AnyFormUser+CoreDataClass.swift */,
+				D235C93D26D419AC002F459A /* AnyFormUser+CoreDataProperties.swift */,
 				061755AA26B282210051B18D /* CoreDataManager.swift */,
 			);
 			path = coredata;
@@ -181,6 +181,7 @@
 		06785F9F26A374B500E565E2 /* AnyForm */ = {
 			isa = PBXGroup;
 			children = (
+				D235C93A26D41995002F459A /* AnyForm.xcdatamodeld */,
 				061755A126B281C90051B18D /* coredata */,
 				0617557226AD04390051B18D /* AnyForm.entitlements */,
 				0617553926A86F3B0051B18D /* assets */,
@@ -195,7 +196,6 @@
 				06785FAC26A374B900E565E2 /* Assets.xcassets */,
 				06785FAE26A374B900E565E2 /* LaunchScreen.storyboard */,
 				06785FB126A374B900E565E2 /* Info.plist */,
-				06785FA926A374B500E565E2 /* AnyForm.xcdatamodeld */,
 				D219F21D26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift */,
 			);
 			path = AnyForm;
@@ -392,11 +392,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D254393826C07D7D00A486DE /* UserData+CoreDataProperties.swift in Sources */,
+				D235C94326D419AC002F459A /* UserData+CoreDataProperties.swift in Sources */,
 				0617557F26AE1F860051B18D /* FormDesign.swift in Sources */,
 				D245779426BB430C00C7FED8 /* AnyFormHelper.swift in Sources */,
-				D254393626C07D7D00A486DE /* AnyFormUser+CoreDataProperties.swift in Sources */,
-				06785FAB26A374B500E565E2 /* AnyForm.xcdatamodeld in Sources */,
+				D235C94126D419AC002F459A /* AnyFormUser+CoreDataProperties.swift in Sources */,
 				0617554226A9A8C90051B18D /* Form101.swift in Sources */,
 				061755BF26B590510051B18D /* TabBarController.swift in Sources */,
 				0617559F26B1DFE80051B18D /* SplashScreenViewController.swift in Sources */,
@@ -414,16 +413,17 @@
 				0617558226AE1FE70051B18D /* FormUIComponents.swift in Sources */,
 				06CB068D26A47E06005DFD49 /* Strings.swift in Sources */,
 				06785FA126A374B500E565E2 /* AppDelegate.swift in Sources */,
-				D254393726C07D7D00A486DE /* UserData+CoreDataClass.swift in Sources */,
 				06785FC826A3A08F00E565E2 /* FormView.swift in Sources */,
+				D235C94426D419AC002F459A /* UserData+CoreDataClass.swift in Sources */,
 				0617559226AE2F2A0051B18D /* FormProudDesign.swift in Sources */,
 				0617556526AC36B40051B18D /* FormCollectionViewCell.swift in Sources */,
 				0617556D26AC43370051B18D /* FormFieldsViewController.swift in Sources */,
 				0617554C26AA42AD0051B18D /* FormDecodable.swift in Sources */,
+				D235C94226D419AC002F459A /* AnyFormUser+CoreDataClass.swift in Sources */,
 				06CB066D26A4673F005DFD49 /* FormFieldsHolder.swift in Sources */,
 				06785FCC26A3A51700E565E2 /* FormViewController.swift in Sources */,
+				D235C93C26D41995002F459A /* AnyForm.xcdatamodeld in Sources */,
 				0617557026AD01440051B18D /* WhatsAppShare.swift in Sources */,
-				D254393526C07D7D00A486DE /* AnyFormUser+CoreDataClass.swift in Sources */,
 				061755AB26B282210051B18D /* CoreDataManager.swift in Sources */,
 				06785FA326A374B500E565E2 /* SceneDelegate.swift in Sources */,
 			);
@@ -623,12 +623,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		06785FA926A374B500E565E2 /* AnyForm.xcdatamodeld */ = {
+		D235C93A26D41995002F459A /* AnyForm.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				06785FAA26A374B500E565E2 /* AnyForm.xcdatamodel */,
+				D235C93B26D41995002F459A /* AnyForm.xcdatamodel */,
 			);
-			currentVersion = 06785FAA26A374B500E565E2 /* AnyForm.xcdatamodel */;
+			currentVersion = D235C93B26D41995002F459A /* AnyForm.xcdatamodel */;
 			path = AnyForm.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

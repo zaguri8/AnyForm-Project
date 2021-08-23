@@ -1,8 +1,8 @@
 //
 //  AnyFormUser+CoreDataClass.swift
-//  AnyForm
+//  
 //
-//  Created by Nadav Avnon on 09/08/2021.
+//  Created by Nadav Avnon on 23/08/2021.
 //
 //
 
@@ -12,6 +12,6 @@ import CoreData
 @objc(AnyFormUser)
 public class AnyFormUser: NSManagedObject {
     func getUserData() -> [UserData] {
-        return self.userdata?.array as? [UserData] ?? []
+        return userdata?.allObjects as? [UserData] ?? []
     }
 }

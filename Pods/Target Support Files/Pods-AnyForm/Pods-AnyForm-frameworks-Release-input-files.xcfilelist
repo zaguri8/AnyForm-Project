@@ -2,3 +2,4 @@ ${PODS_ROOT}/Target Support Files/Pods-AnyForm/Pods-AnyForm-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/MBCircularProgressBar/MBCircularProgressBar.framework
 ${BUILT_PRODUCTS_DIR}/PWSwitch/PWSwitch.framework
 ${BUILT_PRODUCTS_DIR}/RoundedSwitch/RoundedSwitch.framework
+${BUILT_PRODUCTS_DIR}/WMSegmentControl/WMSegmentControl.framework

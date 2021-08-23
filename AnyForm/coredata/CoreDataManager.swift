@@ -45,16 +45,16 @@ class CoreDataManager {
     
     
     func addUserData(key:String,value:String,category:String) {
-        guard let user = self.user,!value.isEmpty else {return}
+        print("adding user data: \(key) + \(value)")
+        guard let user = self.user,!value.isEmpty else {
+            return}
         for n in user.getUserData() {
             if ( (n.category == category) && (n.key == key) ) || ( (n.key == key) && (n.value == value) ) {
                 return
             }
         }
-        let data = UserData(context: persistentContainer.viewContext)
-        data.key = key
-        data.value = value
-        data.category = category
+        let userData = UserData.insertUserData(key: key, value: value, category: category)
+        user.addToUserdata(userData)
         saveContext()
     }
     
@@ -64,12 +64,14 @@ class CoreDataManager {
         do {
             let result = try context.fetch(request)
             guard !result.isEmpty else {
+                print("Empty user list")
                 let newUser  = AnyFormUser(context: context)
                 newUser.firstEntrance = true
                 self.user =  newUser
                 saveContext()
                 return
             }
+            
             self.user =  result.first
         }catch {
             print(error)

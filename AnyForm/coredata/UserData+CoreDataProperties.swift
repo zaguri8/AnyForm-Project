@@ -1,8 +1,8 @@
 //
 //  UserData+CoreDataProperties.swift
-//  AnyForm
+//  
 //
-//  Created by Nadav Avnon on 09/08/2021.
+//  Created by Nadav Avnon on 23/08/2021.
 //
 //
 
@@ -19,9 +19,5 @@ extension UserData {
     @NSManaged public var category: String?
     @NSManaged public var key: String?
     @NSManaged public var value: String?
-
-}
-
-extension UserData : Identifiable {
 
 }

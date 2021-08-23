@@ -7,123 +7,151 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03218C36ECF1B59AD5AD90B594843865 /* PWSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B6B35AD053D441F0418925FB3E0FE5 /* PWSwitch.swift */; };
-		1CDF4268F07D8FEE31F0CC1B30139709 /* MBCircularProgressBarLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = BDB1A158FA2204AACE70C15E46618735 /* MBCircularProgressBarLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		23CE63A7CC2B2DCE33C7E97039C1D91B /* Pods-AnyForm-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B9D8D60BDFC9E96672632A0CACFAB24D /* Pods-AnyForm-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		24741A11CEBE43E51E27C646DBCA6184 /* MBCircularProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 394F3F615330621C8DA4E691BA93D6AC /* MBCircularProgressBarLayer.m */; };
-		37F1D67CA3DED7E1F35C9E6D03FF1E89 /* MBCircularProgressBar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B36E58CA0AEEAF4B678993F5225CC0F /* MBCircularProgressBar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03218C36ECF1B59AD5AD90B594843865 /* PWSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3783E9C90A4AFAABDDC00B6D73A8D442 /* PWSwitch.swift */; };
+		047C759B0E3BCF9D4505617367742D73 /* WMSegmentControl-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F3D00E00ED45F54A9F6267C312376 /* WMSegmentControl-dummy.m */; };
+		1CDF4268F07D8FEE31F0CC1B30139709 /* MBCircularProgressBarLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = AA63232D490164D8469B921DA3C462DE /* MBCircularProgressBarLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24741A11CEBE43E51E27C646DBCA6184 /* MBCircularProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A7561346DC7629FB20B8058856082525 /* MBCircularProgressBarLayer.m */; };
+		37F1D67CA3DED7E1F35C9E6D03FF1E89 /* MBCircularProgressBar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D0050DA9A95AC963A89683AC1F09F453 /* MBCircularProgressBar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		446523803B278A824713B943D5256C13 /* MBCircularProgressBar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7CB12AE789452060456EBCEC68360820 /* MBCircularProgressBar.bundle */; };
 		48ABD59F4380BEAD421BEE58CAE998C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */; };
-		4F61C0E0DEC58B69E6D1695A475A023C /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04904B1780C880AD270F2A3B7A9DF2BA /* Switch.swift */; };
-		6BD5CCDD33F334C2B2FB7AAA4C2AA0F8 /* PWSwitch-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 691E4D594293FA1B9F6359DE59E9C6AD /* PWSwitch-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6EE09D81B3828913D5710CB8223DD808 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
-		7244586C235A4AF76070461552438212 /* RoundedSwitch-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 54D09A81868AAEA7BA248D1C5C9A78E4 /* RoundedSwitch-dummy.m */; };
-		7AEF6659F5A8F4C8A00C08D4063362FA /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D07857A07B498E1A2D2BBD3A0CC912 /* example.png */; };
-		86139CAF21B2AB2931974E3C33FA0808 /* MBCircularProgressBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = E8652AF76C5A933436B16976ABDE80DB /* MBCircularProgressBarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A15F33DE23588B6E7933A0852537DA44 /* RoundedSwitch-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C57602142AF9DC4D79CD9D6DC1BDE0C3 /* RoundedSwitch-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F61C0E0DEC58B69E6D1695A475A023C /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CF725D3B5F4B3F9CEA0E41F859317 /* Switch.swift */; };
+		5851F39815592FE2A5F58AE04230D8AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		60B67E63FA466B3A6DFC4E05C0F37D92 /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = 55492754F2647CA2690DE3A597590375 /* example.png */; };
+		6BD5CCDD33F334C2B2FB7AAA4C2AA0F8 /* PWSwitch-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 28538DDCBAB658E958EA5741A5C1F5F6 /* PWSwitch-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7244586C235A4AF76070461552438212 /* RoundedSwitch-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C15EAA525335DE94F01CC890FC54B8 /* RoundedSwitch-dummy.m */; };
+		86139CAF21B2AB2931974E3C33FA0808 /* MBCircularProgressBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9832A035E35457FF1A9AD62657374A95 /* MBCircularProgressBarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A15F33DE23588B6E7933A0852537DA44 /* RoundedSwitch-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AD44F74BD1CBEEB53CE11E6E284F27DA /* RoundedSwitch-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AE86F4797B9EF4A1FDA40CFD7AC4E664 /* WMSegmentControl-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E58ED95FEB59EFA211679BBAE9377E0 /* WMSegmentControl-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B16385A80D7B2E6C1F31F1F0E14B4CB4 /* WMSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988BBAC6533A38A842CB9E3E2380280 /* WMSegment.swift */; };
 		BDBAE42272C949E6DCBEEDA7C03E53A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
 		CB0146D9CA88B2C591890E39C600E1D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
-		D51BEF138C6F131E70C22D127EB6C0AC /* PWSwitch-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2A9F1E4F8C033A25F12FB3D2DF546 /* PWSwitch-dummy.m */; };
+		D51BEF138C6F131E70C22D127EB6C0AC /* PWSwitch-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E9254B9FD0E82577DAE91F7F5EA704 /* PWSwitch-dummy.m */; };
 		DF5AB91BC7F4030ACD83F4BD043ABCBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
-		E17767EF86EBAB6B72F89C91DDC4D2BA /* MBCircularProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EEC33C31D3FD470622CD696D3DD174E /* MBCircularProgressBarView.m */; };
-		E191A4B271C784481DCAD20AD2C9E7EE /* MBCircularProgressBar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDA3D1C4F99E4DA282BB6BB5CD9316A /* MBCircularProgressBar-dummy.m */; };
-		E2927A6C8E0DA07C9316B522C66C3801 /* Pods-AnyForm-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B507B84ADD23F3D44C80A236F577A00E /* Pods-AnyForm-dummy.m */; };
+		E17767EF86EBAB6B72F89C91DDC4D2BA /* MBCircularProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B22925F80DE75326F27D56ED75640DCA /* MBCircularProgressBarView.m */; };
+		E191A4B271C784481DCAD20AD2C9E7EE /* MBCircularProgressBar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3217BB8AF3F32EE34416524DB4F5475E /* MBCircularProgressBar-dummy.m */; };
+		F3384047442A8DE0F8BB6EA9F2552068 /* Pods-AnyForm-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B507B84ADD23F3D44C80A236F577A00E /* Pods-AnyForm-dummy.m */; };
+		F3E61F7C1E72CCB26531B03C68F8CBE9 /* Pods-AnyForm-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B9D8D60BDFC9E96672632A0CACFAB24D /* Pods-AnyForm-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE47AB5544D52110811F0DEA855B394F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		32C02332E8EF835782FF58FA9CA9DF15 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8BA5E348E64AFAB335EC680A67122E64;
-			remoteInfo = "MBCircularProgressBar-MBCircularProgressBar";
-		};
-		55939A7292510B106BD2733FFAD1300C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C77EE8814CC16AA6DEB9C7B64763B2CF;
-			remoteInfo = PWSwitch;
-		};
-		6D27CC00C9594DE45F11A239C65947AA /* PBXContainerItemProxy */ = {
+		034FBC90ACAB428EA43DDF950E75AB38 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3664ED481303080D8E6A368FC1756A0C;
 			remoteInfo = RoundedSwitch;
 		};
-		AD15534B88891078EE78D87CB8F135A1 /* PBXContainerItemProxy */ = {
+		3BDA35227DBF811FC71ED14EA8D7EEEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8BA5E348E64AFAB335EC680A67122E64;
+			remoteInfo = "MBCircularProgressBar-MBCircularProgressBar";
+		};
+		3D0EA5292C74A189784C947C3B994225 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 46FA1E1D7ABC29B96888E2D9085D474F;
 			remoteInfo = MBCircularProgressBar;
 		};
+		55BC2348B88E48B18E738C1C2D1738B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A3EF8D30112DE7B1FA58F00BCE70F79;
+			remoteInfo = WMSegmentControl;
+		};
+		754630591F224685D64C645778DBDC62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C77EE8814CC16AA6DEB9C7B64763B2CF;
+			remoteInfo = PWSwitch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0111450CEA4AF3CC480930B94265C04C /* Pods-AnyForm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AnyForm.modulemap"; sourceTree = "<group>"; };
-		04904B1780C880AD270F2A3B7A9DF2BA /* Switch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Switch.swift; path = Sources/Switch/Switch.swift; sourceTree = "<group>"; };
+		112CF725D3B5F4B3F9CEA0E41F859317 /* Switch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Switch.swift; path = Sources/Switch/Switch.swift; sourceTree = "<group>"; };
 		1158C30339F0F216026210118A57FC90 /* Pods-AnyForm-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AnyForm-acknowledgements.markdown"; sourceTree = "<group>"; };
 		1358E2B7522496FA482B36BB5D2977DA /* Pods-AnyForm-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AnyForm-acknowledgements.plist"; sourceTree = "<group>"; };
-		15938C3F732544F58EA0A8A6D8593BC9 /* PWSwitch-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PWSwitch-prefix.pch"; sourceTree = "<group>"; };
-		1CBE7F8EFABADCBD3398304CE474A494 /* PWSwitch.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PWSwitch.modulemap; sourceTree = "<group>"; };
-		1FC2A9F1E4F8C033A25F12FB3D2DF546 /* PWSwitch-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PWSwitch-dummy.m"; sourceTree = "<group>"; };
-		237553754EB04FAEAA97ACCAAFE0FBBA /* MBCircularProgressBar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBCircularProgressBar-prefix.pch"; sourceTree = "<group>"; };
-		2EEC33C31D3FD470622CD696D3DD174E /* MBCircularProgressBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MBCircularProgressBarView.m; path = Pod/Classes/MBCircularProgressBarView.m; sourceTree = "<group>"; };
-		350A7ED53A95BFACA0466A21A44F3345 /* PWSwitch-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PWSwitch-Info.plist"; sourceTree = "<group>"; };
-		394F3F615330621C8DA4E691BA93D6AC /* MBCircularProgressBarLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MBCircularProgressBarLayer.m; path = Pod/Classes/MBCircularProgressBarLayer.m; sourceTree = "<group>"; };
+		1D8F50EF2B62188EC99AFA385E213004 /* WMSegmentControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WMSegmentControl.release.xcconfig; sourceTree = "<group>"; };
+		1EB38D40BBD5E7EC4182D4CE5B19EA06 /* ResourceBundle-MBCircularProgressBar-MBCircularProgressBar-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MBCircularProgressBar-MBCircularProgressBar-Info.plist"; sourceTree = "<group>"; };
+		218F3D00E00ED45F54A9F6267C312376 /* WMSegmentControl-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WMSegmentControl-dummy.m"; sourceTree = "<group>"; };
+		28538DDCBAB658E958EA5741A5C1F5F6 /* PWSwitch-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PWSwitch-umbrella.h"; sourceTree = "<group>"; };
+		2AD4AE6BD3AF1DD72EB429D46E5FA696 /* RoundedSwitch-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RoundedSwitch-Info.plist"; sourceTree = "<group>"; };
+		2BCDE1953C51A288B0A8D5412186EE93 /* WMSegmentControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = WMSegmentControl.framework; path = WMSegmentControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F57F989DD9ADE7E778C7D60E01FE17E /* PWSwitch-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PWSwitch-prefix.pch"; sourceTree = "<group>"; };
+		3217BB8AF3F32EE34416524DB4F5475E /* MBCircularProgressBar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBCircularProgressBar-dummy.m"; sourceTree = "<group>"; };
+		3239C4CCF222BA9D295EC8D97F31796D /* RoundedSwitch.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RoundedSwitch.modulemap; sourceTree = "<group>"; };
+		3783E9C90A4AFAABDDC00B6D73A8D442 /* PWSwitch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PWSwitch.swift; path = PWSwitch/PWSwitch.swift; sourceTree = "<group>"; };
 		3999DE9A4F1AA83B70FF0680DF2821B0 /* Pods-AnyForm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AnyForm.debug.xcconfig"; sourceTree = "<group>"; };
-		45B6B35AD053D441F0418925FB3E0FE5 /* PWSwitch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PWSwitch.swift; path = PWSwitch/PWSwitch.swift; sourceTree = "<group>"; };
-		519588B8E249D2EED12DCA3A047CBBEB /* PWSwitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PWSwitch.debug.xcconfig; sourceTree = "<group>"; };
-		5312AB1D0C33D334EF1257F0F868E488 /* RoundedSwitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RoundedSwitch.release.xcconfig; sourceTree = "<group>"; };
-		54D09A81868AAEA7BA248D1C5C9A78E4 /* RoundedSwitch-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RoundedSwitch-dummy.m"; sourceTree = "<group>"; };
-		5A2D8D753014E995913308CDA8ECE21C /* MBCircularProgressBar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MBCircularProgressBar.modulemap; sourceTree = "<group>"; };
+		41B868E37482A869BC5CB192BE82AFA6 /* MBCircularProgressBar-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MBCircularProgressBar-Info.plist"; sourceTree = "<group>"; };
+		42F40DA3CAC69665A523EC27F296C6CD /* RoundedSwitch-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RoundedSwitch-prefix.pch"; sourceTree = "<group>"; };
+		44409D27CE8EA61EE522F36684F9C74C /* PWSwitch.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PWSwitch.modulemap; sourceTree = "<group>"; };
+		45E9254B9FD0E82577DAE91F7F5EA704 /* PWSwitch-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PWSwitch-dummy.m"; sourceTree = "<group>"; };
+		4675CDB908C506BF233DBEF759609C6A /* MBCircularProgressBar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBCircularProgressBar-prefix.pch"; sourceTree = "<group>"; };
+		5299D6D1535679959354D0C52D2A4B16 /* WMSegmentControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WMSegmentControl.debug.xcconfig; sourceTree = "<group>"; };
+		55492754F2647CA2690DE3A597590375 /* example.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = example.png; path = Pod/Assets/example.png; sourceTree = "<group>"; };
+		61C4750B5045077241908BC19B097C5B /* PWSwitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PWSwitch.release.xcconfig; sourceTree = "<group>"; };
 		640B2CA36D53D84D0129B12A7FAC2E0B /* MBCircularProgressBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBCircularProgressBar.framework; path = MBCircularProgressBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		690DBC8563FD0851614490E89544C76D /* PWSwitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PWSwitch.release.xcconfig; sourceTree = "<group>"; };
-		691E4D594293FA1B9F6359DE59E9C6AD /* PWSwitch-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PWSwitch-umbrella.h"; sourceTree = "<group>"; };
-		6B36E58CA0AEEAF4B678993F5225CC0F /* MBCircularProgressBar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBCircularProgressBar-umbrella.h"; sourceTree = "<group>"; };
-		74457E3920B75A8521E81982464EC948 /* RoundedSwitch-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RoundedSwitch-Info.plist"; sourceTree = "<group>"; };
+		6988BBAC6533A38A842CB9E3E2380280 /* WMSegment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WMSegment.swift; path = WMSegmentControl/Source/WMSegment.swift; sourceTree = "<group>"; };
+		6F7331DA182A81BAF6300A188DB8FE12 /* WMSegmentControl.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = WMSegmentControl.modulemap; sourceTree = "<group>"; };
 		7B7ED6D0AFDDDD1BDBF463F1B7A0F900 /* Pods-AnyForm-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AnyForm-Info.plist"; sourceTree = "<group>"; };
 		7CB12AE789452060456EBCEC68360820 /* MBCircularProgressBar.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MBCircularProgressBar.bundle; path = "MBCircularProgressBar-MBCircularProgressBar.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		83D07857A07B498E1A2D2BBD3A0CC912 /* example.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = example.png; path = Pod/Assets/example.png; sourceTree = "<group>"; };
-		8CD99E5B8AD303D93A59F02097F5E55A /* MBCircularProgressBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBCircularProgressBar.debug.xcconfig; sourceTree = "<group>"; };
+		7FBD60B829281EEA0239DC0E063EAAED /* WMSegmentControl-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "WMSegmentControl-Info.plist"; sourceTree = "<group>"; };
 		8F389BF7CFC3286C6257EF61EDF2757B /* RoundedSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RoundedSwitch.framework; path = RoundedSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9383D4DE58203DCB39BDBC4BE331CE33 /* MBCircularProgressBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBCircularProgressBar.release.xcconfig; sourceTree = "<group>"; };
+		9120FC0FB75A74301F74C06FA9456E10 /* MBCircularProgressBar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MBCircularProgressBar.modulemap; sourceTree = "<group>"; };
+		9832A035E35457FF1A9AD62657374A95 /* MBCircularProgressBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MBCircularProgressBarView.h; path = Pod/Classes/MBCircularProgressBarView.h; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A3058AFDC5CC010A413F4A0FBFB5C107 /* RoundedSwitch.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RoundedSwitch.modulemap; sourceTree = "<group>"; };
+		9E58ED95FEB59EFA211679BBAE9377E0 /* WMSegmentControl-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WMSegmentControl-umbrella.h"; sourceTree = "<group>"; };
+		A7561346DC7629FB20B8058856082525 /* MBCircularProgressBarLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MBCircularProgressBarLayer.m; path = Pod/Classes/MBCircularProgressBarLayer.m; sourceTree = "<group>"; };
+		AA63232D490164D8469B921DA3C462DE /* MBCircularProgressBarLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MBCircularProgressBarLayer.h; path = Pod/Classes/MBCircularProgressBarLayer.h; sourceTree = "<group>"; };
+		AD44F74BD1CBEEB53CE11E6E284F27DA /* RoundedSwitch-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RoundedSwitch-umbrella.h"; sourceTree = "<group>"; };
 		AFD70720139D1C7867E4FFBB28702451 /* PWSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PWSwitch.framework; path = PWSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3CF1EE0C1B180E24C44E7FEC4B9A1AA /* MBCircularProgressBar-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MBCircularProgressBar-Info.plist"; sourceTree = "<group>"; };
+		B22925F80DE75326F27D56ED75640DCA /* MBCircularProgressBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MBCircularProgressBarView.m; path = Pod/Classes/MBCircularProgressBarView.m; sourceTree = "<group>"; };
 		B507B84ADD23F3D44C80A236F577A00E /* Pods-AnyForm-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AnyForm-dummy.m"; sourceTree = "<group>"; };
 		B9D8D60BDFC9E96672632A0CACFAB24D /* Pods-AnyForm-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AnyForm-umbrella.h"; sourceTree = "<group>"; };
-		BDB1A158FA2204AACE70C15E46618735 /* MBCircularProgressBarLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MBCircularProgressBarLayer.h; path = Pod/Classes/MBCircularProgressBarLayer.h; sourceTree = "<group>"; };
-		C57602142AF9DC4D79CD9D6DC1BDE0C3 /* RoundedSwitch-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RoundedSwitch-umbrella.h"; sourceTree = "<group>"; };
-		CCDA3D1C4F99E4DA282BB6BB5CD9316A /* MBCircularProgressBar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBCircularProgressBar-dummy.m"; sourceTree = "<group>"; };
+		C119F6FA2DBB7DF764BE3E7D0B634844 /* WMSegmentControl-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WMSegmentControl-prefix.pch"; sourceTree = "<group>"; };
+		C2C15EAA525335DE94F01CC890FC54B8 /* RoundedSwitch-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RoundedSwitch-dummy.m"; sourceTree = "<group>"; };
+		C76572539859211DEDE5C451DD7F0A71 /* PWSwitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PWSwitch.debug.xcconfig; sourceTree = "<group>"; };
+		CB40F28FFFA5B351509F658F1A7C1CB0 /* MBCircularProgressBar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBCircularProgressBar.release.xcconfig; sourceTree = "<group>"; };
+		CD51848893544696B2B3DE61148E01D0 /* MBCircularProgressBar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBCircularProgressBar.debug.xcconfig; sourceTree = "<group>"; };
+		D0050DA9A95AC963A89683AC1F09F453 /* MBCircularProgressBar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBCircularProgressBar-umbrella.h"; sourceTree = "<group>"; };
 		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		D931709C729408017D44400F66A6F563 /* RoundedSwitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RoundedSwitch.debug.xcconfig; sourceTree = "<group>"; };
+		D3CF2A168D4D653F7C864A7C69BD1204 /* PWSwitch-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PWSwitch-Info.plist"; sourceTree = "<group>"; };
+		E1982F34F763CB5477B97D6034A2BA14 /* RoundedSwitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RoundedSwitch.debug.xcconfig; sourceTree = "<group>"; };
 		E7A4906B89E7C27558FA7A1933537336 /* Pods-AnyForm-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AnyForm-frameworks.sh"; sourceTree = "<group>"; };
-		E8652AF76C5A933436B16976ABDE80DB /* MBCircularProgressBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MBCircularProgressBarView.h; path = Pod/Classes/MBCircularProgressBarView.h; sourceTree = "<group>"; };
 		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		F252B85470DFA0A20651DC769587400F /* Pods-AnyForm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AnyForm.release.xcconfig"; sourceTree = "<group>"; };
-		F8A5871573D1526B2CC9D9D9401D65D7 /* RoundedSwitch-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RoundedSwitch-prefix.pch"; sourceTree = "<group>"; };
-		FD4B51C3A3EB06ADCA086A3A2D5509ED /* ResourceBundle-MBCircularProgressBar-MBCircularProgressBar-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MBCircularProgressBar-MBCircularProgressBar-Info.plist"; sourceTree = "<group>"; };
+		F8CF6000B67F34844BB2B7DD473E8070 /* RoundedSwitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RoundedSwitch.release.xcconfig; sourceTree = "<group>"; };
 		FDCB4E6627BC4E1A0F67DBCDD2C73DB1 /* Pods_AnyForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AnyForm.framework; path = "Pods-AnyForm.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3E63359895F147C44FE895A02EBBE822 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5431E9226E9096C78F75AB57DB4A6C58 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CB0146D9CA88B2C591890E39C600E1D8 /* Foundation.framework in Frameworks */,
 				48ABD59F4380BEAD421BEE58CAE998C7 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BFADFBD5D5EB80393A6D830C07F68F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE47AB5544D52110811F0DEA855B394F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EAACA049ECD8E46EBDC0F582C0ACDC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,27 +171,45 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E92FE20006079D41FA8A7E2C4A13357E /* Frameworks */ = {
+		ED2430E81BCED3654619DF8E8AE64930 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EE09D81B3828913D5710CB8223DD808 /* Foundation.framework in Frameworks */,
+				5851F39815592FE2A5F58AE04230D8AE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C01D3252C27198BACFF5B1C69FB5783 /* Products */ = {
+		0BEF5DAACF8075DB7EF0C3E9EFCA2D2F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7CB12AE789452060456EBCEC68360820 /* MBCircularProgressBar.bundle */,
-				640B2CA36D53D84D0129B12A7FAC2E0B /* MBCircularProgressBar.framework */,
-				FDCB4E6627BC4E1A0F67DBCDD2C73DB1 /* Pods_AnyForm.framework */,
-				AFD70720139D1C7867E4FFBB28702451 /* PWSwitch.framework */,
-				8F389BF7CFC3286C6257EF61EDF2757B /* RoundedSwitch.framework */,
+				9120FC0FB75A74301F74C06FA9456E10 /* MBCircularProgressBar.modulemap */,
+				3217BB8AF3F32EE34416524DB4F5475E /* MBCircularProgressBar-dummy.m */,
+				41B868E37482A869BC5CB192BE82AFA6 /* MBCircularProgressBar-Info.plist */,
+				4675CDB908C506BF233DBEF759609C6A /* MBCircularProgressBar-prefix.pch */,
+				D0050DA9A95AC963A89683AC1F09F453 /* MBCircularProgressBar-umbrella.h */,
+				CD51848893544696B2B3DE61148E01D0 /* MBCircularProgressBar.debug.xcconfig */,
+				CB40F28FFFA5B351509F658F1A7C1CB0 /* MBCircularProgressBar.release.xcconfig */,
+				1EB38D40BBD5E7EC4182D4CE5B19EA06 /* ResourceBundle-MBCircularProgressBar-MBCircularProgressBar-Info.plist */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/MBCircularProgressBar";
+			sourceTree = "<group>";
+		};
+		10202A6238DBADA32002AAE10F8DB1AE /* MBCircularProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				AA63232D490164D8469B921DA3C462DE /* MBCircularProgressBarLayer.h */,
+				A7561346DC7629FB20B8058856082525 /* MBCircularProgressBarLayer.m */,
+				9832A035E35457FF1A9AD62657374A95 /* MBCircularProgressBarView.h */,
+				B22925F80DE75326F27D56ED75640DCA /* MBCircularProgressBarView.m */,
+				E865CE69791BBB513002453960C76F3A /* Resources */,
+				0BEF5DAACF8075DB7EF0C3E9EFCA2D2F /* Support Files */,
+			);
+			name = MBCircularProgressBar;
+			path = MBCircularProgressBar;
 			sourceTree = "<group>";
 		};
 		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
@@ -174,53 +220,58 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1F6BCA028AAC9280D97860CA2733ABB5 /* PWSwitch */ = {
+		32C91B33F69E75B1A5C76E94421C6EFA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				45B6B35AD053D441F0418925FB3E0FE5 /* PWSwitch.swift */,
-				32A824C6F2F5C263339C668CBB900CC3 /* Support Files */,
+				10202A6238DBADA32002AAE10F8DB1AE /* MBCircularProgressBar */,
+				E9EAE17DF91071E56D07E66EA9DBBA23 /* PWSwitch */,
+				EC78A74B65B3ED65143EF7791E0B7CAB /* RoundedSwitch */,
+				E47ED5B6AFAC2179D99A2EECFD88A0B2 /* WMSegmentControl */,
 			);
-			name = PWSwitch;
-			path = PWSwitch;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		2A8207E32C0F477E1A0905E8DECF78AA /* MBCircularProgressBar */ = {
+		3391F170F092D13B1B222F41D531B8DC /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				BDB1A158FA2204AACE70C15E46618735 /* MBCircularProgressBarLayer.h */,
-				394F3F615330621C8DA4E691BA93D6AC /* MBCircularProgressBarLayer.m */,
-				E8652AF76C5A933436B16976ABDE80DB /* MBCircularProgressBarView.h */,
-				2EEC33C31D3FD470622CD696D3DD174E /* MBCircularProgressBarView.m */,
-				D80DCAF220D0F4D2F703EB3A3F4EB7C5 /* Resources */,
-				97F65E571EA6602D277A3C1362079824 /* Support Files */,
-			);
-			name = MBCircularProgressBar;
-			path = MBCircularProgressBar;
-			sourceTree = "<group>";
-		};
-		32A824C6F2F5C263339C668CBB900CC3 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				1CBE7F8EFABADCBD3398304CE474A494 /* PWSwitch.modulemap */,
-				1FC2A9F1E4F8C033A25F12FB3D2DF546 /* PWSwitch-dummy.m */,
-				350A7ED53A95BFACA0466A21A44F3345 /* PWSwitch-Info.plist */,
-				15938C3F732544F58EA0A8A6D8593BC9 /* PWSwitch-prefix.pch */,
-				691E4D594293FA1B9F6359DE59E9C6AD /* PWSwitch-umbrella.h */,
-				519588B8E249D2EED12DCA3A047CBBEB /* PWSwitch.debug.xcconfig */,
-				690DBC8563FD0851614490E89544C76D /* PWSwitch.release.xcconfig */,
+				3239C4CCF222BA9D295EC8D97F31796D /* RoundedSwitch.modulemap */,
+				C2C15EAA525335DE94F01CC890FC54B8 /* RoundedSwitch-dummy.m */,
+				2AD4AE6BD3AF1DD72EB429D46E5FA696 /* RoundedSwitch-Info.plist */,
+				42F40DA3CAC69665A523EC27F296C6CD /* RoundedSwitch-prefix.pch */,
+				AD44F74BD1CBEEB53CE11E6E284F27DA /* RoundedSwitch-umbrella.h */,
+				E1982F34F763CB5477B97D6034A2BA14 /* RoundedSwitch.debug.xcconfig */,
+				F8CF6000B67F34844BB2B7DD473E8070 /* RoundedSwitch.release.xcconfig */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/PWSwitch";
+			path = "../Target Support Files/RoundedSwitch";
 			sourceTree = "<group>";
 		};
-		5171F4E2AF792EF09C7AA4649737A652 /* RoundedSwitch */ = {
+		3E753912DB521A16A4023A0CE6FDFCA7 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				04904B1780C880AD270F2A3B7A9DF2BA /* Switch.swift */,
-				FC5D49D18A1EA718F8A25185DA0617AD /* Support Files */,
+				6F7331DA182A81BAF6300A188DB8FE12 /* WMSegmentControl.modulemap */,
+				218F3D00E00ED45F54A9F6267C312376 /* WMSegmentControl-dummy.m */,
+				7FBD60B829281EEA0239DC0E063EAAED /* WMSegmentControl-Info.plist */,
+				C119F6FA2DBB7DF764BE3E7D0B634844 /* WMSegmentControl-prefix.pch */,
+				9E58ED95FEB59EFA211679BBAE9377E0 /* WMSegmentControl-umbrella.h */,
+				5299D6D1535679959354D0C52D2A4B16 /* WMSegmentControl.debug.xcconfig */,
+				1D8F50EF2B62188EC99AFA385E213004 /* WMSegmentControl.release.xcconfig */,
 			);
-			name = RoundedSwitch;
-			path = RoundedSwitch;
+			name = "Support Files";
+			path = "../Target Support Files/WMSegmentControl";
+			sourceTree = "<group>";
+		};
+		52413448F1A44E28D2EBC6E95DDD004E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7CB12AE789452060456EBCEC68360820 /* MBCircularProgressBar.bundle */,
+				640B2CA36D53D84D0129B12A7FAC2E0B /* MBCircularProgressBar.framework */,
+				FDCB4E6627BC4E1A0F67DBCDD2C73DB1 /* Pods_AnyForm.framework */,
+				AFD70720139D1C7867E4FFBB28702451 /* PWSwitch.framework */,
+				8F389BF7CFC3286C6257EF61EDF2757B /* RoundedSwitch.framework */,
+				2BCDE1953C51A288B0A8D5412186EE93 /* WMSegmentControl.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */ = {
@@ -232,30 +283,19 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		6478BE2BF9294AD17ECBBBD2CB462C49 /* Pods */ = {
+		97F3B1EC73AF4ACEC0A0C0BEBEA2E028 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				2A8207E32C0F477E1A0905E8DECF78AA /* MBCircularProgressBar */,
-				1F6BCA028AAC9280D97860CA2733ABB5 /* PWSwitch */,
-				5171F4E2AF792EF09C7AA4649737A652 /* RoundedSwitch */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		97F65E571EA6602D277A3C1362079824 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				5A2D8D753014E995913308CDA8ECE21C /* MBCircularProgressBar.modulemap */,
-				CCDA3D1C4F99E4DA282BB6BB5CD9316A /* MBCircularProgressBar-dummy.m */,
-				B3CF1EE0C1B180E24C44E7FEC4B9A1AA /* MBCircularProgressBar-Info.plist */,
-				237553754EB04FAEAA97ACCAAFE0FBBA /* MBCircularProgressBar-prefix.pch */,
-				6B36E58CA0AEEAF4B678993F5225CC0F /* MBCircularProgressBar-umbrella.h */,
-				8CD99E5B8AD303D93A59F02097F5E55A /* MBCircularProgressBar.debug.xcconfig */,
-				9383D4DE58203DCB39BDBC4BE331CE33 /* MBCircularProgressBar.release.xcconfig */,
-				FD4B51C3A3EB06ADCA086A3A2D5509ED /* ResourceBundle-MBCircularProgressBar-MBCircularProgressBar-Info.plist */,
+				44409D27CE8EA61EE522F36684F9C74C /* PWSwitch.modulemap */,
+				45E9254B9FD0E82577DAE91F7F5EA704 /* PWSwitch-dummy.m */,
+				D3CF2A168D4D653F7C864A7C69BD1204 /* PWSwitch-Info.plist */,
+				2F57F989DD9ADE7E778C7D60E01FE17E /* PWSwitch-prefix.pch */,
+				28538DDCBAB658E958EA5741A5C1F5F6 /* PWSwitch-umbrella.h */,
+				C76572539859211DEDE5C451DD7F0A71 /* PWSwitch.debug.xcconfig */,
+				61C4750B5045077241908BC19B097C5B /* PWSwitch.release.xcconfig */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/MBCircularProgressBar";
+			path = "../Target Support Files/PWSwitch";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -263,18 +303,20 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				6478BE2BF9294AD17ECBBBD2CB462C49 /* Pods */,
-				0C01D3252C27198BACFF5B1C69FB5783 /* Products */,
+				32C91B33F69E75B1A5C76E94421C6EFA /* Pods */,
+				52413448F1A44E28D2EBC6E95DDD004E /* Products */,
 				FD16A7BCEB93FBD2DE80CC69CBDE6687 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D80DCAF220D0F4D2F703EB3A3F4EB7C5 /* Resources */ = {
+		E47ED5B6AFAC2179D99A2EECFD88A0B2 /* WMSegmentControl */ = {
 			isa = PBXGroup;
 			children = (
-				83D07857A07B498E1A2D2BBD3A0CC912 /* example.png */,
+				6988BBAC6533A38A842CB9E3E2380280 /* WMSegment.swift */,
+				3E753912DB521A16A4023A0CE6FDFCA7 /* Support Files */,
 			);
-			name = Resources;
+			name = WMSegmentControl;
+			path = WMSegmentControl;
 			sourceTree = "<group>";
 		};
 		E7CBB8ABDFED92EB3DD93776592D9540 /* Pods-AnyForm */ = {
@@ -294,19 +336,32 @@
 			path = "Target Support Files/Pods-AnyForm";
 			sourceTree = "<group>";
 		};
-		FC5D49D18A1EA718F8A25185DA0617AD /* Support Files */ = {
+		E865CE69791BBB513002453960C76F3A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A3058AFDC5CC010A413F4A0FBFB5C107 /* RoundedSwitch.modulemap */,
-				54D09A81868AAEA7BA248D1C5C9A78E4 /* RoundedSwitch-dummy.m */,
-				74457E3920B75A8521E81982464EC948 /* RoundedSwitch-Info.plist */,
-				F8A5871573D1526B2CC9D9D9401D65D7 /* RoundedSwitch-prefix.pch */,
-				C57602142AF9DC4D79CD9D6DC1BDE0C3 /* RoundedSwitch-umbrella.h */,
-				D931709C729408017D44400F66A6F563 /* RoundedSwitch.debug.xcconfig */,
-				5312AB1D0C33D334EF1257F0F868E488 /* RoundedSwitch.release.xcconfig */,
+				55492754F2647CA2690DE3A597590375 /* example.png */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/RoundedSwitch";
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E9EAE17DF91071E56D07E66EA9DBBA23 /* PWSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				3783E9C90A4AFAABDDC00B6D73A8D442 /* PWSwitch.swift */,
+				97F3B1EC73AF4ACEC0A0C0BEBEA2E028 /* Support Files */,
+			);
+			name = PWSwitch;
+			path = PWSwitch;
+			sourceTree = "<group>";
+		};
+		EC78A74B65B3ED65143EF7791E0B7CAB /* RoundedSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				112CF725D3B5F4B3F9CEA0E41F859317 /* Switch.swift */,
+				3391F170F092D13B1B222F41D531B8DC /* Support Files */,
+			);
+			name = RoundedSwitch;
+			path = RoundedSwitch;
 			sourceTree = "<group>";
 		};
 		FD16A7BCEB93FBD2DE80CC69CBDE6687 /* Targets Support Files */ = {
@@ -320,6 +375,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		06341FE5430D8B12DD8504230F8A5024 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3E61F7C1E72CCB26531B03C68F8CBE9 /* Pods-AnyForm-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8775E5387CE1F1CF3A25C36FAA3FEB19 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE86F4797B9EF4A1FDA40CFD7AC4E664 /* WMSegmentControl-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DF097994616DBE65BC1B7F62DF0E992 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -346,17 +417,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ED4BBDB8022D3D37F9AF23B6149CC70A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				23CE63A7CC2B2DCE33C7E97039C1D91B /* Pods-AnyForm-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1A3EF8D30112DE7B1FA58F00BCE70F79 /* WMSegmentControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99731F9DBD9E8C879BA856F34C57F711 /* Build configuration list for PBXNativeTarget "WMSegmentControl" */;
+			buildPhases = (
+				8775E5387CE1F1CF3A25C36FAA3FEB19 /* Headers */,
+				6DEF96F1FEA46B77F6F4576AF2896E6D /* Sources */,
+				5BFADFBD5D5EB80393A6D830C07F68F5 /* Frameworks */,
+				F0E8BB0D0A89678CB51FA1F1EE59369B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WMSegmentControl;
+			productName = WMSegmentControl;
+			productReference = 2BCDE1953C51A288B0A8D5412186EE93 /* WMSegmentControl.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		3664ED481303080D8E6A368FC1756A0C /* RoundedSwitch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A2D16149A07D833F5A68A2D6D5F50DF /* Build configuration list for PBXNativeTarget "RoundedSwitch" */;
@@ -387,7 +468,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				EC70E37124EF3342A464A7E6F1B9B7A4 /* PBXTargetDependency */,
+				47C184475523E173BC9EE5A0CE5DA286 /* PBXTargetDependency */,
 			);
 			name = MBCircularProgressBar;
 			productName = MBCircularProgressBar;
@@ -396,11 +477,11 @@
 		};
 		8BA5E348E64AFAB335EC680A67122E64 /* MBCircularProgressBar-MBCircularProgressBar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D03BFCE5CCAB7562CDA01D2D77727DC2 /* Build configuration list for PBXNativeTarget "MBCircularProgressBar-MBCircularProgressBar" */;
+			buildConfigurationList = 8C0B612D0B071A71BF4CC29F7D5E0A2D /* Build configuration list for PBXNativeTarget "MBCircularProgressBar-MBCircularProgressBar" */;
 			buildPhases = (
-				31002A41758645FFD9BD7AB85A11285A /* Sources */,
-				3E63359895F147C44FE895A02EBBE822 /* Frameworks */,
-				33ED6AB75FFF1BABCFBA49E79872B970 /* Resources */,
+				DF857B4A84B75C08D0577F861C079DAC /* Sources */,
+				5EAACA049ECD8E46EBDC0F582C0ACDC4 /* Frameworks */,
+				9C46C56333CCB6CB648DF780FBFE9072 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -413,19 +494,20 @@
 		};
 		C51470954A0452426D15E448AF90C79A /* Pods-AnyForm */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 922526E2FA53559B8EEDE04AB6C3CB15 /* Build configuration list for PBXNativeTarget "Pods-AnyForm" */;
+			buildConfigurationList = 78722FA3EC1E1C3A92619CB9B158AF2E /* Build configuration list for PBXNativeTarget "Pods-AnyForm" */;
 			buildPhases = (
-				ED4BBDB8022D3D37F9AF23B6149CC70A /* Headers */,
-				A3AC7FDA06BCEE08E07374F854116F49 /* Sources */,
-				E92FE20006079D41FA8A7E2C4A13357E /* Frameworks */,
-				565F0DFF87C53E66870B95387BA10440 /* Resources */,
+				06341FE5430D8B12DD8504230F8A5024 /* Headers */,
+				BCB35FF5E0B354D9467ADBD5C7DCF462 /* Sources */,
+				ED2430E81BCED3654619DF8E8AE64930 /* Frameworks */,
+				0750CCEDE8268011C7D55816A27D16AB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B5B6B75155BE5601ABA6921F47A0E8DA /* PBXTargetDependency */,
-				DF6FA9E9A6556525F6B81BFF6CFE1191 /* PBXTargetDependency */,
-				80E139DA20C47016C4EBE4B4BF680767 /* PBXTargetDependency */,
+				E6AF68C52C81B2B6D4A4FF4F753B55D2 /* PBXTargetDependency */,
+				C4160202C4B95CAB9DBED4ABA6D065B0 /* PBXTargetDependency */,
+				5BCEEC1034C2185BA49CA96A1C795C3F /* PBXTargetDependency */,
+				E70EE9F8B5A9C80A2DD31CFEC0AD15AC /* PBXTargetDependency */,
 			);
 			name = "Pods-AnyForm";
 			productName = "Pods-AnyForm";
@@ -468,7 +550,7 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 0C01D3252C27198BACFF5B1C69FB5783 /* Products */;
+			productRefGroup = 52413448F1A44E28D2EBC6E95DDD004E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -477,11 +559,19 @@
 				C51470954A0452426D15E448AF90C79A /* Pods-AnyForm */,
 				C77EE8814CC16AA6DEB9C7B64763B2CF /* PWSwitch */,
 				3664ED481303080D8E6A368FC1756A0C /* RoundedSwitch */,
+				1A3EF8D30112DE7B1FA58F00BCE70F79 /* WMSegmentControl */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0750CCEDE8268011C7D55816A27D16AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		111A1860F55FE41520F3FF3C171D2FB7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -496,18 +586,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		33ED6AB75FFF1BABCFBA49E79872B970 /* Resources */ = {
+		9C46C56333CCB6CB648DF780FBFE9072 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AEF6659F5A8F4C8A00C08D4063362FA /* example.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		565F0DFF87C53E66870B95387BA10440 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				60B67E63FA466B3A6DFC4E05C0F37D92 /* example.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,13 +602,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F0E8BB0D0A89678CB51FA1F1EE59369B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		31002A41758645FFD9BD7AB85A11285A /* Sources */ = {
+		6DEF96F1FEA46B77F6F4576AF2896E6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B16385A80D7B2E6C1F31F1F0E14B4CB4 /* WMSegment.swift in Sources */,
+				047C759B0E3BCF9D4505617367742D73 /* WMSegmentControl-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,11 +640,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A3AC7FDA06BCEE08E07374F854116F49 /* Sources */ = {
+		BCB35FF5E0B354D9467ADBD5C7DCF462 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2927A6C8E0DA07C9316B522C66C3801 /* Pods-AnyForm-dummy.m in Sources */,
+				F3384047442A8DE0F8BB6EA9F2552068 /* Pods-AnyForm-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,52 +657,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DF857B4A84B75C08D0577F861C079DAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		80E139DA20C47016C4EBE4B4BF680767 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RoundedSwitch;
-			target = 3664ED481303080D8E6A368FC1756A0C /* RoundedSwitch */;
-			targetProxy = 6D27CC00C9594DE45F11A239C65947AA /* PBXContainerItemProxy */;
-		};
-		B5B6B75155BE5601ABA6921F47A0E8DA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MBCircularProgressBar;
-			target = 46FA1E1D7ABC29B96888E2D9085D474F /* MBCircularProgressBar */;
-			targetProxy = AD15534B88891078EE78D87CB8F135A1 /* PBXContainerItemProxy */;
-		};
-		DF6FA9E9A6556525F6B81BFF6CFE1191 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PWSwitch;
-			target = C77EE8814CC16AA6DEB9C7B64763B2CF /* PWSwitch */;
-			targetProxy = 55939A7292510B106BD2733FFAD1300C /* PBXContainerItemProxy */;
-		};
-		EC70E37124EF3342A464A7E6F1B9B7A4 /* PBXTargetDependency */ = {
+		47C184475523E173BC9EE5A0CE5DA286 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "MBCircularProgressBar-MBCircularProgressBar";
 			target = 8BA5E348E64AFAB335EC680A67122E64 /* MBCircularProgressBar-MBCircularProgressBar */;
-			targetProxy = 32C02332E8EF835782FF58FA9CA9DF15 /* PBXContainerItemProxy */;
+			targetProxy = 3BDA35227DBF811FC71ED14EA8D7EEEC /* PBXContainerItemProxy */;
+		};
+		5BCEEC1034C2185BA49CA96A1C795C3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RoundedSwitch;
+			target = 3664ED481303080D8E6A368FC1756A0C /* RoundedSwitch */;
+			targetProxy = 034FBC90ACAB428EA43DDF950E75AB38 /* PBXContainerItemProxy */;
+		};
+		C4160202C4B95CAB9DBED4ABA6D065B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PWSwitch;
+			target = C77EE8814CC16AA6DEB9C7B64763B2CF /* PWSwitch */;
+			targetProxy = 754630591F224685D64C645778DBDC62 /* PBXContainerItemProxy */;
+		};
+		E6AF68C52C81B2B6D4A4FF4F753B55D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MBCircularProgressBar;
+			target = 46FA1E1D7ABC29B96888E2D9085D474F /* MBCircularProgressBar */;
+			targetProxy = 3D0EA5292C74A189784C947C3B994225 /* PBXContainerItemProxy */;
+		};
+		E70EE9F8B5A9C80A2DD31CFEC0AD15AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WMSegmentControl;
+			target = 1A3EF8D30112DE7B1FA58F00BCE70F79 /* WMSegmentControl */;
+			targetProxy = 55BC2348B88E48B18E738C1C2D1738B3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0ED8574B3ED8D8A67E3E305781195918 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9383D4DE58203DCB39BDBC4BE331CE33 /* MBCircularProgressBar.release.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MBCircularProgressBar";
-				IBSC_MODULE = MBCircularProgressBar;
-				INFOPLIST_FILE = "Target Support Files/MBCircularProgressBar/ResourceBundle-MBCircularProgressBar-MBCircularProgressBar-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = MBCircularProgressBar;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		125C51B0F88E28C868DC90BD45E4E727 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -679,7 +768,7 @@
 		};
 		258BAECAE00F0178425195539E93361E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9383D4DE58203DCB39BDBC4BE331CE33 /* MBCircularProgressBar.release.xcconfig */;
+			baseConfigurationReference = CB40F28FFFA5B351509F658F1A7C1CB0 /* MBCircularProgressBar.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -714,7 +803,7 @@
 		};
 		4825D25DF51BA754674C213FFF3FA5B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 519588B8E249D2EED12DCA3A047CBBEB /* PWSwitch.debug.xcconfig */;
+			baseConfigurationReference = C76572539859211DEDE5C451DD7F0A71 /* PWSwitch.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -746,9 +835,63 @@
 			};
 			name = Debug;
 		};
+		64982091EBCC5C162B26774A0F8D9CAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F252B85470DFA0A20651DC769587400F /* Pods-AnyForm.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-AnyForm/Pods-AnyForm-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AnyForm/Pods-AnyForm.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6759DB45B3B0E00B3DDFFD6C84207ADA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD51848893544696B2B3DE61148E01D0 /* MBCircularProgressBar.debug.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MBCircularProgressBar";
+				IBSC_MODULE = MBCircularProgressBar;
+				INFOPLIST_FILE = "Target Support Files/MBCircularProgressBar/ResourceBundle-MBCircularProgressBar-MBCircularProgressBar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = MBCircularProgressBar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		6C019AE09C1872195AF2F2E45F6EF284 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CD99E5B8AD303D93A59F02097F5E55A /* MBCircularProgressBar.debug.xcconfig */;
+			baseConfigurationReference = CD51848893544696B2B3DE61148E01D0 /* MBCircularProgressBar.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -782,7 +925,7 @@
 		};
 		71478117C739393998249F4E0E6FC852 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D931709C729408017D44400F66A6F563 /* RoundedSwitch.debug.xcconfig */;
+			baseConfigurationReference = E1982F34F763CB5477B97D6034A2BA14 /* RoundedSwitch.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -811,22 +954,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		73511FA980DE3A352B6E651FD7D0D611 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CD99E5B8AD303D93A59F02097F5E55A /* MBCircularProgressBar.debug.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MBCircularProgressBar";
-				IBSC_MODULE = MBCircularProgressBar;
-				INFOPLIST_FILE = "Target Support Files/MBCircularProgressBar/ResourceBundle-MBCircularProgressBar-MBCircularProgressBar-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = MBCircularProgressBar;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -892,7 +1019,162 @@
 			};
 			name = Release;
 		};
-		B1AD780475B47E0B9C982DBB6313FF20 /* Debug */ = {
+		B405E94BDAB50BB349AA8EAC99021840 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB40F28FFFA5B351509F658F1A7C1CB0 /* MBCircularProgressBar.release.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MBCircularProgressBar";
+				IBSC_MODULE = MBCircularProgressBar;
+				INFOPLIST_FILE = "Target Support Files/MBCircularProgressBar/ResourceBundle-MBCircularProgressBar-MBCircularProgressBar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = MBCircularProgressBar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		BAFEE09F2A0B139EBCDAE680A7D87975 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5299D6D1535679959354D0C52D2A4B16 /* WMSegmentControl.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/WMSegmentControl/WMSegmentControl-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/WMSegmentControl/WMSegmentControl-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/WMSegmentControl/WMSegmentControl.modulemap";
+				PRODUCT_MODULE_NAME = WMSegmentControl;
+				PRODUCT_NAME = WMSegmentControl;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CE3D0690ED9268304719E2C240D52373 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61C4750B5045077241908BC19B097C5B /* PWSwitch.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PWSwitch/PWSwitch-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PWSwitch/PWSwitch-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/PWSwitch/PWSwitch.modulemap";
+				PRODUCT_MODULE_NAME = PWSwitch;
+				PRODUCT_NAME = PWSwitch;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D5C84A19EB393F77F4635EC96A4F1C8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8CF6000B67F34844BB2B7DD473E8070 /* RoundedSwitch.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RoundedSwitch/RoundedSwitch-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RoundedSwitch/RoundedSwitch-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RoundedSwitch/RoundedSwitch.modulemap";
+				PRODUCT_MODULE_NAME = RoundedSwitch;
+				PRODUCT_NAME = RoundedSwitch;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DB410DB9D5023C78F322EFA70D50DE13 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D8F50EF2B62188EC99AFA385E213004 /* WMSegmentControl.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/WMSegmentControl/WMSegmentControl-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/WMSegmentControl/WMSegmentControl-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/WMSegmentControl/WMSegmentControl.modulemap";
+				PRODUCT_MODULE_NAME = WMSegmentControl;
+				PRODUCT_NAME = WMSegmentControl;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ECF8249829C46EE8043B3BB694E1354B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3999DE9A4F1AA83B70FF0680DF2821B0 /* Pods-AnyForm.debug.xcconfig */;
 			buildSettings = {
@@ -929,114 +1211,6 @@
 			};
 			name = Debug;
 		};
-		CE3D0690ED9268304719E2C240D52373 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 690DBC8563FD0851614490E89544C76D /* PWSwitch.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/PWSwitch/PWSwitch-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PWSwitch/PWSwitch-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/PWSwitch/PWSwitch.modulemap";
-				PRODUCT_MODULE_NAME = PWSwitch;
-				PRODUCT_NAME = PWSwitch;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D5C84A19EB393F77F4635EC96A4F1C8E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5312AB1D0C33D334EF1257F0F868E488 /* RoundedSwitch.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/RoundedSwitch/RoundedSwitch-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RoundedSwitch/RoundedSwitch-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/RoundedSwitch/RoundedSwitch.modulemap";
-				PRODUCT_MODULE_NAME = RoundedSwitch;
-				PRODUCT_NAME = RoundedSwitch;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		EE76EE44E7D2097029D2E1BED7891561 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F252B85470DFA0A20651DC769587400F /* Pods-AnyForm.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-AnyForm/Pods-AnyForm-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-AnyForm/Pods-AnyForm.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1067,11 +1241,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		922526E2FA53559B8EEDE04AB6C3CB15 /* Build configuration list for PBXNativeTarget "Pods-AnyForm" */ = {
+		78722FA3EC1E1C3A92619CB9B158AF2E /* Build configuration list for PBXNativeTarget "Pods-AnyForm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B1AD780475B47E0B9C982DBB6313FF20 /* Debug */,
-				EE76EE44E7D2097029D2E1BED7891561 /* Release */,
+				ECF8249829C46EE8043B3BB694E1354B /* Debug */,
+				64982091EBCC5C162B26774A0F8D9CAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C0B612D0B071A71BF4CC29F7D5E0A2D /* Build configuration list for PBXNativeTarget "MBCircularProgressBar-MBCircularProgressBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6759DB45B3B0E00B3DDFFD6C84207ADA /* Debug */,
+				B405E94BDAB50BB349AA8EAC99021840 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1085,11 +1268,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D03BFCE5CCAB7562CDA01D2D77727DC2 /* Build configuration list for PBXNativeTarget "MBCircularProgressBar-MBCircularProgressBar" */ = {
+		99731F9DBD9E8C879BA856F34C57F711 /* Build configuration list for PBXNativeTarget "WMSegmentControl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				73511FA980DE3A352B6E651FD7D0D611 /* Debug */,
-				0ED8574B3ED8D8A67E3E305781195918 /* Release */,
+				BAFEE09F2A0B139EBCDAE680A7D87975 /* Debug */,
+				DB410DB9D5023C78F322EFA70D50DE13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

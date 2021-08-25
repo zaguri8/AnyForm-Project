@@ -194,7 +194,7 @@ open class WMSegment: UIControl {
             btn.append(button)
             if index < images.count {
                 if images[index] != ""{
-                    button.setImage(UIImage(named: images[index]), for: .normal)
+                    button.setImage(UIImage(named: images[index])?.withRenderingMode(.alwaysOriginal), for: .normal)
                     if isImageTop == false {
                         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
                     } else {
@@ -214,9 +214,9 @@ open class WMSegment: UIControl {
         let images = buttonImages.components(separatedBy: ",")
         for (index, buttonImage) in images.enumerated() {
             let button = UIButton(type: .system)
-            button.setImage(UIImage(named: buttonImage), for: .normal)
+            button.setImage(UIImage(named: buttonImage)?.withRenderingMode(.alwaysOriginal), for: .normal)
             button.tag = index
-            button.tintColor = textColor
+           // button.tintColor = textColor
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
             btn.append(button)
             

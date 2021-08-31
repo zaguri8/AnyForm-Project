@@ -9,16 +9,22 @@ import UIKit
 
 class CheckBox: UIButton {
     // Images
-    var checkedImage = #imageLiteral(resourceName: "icons8-checked_checkbox_filled")
-    var uncheckedImage = #imageLiteral(resourceName: "icons8-unchecked_checkbox_filled")
+    var checkedImage = #imageLiteral(resourceName: "icons8-checked_checkbox_filled").withRenderingMode(.alwaysTemplate)
+    var uncheckedImage = #imageLiteral(resourceName: "icons8-unchecked_checkbox_filled").withRenderingMode(.alwaysTemplate)
     
     // Bool property
     var isChecked: Bool = false {
         didSet {
             if isChecked == true {
-                self.setImage(checkedImage, for: UIControl.State.normal)
+                let image = checkedImage.withTintColor(.systemOrange).withRenderingMode(.alwaysTemplate)
+                self.tintColor = .systemOrange
+                self.setImage(image, for: UIControl.State.normal)
+                tintColorDidChange()
             } else {
-                self.setImage(uncheckedImage, for: UIControl.State.normal)
+                let image = uncheckedImage.withTintColor(.systemOrange).withRenderingMode(.alwaysTemplate)
+                self.tintColor = .systemOrange
+                self.setImage(image, for: UIControl.State.normal)
+                tintColorDidChange()
             }
         }
     }

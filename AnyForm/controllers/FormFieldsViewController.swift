@@ -21,29 +21,7 @@ protocol FormTextFieldDelegate {
 
 class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBoxDelegate,FormTextFieldDelegate, UIDocumentInteractionControllerDelegate {
     
-    struct Tunnel {
-        struct Tube {
-            var tubeNumber:Int
-            var tubeView:UIView
-            var cleared:Bool
-        }
-        var tubes:[Tube]
-        var totalTubes:Int
-        var currentTube:Int
-        lazy var isTunnelCleared:Bool = getClearedTubes().count == totalTubes
-    
-        mutating func rideToTube(tubeNumber:Int) {
-            self.currentTube = tubeNumber
-        }
-        mutating func clearTube(tubeNumber:Int) {
-            self.tubes[tubeNumber].cleared = true
-        }
-        
-        func getClearedTubes() -> [Tube] {
-            let tubesCleared = tubes.filter {$0.cleared}
-            return tubesCleared
-        }
-    }
+ 
     /**
         This method sets the value of the gamified text fields
             current supporting שם_משפחה,שם_פרטי
@@ -51,6 +29,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
     func setFieldValue(arg1: String, arg2: String) {
         form.setFieldValue(for: "שם_פרטי", newValue: arg2)
         form.setFieldValue(for: "שם_משפחה", newValue: arg1)
+        clearField()
     }
     
     func presentFromView(vc: UIViewController) {
@@ -60,28 +39,86 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
 
     func didCheckValue(checkBox: FormCheckBox) {
         setCheckBoxFieldValue(for: checkBox.key, checkBox.checked)
-        
+        clearField()
+    }
+    func clearField() {
+        progTunnel.scrollToItem(at: IndexPath(row: currentField, section: 0), at: .centeredHorizontally, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {[weak self] in
+            guard let strong = self else {return}
+            guard let tube = strong.progTunnel.cellForItem(at: IndexPath(row: strong.currentField, section: 0)) as? Tube else {
+                print("bad tube")
+                return}
+            if !strong.clearedFieldKeys.contains(tube.tubeLabel.text!) {
+                strong.clearedFieldKeys.append(tube.tubeLabel.text!)
+           
+            tube.clear()
+            if (((strong.fieldHolder.count - strong.clearedFieldKeys.count - 2) != 0)
+                    && (strong.clearedFieldKeys.count == 1 || strong.clearedFieldKeys.count % 5 == 0 )) {
+                strong.showAnyFormToast(message: "קדימה! נשארו עוד \(strong.fieldHolder.count - strong.clearedFieldKeys.count) שאלות",boxColor:strong.form.getDesign().questionBoxHeaderBgColor().withAlphaComponent(0.8),borderColor: .white,textColor: .white,font: UIFont.boldSystemFont(ofSize: 18))
+            }
+            }
+        }
+       
     }
     
     var form:Form!
-    var tunnel:Tunnel?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         generateButton.isEnabled = false
         self.view.backgroundColor = form.getDesign().backgroundColor()
         hideKeyboardWhenTappedAround()
+        createNavBar()
         createAllFieldInputs {
             sendTip()
         }
         addFieldQuestionCounter()
-        addNextPrevButtons()
+        createProgressionTunnel()
         showFirstField()
-        print(form.getTextFields().count + form.getCheckBoxes().count)
     }
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        hideNavBar()
+        self.view.addGestureRecognizer(swipeLeftGesture)
+        self.view.addGestureRecognizer(swipeRightGesture)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        showNavBar()
+        showTabBar()
+    }
     
+    @objc func swipeLeft(_ gesture:UISwipeGestureRecognizer) {
+        if currentField == fieldHolder.count-1 {
+            return
+        }
+        nextField()
+    }
+    @objc func swipeRight(_ gesture:UISwipeGestureRecognizer) {
+        if currentField == 0 {
+            return
+        }
+        previousField()
+    }
+    var toggledMenu:Bool = false
+    func showMenu() {
+        UIUtils.animateDuration({
+            if !self.toggledMenu  {
+                self.menuAnchor?.constant = 0
+                self.menuButton.transform = CGAffineTransform(rotationAngle:CGFloat((90 * Double.pi) / 180))
+                self.view.bringSubviewToFront(self.menu)
+                self.view.mask?.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+                self.view.layoutIfNeeded()
+                
+            }else {
+                self.menuAnchor?.constant = 300
+                self.menuButton.transform = CGAffineTransform(rotationAngle: 0)
+                self.view.layoutIfNeeded()
+            }
+        }, duration: 1)
+        toggledMenu = !toggledMenu
+    }
     
     /**
         This method sends the form entrance messages to the user
@@ -108,21 +145,63 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         }
     }
 
-    // what is this
+    // we dont use this anymore
+    // next&prev buttons replaced with swiping.
     var buttonStack:UIStackView = {
         let stack = UIStackView()
         return stack
     }()
 
+    lazy var swipeRightGesture:UISwipeGestureRecognizer = {
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeRight))
+        swipe.direction = .right
+        return swipe
+    }()
     
+    lazy var swipeLeftGesture:UISwipeGestureRecognizer = {
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
+        swipe.direction = .left
+        return swipe
+    }()
     /**
         Listens to form text field changes and sets the value on the form
      */
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let tf = textField as? UITextFieldForm, let key = tf.formtextfield?.key, let value = tf.text,!value.isEmpty else {return}
         form.setFieldValue(for: key, newValue: value)
-        
+        clearField()
     }
+    
+    /**
+            This button is in charge of showing drawer menu
+     */
+    lazy var menuButton:UIButton = {
+       let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "menu"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addAction(UIAction(handler: { act in
+            self.showMenu()
+        }), for: .touchUpInside)
+        return button
+    }()
+    lazy var backButton:UIButton = {
+       let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "back"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addAction(UIAction(handler: { act in
+            self.navigationController?.popViewController(animated: true)
+        }), for: .touchUpInside)
+        return button
+    }()
+    lazy var navBar:UIView = {
+        let nav = UIView()
+        nav.backgroundColor = form.getDesign().questionBoxHeaderBgColor()
+        nav.translatesAutoresizingMaskIntoConstraints = false
+        return nav
+    }()
+    var menu:FormMenu!
+    
+    
     /**
         Next field button, current set as "הבא"
      */
@@ -130,6 +209,9 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         let button = UIButton()
         let att = form.getDesign().buttonsTextAttributes(text: "הַבָּא")
         button.setAttributedTitle(att, for: .normal)
+        button.backgroundColor = .systemOrange
+        button.layer.cornerRadius = 12
+        button.layerGradient()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction(handler: { act in
             self.nextField()
@@ -145,24 +227,24 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         button.setAttributedTitle(att, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isHidden = true
+        button.layer.cornerRadius = 12
+        button.backgroundColor = .systemOrange
         button.addAction(UIAction(handler: { act in
             self.previousField()
         }), for: .touchUpInside)
         return button
     }()
     
-    var fieldHeaders:[UILabel] = []
-
+    var fieldHeaders:[String] = []
     var textFields:[Any] = [] // UIFormTextField
     var checkBoxes:[UICheckBoxForm] = []
     var datePickers:[UIDatePickerForm] = []
     var fieldStack:[UIStackView] = []
     var fieldHolder:[UIView] = []
     var currentField = 0
-    
+    var clearedFieldKeys:[String] = []
     
     func populateWithUserData() {
-        print("ppulate")
         guard let allData = CoreDataManager.shared.getUserData(), !allData.isEmpty else {
             return}
         var gamefields:[UITextFieldFormGamified] = []
@@ -240,13 +322,16 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
     func showFirstField() {
         fieldHolder[currentField].isHidden = false
     }
-    
-    
+
+
     @objc func setFieldDate(_ picker: UIDatePickerForm) {
         guard  let key = picker.formtextfield?.key else {return}
         let strVal = picker.date.string()
         form.setFieldValue(for: key, newValue: strVal)
+        clearField()
     }
+
+    
     
     /**
      
@@ -294,7 +379,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         }()
         lazy var label:UILabel = {
             let lbl = UILabel()
-            lbl.font = UIFont.boldSystemFont(ofSize: 8.5)
+            lbl.font = UIFont.boldSystemFont(ofSize: 13.5)
             lbl.highlightedTextColor = .blue
             lbl.textColor = design?.holderBackgroundColor()
             lbl.textAlignment = .right
@@ -328,6 +413,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
                 self.arg2 = textField.text
             }
         }
+        
         
         @objc func imageClicked () {
             UIUtils.animateDuration({ [weak self] in
@@ -423,6 +509,40 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
     func isLocationFieldKey(key:String) -> Bool{
         return key ==  "עיר_מגורים"
     }
+    
+    lazy var progTunnel:UICollectionView = {
+        let tunnelLayout = UICollectionViewFlowLayout()
+        tunnelLayout.scrollDirection = .horizontal
+        tunnelLayout.itemSize = CGSize(width: 200, height: 80)
+        tunnelLayout.minimumInteritemSpacing  = 0.0
+        tunnelLayout.minimumLineSpacing = 0.0
+        let tunnelPos = CGPoint(x: 0, y: 620)
+        let tunnelFrame = CGRect(x: tunnelPos.x, y: tunnelPos.y, width: UIScreen.main.bounds.size.width, height: 100)
+        let tunnelView = UICollectionView(frame: tunnelFrame, collectionViewLayout: tunnelLayout)
+        tunnelView.delegate = self
+        tunnelView.dataSource = self
+        tunnelView.backgroundView?.addShadowAround(size: CGSize(width: 200, height: 100))
+        tunnelView.register(UINib(nibName: "Tube", bundle: .main), forCellWithReuseIdentifier: "tubecell")
+        tunnelView.backgroundColor = UIUtils.hexStringToUIColor(hex: "ff9248")
+        tunnelView.cornerRadius = 8
+        tunnelView.borderWidth = 0.5
+        tunnelView.borderColor = .black
+        tunnelView.bounces = false
+        tunnelView.alwaysBounceHorizontal = false
+        tunnelView.translatesAutoresizingMaskIntoConstraints = false
+        return tunnelView
+    }()
+    
+    func createProgressionTunnel() {
+        self.view.addSubview(progTunnel)
+        progTunnel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: -4).isActive = true
+        progTunnel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 4).isActive = true
+        progTunnel.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,constant: -8).isActive = true
+        progTunnel.heightAnchor.constraint(equalToConstant:100).isActive = true
+    }
+    
+    
+    
     func createFieldInput(_ formTextField:FormTextField) {
         if(isGameifiedTextFieldChild(key: formTextField.key)) {return}
         let header = UILabel()
@@ -431,9 +551,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         header.textAlignment = .center
         header.layoutMargins = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         header.backgroundColor = form.getDesign().questionBoxHeaderBgColor()
-        header.layer.borderColor = UIColor.black.cgColor
-        header.layer.borderWidth = 0.5
-        
+        self.fieldHeaders.append(header.text ?? "")
         if formTextField.key.contains("תאריך") {
             
             let datePicker = UIDatePickerForm(formTextField)
@@ -457,7 +575,10 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
             self.fieldStack.append(stack)
             
             let holder = UIView()
+            stack.addShadowAround(size: CGSize(width: UIScreen.main.bounds.width / 1.3,
+                                               height: 180))
             holder.addSubview(stack)
+ 
             holder.backgroundColor = form.getDesign().holderBackgroundColor()
             let stackconstraints = [stack.centerXAnchor.constraint(equalTo: holder.centerXAnchor),
                                     stack.centerYAnchor.constraint(equalTo: holder.centerYAnchor),
@@ -480,6 +601,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
             // Only for first name and last name - איכס
             if (isGamifiedTextfield) {
                 let textFieldGamified = UITextFieldFormGamified(image: UIImage(named: "name_tag")!, field: formTextField, design: form.getDesign())
+                textFieldGamified.clipsToBounds = true
                 stack = UIStackView(arrangedSubviews: [header,textFieldGamified])
                 textFieldGamified.delegate = self
                 textFieldGamified.alertTitle = "הכנס שם מלא"
@@ -487,7 +609,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
                 self.textFields.append(textFieldGamified)
             }else if (isLocationFieldKey(key: formTextField.key)) {
                 let btn = UIButton()
-                btn.setAttributedTitle(NSAttributedString(string: "בחר כתובת", attributes: [.foregroundColor : form.getDesign().questionBoxHeaderBgColor(), .font : UIFont.boldSystemFont(ofSize: 14)]), for: .normal)
+                btn.setAttributedTitle(NSAttributedString(string: "בחר כתובת", attributes: [.foregroundColor : form.getDesign().questionBoxHeaderBgColor(), .font : UIFont.boldSystemFont(ofSize: 16)]), for: .normal)
                 btn.titleLabel?.numberOfLines = 3
                 btn.addAction(UIAction(handler: { act in
                     self.showLocationAlert(field: formTextField,btn:btn)
@@ -514,8 +636,12 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
             self.fieldStack.append(stack)
             
             let holder = UIView()
+            
+            stack.addShadowAround(size: CGSize(width: (UIScreen.main.bounds.width / 1.2),
+                                               height: (isGamifiedTextfield ? 300 : 120)))
             holder.backgroundColor = form.getDesign().holderBackgroundColor()
             holder.addSubview(stack)
+            
             let stackconstraints = [stack.centerXAnchor.constraint(equalTo: holder.centerXAnchor),
                                     stack.centerYAnchor.constraint(equalTo: holder.centerYAnchor),
                                     stack.heightAnchor.constraint(equalToConstant: isGamifiedTextfield ? 300 : 120),
@@ -532,6 +658,40 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
             NSLayoutConstraint.activate(constraints)
         }
     }
+    
+    func createNavBar() {
+        self.view.addSubview(navBar)
+        navBar.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        navBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        navBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        navBar.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        createMenuWithButton()
+        createBackButton()
+    }
+    var menuAnchor:NSLayoutConstraint?
+    func createMenuWithButton() {
+        self.navBar.addSubview(menuButton)
+        menuButton.topAnchor.constraint(equalTo: self.navBar.safeAreaLayoutGuide.topAnchor,constant: 16).isActive = true
+        menuButton.trailingAnchor.constraint(equalTo: self.navBar.safeAreaLayoutGuide.trailingAnchor,constant: -16).isActive = true
+        menuButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        menuButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        
+        menu = FormMenu(frame: CGRect())
+        view.addSubview(menu)
+        menu.topAnchor.constraint(equalTo: navBar.bottomAnchor).isActive = true
+        menuAnchor =  menu.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: 300)
+        menu.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        menu.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        menuAnchor?.isActive = true
+    }
+    func createBackButton() {
+        self.navBar.addSubview(backButton)
+        backButton.topAnchor.constraint(equalTo: self.navBar.safeAreaLayoutGuide.topAnchor,constant: 16).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: self.navBar.safeAreaLayoutGuide.leadingAnchor,constant: 16).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
+    }
+    
     
     
     func setCheckBoxFieldValue(for key:String,_ value:Bool) {
@@ -550,18 +710,21 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
     
     func createFieldInput(_ formCheckBox:FormCheckBox) {
         let header = UILabel()
+        
+     
         let question = formCheckBox.key.replacingOccurrences(of: "_", with:" ").capitalized
         header.attributedText = form.getDesign().questionTextAttributes(text: question)
         header.textAlignment = .center
         header.layoutMargins = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         header.backgroundColor = form.getDesign().questionBoxHeaderBgColor()
-        header.layer.borderColor = UIColor.black.cgColor
-        header.layer.borderWidth = 0.5
+        
+        self.fieldHeaders.append(header.text ?? "")
         let checkbox = UICheckBoxForm(formCheckBox)
         checkbox.isChecked = false
         checkbox.addAction(UIAction(handler: { [weak self]  (act)in
             checkbox.isChecked = !checkbox.isChecked
             self?.setCheckBoxFieldValue(for: formCheckBox.key, checkbox.isChecked)
+            self?.clearField()
         }), for: .touchUpInside)
         self.checkBoxes.append(checkbox)
         let yes = UILabel()
@@ -590,6 +753,8 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         
         self.fieldStack.append(stack)
         let holder = UIView()
+        stack.addShadowAround(size: CGSize(width: UIScreen.main.bounds.width / 1.2,
+                                           height: 180))
         holder.addSubview(stack)
         holder.backgroundColor = form.getDesign().holderBackgroundColor()
         let stackconstraints = [stack.centerXAnchor.constraint(equalTo: holder.centerXAnchor),
@@ -625,17 +790,18 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
                 item.props.bitmap
             }).joined(separator: ",")
             self.delegate = delegate
-            setup()
+            self.setupViews()
             self.segmentControl.selectorColor = defaultColor
             self.segmentControl.selectorTextColor = defaultColor
+            self.segmentControl.isUserInteractionEnabled = true
             self.segmentControl.selectorType = .bottomBar
-            self.segmentControl.normalFont = UIFont.boldSystemFont(ofSize: 12)
-            self.segmentControl.SelectedFont = UIFont.boldSystemFont(ofSize: 12)
+            self.segmentControl.normalFont = UIFont.boldSystemFont(ofSize: 16)
+            self.segmentControl.SelectedFont = UIFont.boldSystemFont(ofSize: 16)
             self.segmentControl.isRounded = true
         }
         
     
-        func setup() {
+        func setupViews() {
             segmentControl.addAction(UIAction(handler: {act in
                 self.items[self.segmentControl.selectedSegmentIndex].checked = true
                 for (index,item) in self.items.enumerated() {
@@ -644,7 +810,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
                     }
                     self.delegate.didCheckValue(checkBox: self.items[index])
                 }
-            }), for: .touchUpInside)
+            }), for: .valueChanged)
             
         }
 
@@ -666,11 +832,11 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         header.translatesAutoresizingMaskIntoConstraints = false
         header.backgroundColor = form.getDesign().questionBoxHeaderBgColor()
         header.layer.cornerRadius = 8
-        header.layer.borderWidth = 0.4
-        header.layer.borderColor = form.getDesign().questionBoxHeaderBgColor().cgColor
+        let headerSize = CGSize(width: UIScreen.main.bounds.width / 1.3, height: 50)
         header.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         header.clipsToBounds = true
         header.textAlignment = .center
+        self.fieldHeaders.append(header.text ?? "")
         var checkboxesStacks:[UIStackView] = []
         
         // binary - 2 options of selection
@@ -724,6 +890,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
                                         }
                                     }
                                 }
+                                self?.clearField()
                             }), for: .touchUpInside)
                             self.checkBoxes.append(cbx)
                             let yes = UILabel()
@@ -749,7 +916,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         
         // Populate a stack view with all the categorie's checkboxes
         let catStack = FormFieldsViewController.categoryStack(checkboxesStacks)
-   
+        let catStackSize = CGSize(width: UIScreen.main.bounds.width / 1.3, height: (isBinaryQuestion || isOneChoiceOutOfMany) ? 120 : 320)
         catStack.spacing = 0
         catStack.distribution = .fillEqually
 
@@ -768,27 +935,29 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         catStack.translatesAutoresizingMaskIntoConstraints = false
         self.fieldStack.append(catStack)
         let holder = UIView()
+        
+        let Yaxis:CGFloat = (isBinaryQuestion || isOneChoiceOutOfMany) ? 72 : 0
+        
+        catStack.addShadowAround(size: CGSize(width: UIScreen.main.bounds.width / 1.3, height: catStackSize.height))
         holder.addSubview(catStack)
         holder.backgroundColor = form.getDesign().holderBackgroundColor()
-        
         let stackconstraints = [catStack.centerXAnchor.constraint(equalTo: holder.centerXAnchor),
                                 catStack.topAnchor.constraint(equalTo: header.bottomAnchor),
-                                catStack.heightAnchor.constraint(equalToConstant: (isBinaryQuestion || isOneChoiceOutOfMany) ? 120 : 320),
-                                catStack.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.3)]
+                                catStack.heightAnchor.constraint(equalToConstant: catStackSize.height),
+                                catStack.widthAnchor.constraint(equalToConstant: catStackSize.width)]
         
-        let headerconstraints = [header.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 1.3),
+        let headerconstraints = [header.widthAnchor.constraint(equalToConstant: headerSize.width),
                                  header.centerXAnchor.constraint(equalTo: holder.centerXAnchor),
-                                 header.heightAnchor.constraint(equalToConstant:50),
+                                 header.heightAnchor.constraint(equalToConstant:headerSize.height),
                                  header.topAnchor.constraint(equalTo: holder.topAnchor)]
         
         holder.addSubview(header)
         holder.isHidden = true
         holder.translatesAutoresizingMaskIntoConstraints = false
-
         self.view.addSubview(holder)
         self.fieldHolder.append(holder)
         let constraints = [holder.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                           holder.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant: (isBinaryQuestion || isOneChoiceOutOfMany) ? 72 : 0),
+                           holder.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant:Yaxis),
                            holder.heightAnchor.constraint(equalToConstant: 340),
                            holder.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)]
         
@@ -804,6 +973,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         buttonStack.axis = .horizontal
         buttonStack.isUserInteractionEnabled = true
         buttonStack.distribution = .fillEqually
+        buttonStack.setCustomSpacing(32, after: prevButton)
         view.addSubview(buttonStack)
         let c  = [buttonStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32),buttonStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),buttonStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)]
         NSLayoutConstraint.activate(c)
@@ -820,7 +990,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         prog.value = 1
         prog.progressColor = .green
         prog.progressStrokeColor = form.getDesign().questionBoxHeaderBgColor()
-        prog.fontColor = .white
+        prog.fontColor = .systemOrange
         prog.unitString = ""
         prog.valueFontSize = 24
         prog.progressLineWidth = 1
@@ -831,7 +1001,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         prog.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         prog.widthAnchor.constraint(equalToConstant: 70).isActive = true
         prog.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        prog.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 24).isActive = true
+        prog.topAnchor.constraint(equalTo: self.navBar.bottomAnchor,constant: 24).isActive = true
     }
     
     
@@ -866,9 +1036,6 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
     }
     
     func nextField() {
-        if (countClicks < fieldHolder.count && countClicks % 5 == 0) {
-            showAnyFormToast(message: "קדימה! נשארו עוד \(fieldHolder.count - currentField - 2) שאלות",boxColor:form.getDesign().questionBoxHeaderBgColor().withAlphaComponent(0.8),borderColor: .white,textColor: .white)
-        }
         if !clickableButton {
             return
         }
@@ -880,20 +1047,19 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         }else if currentField+1 >= count {
             return
         }
-    if(self.prevButton.isHidden && currentField >= 0) {
+        if(self.prevButton.isHidden && currentField >= 0) {
             self.prevButton.isHidden = false
         }
-        
         hideCurrentField()
+        progTunnel.scrollToItem(at: IndexPath(row: currentField+1, section: 0), at: .centeredHorizontally, animated: true)
     }
-    var countClicks = 0
+    
     var clickableButton:Bool = true
     func previousField() {
         if !clickableButton {
             return
         }
         self.clickableButton = false
-       // let count = fieldHolder.count
         if currentField < 0 {
             self.prevButton.isHidden = true
             return
@@ -908,6 +1074,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
             self.prevButton.isHidden = true
         }
         hideCurrentField(true)
+        progTunnel.scrollToItem(at: IndexPath(row: currentField-1, section: 0), at: .centeredHorizontally, animated: true)
     }
     
     @IBOutlet weak var generateButton: UIBarButtonItem!
@@ -939,6 +1106,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
             fields.forEach {self.setCheckBoxFieldValue(for: $0.key, false)}
             btn.setTitle(selected.key.replacingOccurrences(of: "_", with: " "), for: .normal)
             self.setCheckBoxFieldValue(for: selected.key, true)
+            self.clearField()
         }
         alert.addAction(title: "סגור", style: .cancel)
         present(alert, animated: true)
@@ -973,6 +1141,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
             self.form.setFieldValue(for: "רחוב", newValue: street)
             self.form.setFieldValue(for: "מספר_רחוב", newValue: String(street_num))
             self.form.setFieldValue(for: "מיקוד", newValue: postalcode)
+            self.clearField()
             btn.setAttributedTitle(NSAttributedString(string: loc.address, attributes: [.foregroundColor : self.form.getDesign().questionBoxHeaderBgColor(), .font : UIFont.boldSystemFont(ofSize: 14)]), for: .normal)
         }
         alert.addAction(title: "סגור", style: .cancel)
@@ -1011,36 +1180,85 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
     /// - This is a little messy but works
     ///   has alot of things to consider
     func hideCurrentField(_ prev:Bool = false) {
-        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: []) {
-            if self.currentField < 0 {
-                return}
-            self.fieldHolder[self.currentField].alpha = 0
-        } completion: { (bool) in
-            if self.currentField < 0 {
-                return}
-            self.fieldHolder[self.currentField].isHidden = true
-            if prev {
-                self.currentField -= 1
-                if self.currentField < 0 {
+        showFieldList { [weak self] in
+            guard let strong = self else {return}
+            UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: []) {
+                if strong.currentField < 0 {
                     return}
-            }else {
-                if self.currentField + 1 >= self.fieldHolder.count {
-                    return
+                strong.fieldHolder[strong.currentField].alpha = 0
+            } completion: { (bool) in
+                if strong.currentField < 0 {
+                    return}
+                strong.fieldHolder[strong.currentField].isHidden = true
+                if prev {
+                    strong.currentField -= 1
+                    if strong.currentField < 0 {
+                        return}
+                }else {
+                    if strong.currentField + 1 >= strong.fieldHolder.count {
+                        return
+                    }
+                    strong.currentField += 1
                 }
-                self.currentField += 1
+                if (strong.currentField == strong.fieldHolder.count) {
+                    strong.nextButton.isHidden = true
+                }
+                strong.showNextField()
             }
-            if (self.currentField == self.fieldHolder.count) {
-                self.nextButton.isHidden = true
-            }
-            self.showNextField()
         }
-        countClicks += 1
+      
+    }
+    
+    func jumpToField(index:Int) {
+        if index == currentField {
+            return
+        }
+        let previous = currentField
+        currentField = index
+        let count = fieldHolder.count
+        if(currentField == count-2) {
+            self.nextButton.isHidden = true
+            enableGenerateBarButton()
+        }
+        if(self.prevButton.isHidden && currentField >= 0) {
+            self.prevButton.isHidden = false
+        }
+        if currentField < 0 {
+            self.prevButton.isHidden = true
+            return
+        }
+        if (self.nextButton.isHidden) {
+            disableGenerateBarButton()
+            self.nextButton.isHidden = false
+            
+        }
+        if(currentField - 1 <= 0 ) {
+            self.prevButton.isHidden = true
+        }
+         showFieldList { [weak self] in
+                guard let strong = self else {return}
+                UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: []) {
+                    strong.fieldHolder[previous].alpha = 0
+                } completion: { (bool) in
+                    if strong.currentField < 0 {
+                        return}
+                    strong.fieldHolder[strong.currentField].isHidden = true
+                    if (strong.currentField == strong.fieldHolder.count) {
+                        strong.nextButton.isHidden = true
+                    }
+                    strong.fieldHolder[strong.currentField].isHidden = false
+                    strong.fieldHolder[strong.currentField].alpha = 0
+                    
+                    UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: []) {
+                        strong.fieldHolder[strong.currentField].alpha = 1
+                    }
+                    strong.prog.value = CGFloat(strong.currentField+1)
+                }
+    }
     }
     
     
-    
     func showNextField() {
-        
         self.fieldHolder[self.currentField].isHidden = false
         self.fieldHolder[self.currentField].alpha = 0
         
@@ -1050,12 +1268,36 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
             self.clickableButton = true
         }
         self.prog.value = CGFloat(self.currentField+1)
+       
     }
-
+    func showFieldList(completion:@escaping () -> Void) {
+        completion()
+    }
+  
     
     func setForm(_ form:Form) {
         self.form = form
     }
     
+    
+}
+
+extension FormFieldsViewController : UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tubecell", for: indexPath) as! Tube
+        cell.initTube(tube:parentFieldKey(for:(self.fieldHeaders[indexPath.row])), cleared: clearedFieldKeys)
+        return cell
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        jumpToField(index: indexPath.row)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        self.fieldHeaders.count
+    }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
     
 }

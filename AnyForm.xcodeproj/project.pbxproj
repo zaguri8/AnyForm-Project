@@ -41,6 +41,7 @@
 		06CB068D26A47E06005DFD49 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB068C26A47E06005DFD49 /* Strings.swift */; };
 		06CB069126A480FB005DFD49 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB069026A480FB005DFD49 /* Enums.swift */; };
 		6E94A24D14A759F4AB9623CC /* Pods_AnyForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6A6FD14081D317631F6AD6 /* Pods_AnyForm.framework */; };
+		D2146ECC26DAC89A00645275 /* FormMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2146ECB26DAC89A00645275 /* FormMenu.swift */; };
 		D219F21E26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219F21D26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift */; };
 		D235C93C26D41995002F459A /* AnyForm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D235C93A26D41995002F459A /* AnyForm.xcdatamodeld */; };
 		D235C94126D419AC002F459A /* AnyFormUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235C93D26D419AC002F459A /* AnyFormUser+CoreDataProperties.swift */; };
@@ -101,6 +102,8 @@
 		D25D3EE326D64FF800F16E93 /* TelegramPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25D3EAD26D64FF800F16E93 /* TelegramPickerViewController.swift */; };
 		D25D3EE426D64FF800F16E93 /* ItemWithPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25D3EAF26D64FF800F16E93 /* ItemWithPhoto.swift */; };
 		D25D3EE526D64FF800F16E93 /* LikeButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25D3EB026D64FF800F16E93 /* LikeButtonCell.swift */; };
+		D269FF4C26D6D4A9004973DF /* Tube.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269FF4A26D6D4A9004973DF /* Tube.swift */; };
+		D269FF4D26D6D4A9004973DF /* Tube.xib in Resources */ = {isa = PBXBuildFile; fileRef = D269FF4B26D6D4A9004973DF /* Tube.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +144,7 @@
 		06CB068C26A47E06005DFD49 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		06CB069026A480FB005DFD49 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C757CB9D303CCAB83547AF27 /* Pods-AnyForm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyForm.debug.xcconfig"; path = "Target Support Files/Pods-AnyForm/Pods-AnyForm.debug.xcconfig"; sourceTree = "<group>"; };
+		D2146ECB26DAC89A00645275 /* FormMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormMenu.swift; sourceTree = "<group>"; };
 		D219F21D26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExmplaeViewController.swift; sourceTree = SOURCE_ROOT; };
 		D235C93B26D41995002F459A /* AnyForm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnyForm.xcdatamodel; sourceTree = "<group>"; };
 		D235C93D26D419AC002F459A /* AnyFormUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AnyFormUser+CoreDataProperties.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/AnyFormUser+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
@@ -201,6 +205,8 @@
 		D25D3EAD26D64FF800F16E93 /* TelegramPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelegramPickerViewController.swift; sourceTree = "<group>"; };
 		D25D3EAF26D64FF800F16E93 /* ItemWithPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemWithPhoto.swift; sourceTree = "<group>"; };
 		D25D3EB026D64FF800F16E93 /* LikeButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeButtonCell.swift; sourceTree = "<group>"; };
+		D269FF4A26D6D4A9004973DF /* Tube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tube.swift; sourceTree = "<group>"; };
+		D269FF4B26D6D4A9004973DF /* Tube.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tube.xib; sourceTree = "<group>"; };
 		E4CEEB25EC892A2EAECA5E23 /* Pods-AnyForm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyForm.release.xcconfig"; path = "Target Support Files/Pods-AnyForm/Pods-AnyForm.release.xcconfig"; sourceTree = "<group>"; };
 		FA6A6FD14081D317631F6AD6 /* Pods_AnyForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -323,6 +329,9 @@
 				0617556426AC36B40051B18D /* FormCollectionViewCell.xib */,
 				06785FE026A3FD2B00E565E2 /* CheckBox.swift */,
 				06785FC726A3A08F00E565E2 /* FormView.swift */,
+				D269FF4A26D6D4A9004973DF /* Tube.swift */,
+				D269FF4B26D6D4A9004973DF /* Tube.xib */,
+				D2146ECB26DAC89A00645275 /* FormMenu.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -722,6 +731,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				061755C626B743490051B18D /* form101template.json in Resources */,
+				D269FF4D26D6D4A9004973DF /* Tube.xib in Resources */,
 				0617552F26A86AD30051B18D /* Main.storyboard in Resources */,
 				0617557526ADCF8F0051B18D /* loantemplate.json in Resources */,
 				D25D3EC926D64FF800F16E93 /* Countries.bundle in Resources */,
@@ -840,6 +850,7 @@
 				D235C94426D419AC002F459A /* UserData+CoreDataClass.swift in Sources */,
 				0617559226AE2F2A0051B18D /* FormProudDesign.swift in Sources */,
 				0617556526AC36B40051B18D /* FormCollectionViewCell.swift in Sources */,
+				D269FF4C26D6D4A9004973DF /* Tube.swift in Sources */,
 				D25D3EE426D64FF800F16E93 /* ItemWithPhoto.swift in Sources */,
 				0617556D26AC43370051B18D /* FormFieldsViewController.swift in Sources */,
 				0617554C26AA42AD0051B18D /* FormDecodable.swift in Sources */,
@@ -864,6 +875,7 @@
 				0617557026AD01440051B18D /* WhatsAppShare.swift in Sources */,
 				D25D3ECE26D64FF800F16E93 /* CurrencyCell.swift in Sources */,
 				D25D3ED626D64FF800F16E93 /* SearchHistoryManager.swift in Sources */,
+				D2146ECC26DAC89A00645275 /* FormMenu.swift in Sources */,
 				061755AB26B282210051B18D /* CoreDataManager.swift in Sources */,
 				06785FA326A374B500E565E2 /* SceneDelegate.swift in Sources */,
 			);
@@ -1007,6 +1019,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AnyForm/AnyForm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DGLNNPN798;
 				INFOPLIST_FILE = AnyForm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1027,6 +1040,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AnyForm/AnyForm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DGLNNPN798;
 				INFOPLIST_FILE = AnyForm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

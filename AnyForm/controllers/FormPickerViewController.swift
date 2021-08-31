@@ -46,7 +46,8 @@ class FormPickerViewController: UIViewController , UICollectionViewDelegate , UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        formCollectionView.backgroundColor = .clear
+        formCollectionView.backgroundColor =   UIUtils.hexStringToUIColor(hex: "F8F7F5")
+        self.view.backgroundColor =   UIUtils.hexStringToUIColor(hex: "F8F7F5")
         formCollectionView.delegate = self
         formCollectionView.dataSource = self
         formCollectionView.register(UINib(nibName: "FormCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "formCollectionCell")

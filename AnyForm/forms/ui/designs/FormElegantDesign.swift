@@ -18,7 +18,7 @@ class FormElegantDesign : FormDesign {
     }
     
     func questionBoxBorderColor() -> CGColor {
-        UIUtils.hexStringToUIColor(hex: "5E503F").cgColor
+        UIColor.clear.cgColor
     }
     
     func questionBoxBorderWidth() -> CGFloat {
@@ -26,7 +26,7 @@ class FormElegantDesign : FormDesign {
     }
     
     func questionCounterAttributes(text: String) -> NSAttributedString {
-        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 24),NSAttributedString.Key.foregroundColor : UIUtils.hexStringToUIColor(hex: "F2F4F3")])
+        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 24),NSAttributedString.Key.foregroundColor : UIColor.systemOrange])
     }
     
     
@@ -34,15 +34,15 @@ class FormElegantDesign : FormDesign {
         NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18),NSAttributedString.Key.foregroundColor : UIColor.white])
     }
     func questionCheckBoxTextAttributrs(text: String) -> NSAttributedString {
-        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 13),NSAttributedString.Key.foregroundColor : UIColor.black])
+        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16),NSAttributedString.Key.foregroundColor : UIColor.black])
     }
     
     func questionBoxHeaderBgColor() -> UIColor {
-        UIUtils.hexStringToUIColor(hex: "0F9A99")
+        UIColor.systemOrange.withAlphaComponent(0.9)
     }
     
     func answerTextFieldAttributes(text: String)  -> NSAttributedString {
-        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 13),NSAttributedString.Key.foregroundColor : UIColor.black])
+        NSAttributedString(string: text, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16),NSAttributedString.Key.foregroundColor : UIColor.black])
     }
     
     func buttonsTextAttributes(text: String) -> NSAttributedString {
@@ -51,19 +51,30 @@ class FormElegantDesign : FormDesign {
     
     
     func backgroundColor() -> UIColor {
-        UIUtils.hexStringToUIColor(hex: "22333B")
+        UIUtils.hexStringToUIColor(hex: "F8F7F5")
     }
     
     func holderBackgroundColor() -> UIColor {
-        UIUtils.hexStringToUIColor(hex: "22333B")
+        UIColor.clear
     }
     
     func holderBorderColor() -> CGColor {
-        UIColor.white.cgColor
+        UIColor.clear.cgColor
     }
     
     func holderBorderWidth() -> CGFloat {
         0.6
+    }
+    func setElegantGradientBackground(backgroundView:UIView) {
+        let colorTop =  UIColor.orange
+        let colorBottom = UIColor.white
+                    
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = backgroundView.bounds
+                
+        backgroundView.layer.insertSublayer(gradientLayer, at:0)
     }
     
 }

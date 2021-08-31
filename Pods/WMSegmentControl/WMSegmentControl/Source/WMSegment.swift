@@ -186,6 +186,7 @@ open class WMSegment: UIControl {
             let button = UIButton(type: .system)
             button.setTitle(buttonTitle, for: .normal)
             button.tag = index
+            button.titleLabel?.numberOfLines = 2
             button.tintColor = textColor
             button.setTitleColor(textColor, for: .normal)
             button.titleLabel?.font = normalFont

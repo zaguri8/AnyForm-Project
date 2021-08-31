@@ -27,9 +27,17 @@ class SplashScreenViewController: UIViewController {
         let tabBar = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "tabBarController")
         tabBar.modalPresentationStyle = .overCurrentContext
         tabBar.modalTransitionStyle = .flipHorizontal
-        self.present(tabBar, animated: true)
+        
+        guard let sb:UIStoryboard = self.storyboard else {return}
 
-    }
+        self.dismiss(animated: false, completion: {
+            let newController:UIViewController = sb.instantiateViewController(identifier: "tabBarController")
+            newController.modalTransitionStyle = .crossDissolve
+            newController.modalPresentationStyle = .fullScreen
+            UIApplication.shared.keyWindow?.rootViewController?.present(newController, animated: true)
+        })
+        
+        }
     
 
     /*

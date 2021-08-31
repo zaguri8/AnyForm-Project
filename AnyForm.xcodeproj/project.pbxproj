@@ -48,6 +48,7 @@
 		D235C94226D419AC002F459A /* AnyFormUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235C93F26D419AC002F459A /* AnyFormUser+CoreDataClass.swift */; };
 		D235C94326D419AC002F459A /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235C94026D419AC002F459A /* UserData+CoreDataProperties.swift */; };
 		D235C94426D419AC002F459A /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235C93E26D419AC002F459A /* UserData+CoreDataClass.swift */; };
+		D2424F4E26DE07D50089A2E1 /* SignatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2424F4D26DE07D50089A2E1 /* SignatureController.swift */; };
 		D245779426BB430C00C7FED8 /* AnyFormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245779326BB430C00C7FED8 /* AnyFormHelper.swift */; };
 		D25D3EB126D64FF800F16E93 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25D3E6226D64FF800F16E93 /* Array+Extensions.swift */; };
 		D25D3EB226D64FF800F16E93 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25D3E6326D64FF800F16E93 /* UISegmentedControl+Extensions.swift */; };
@@ -151,6 +152,7 @@
 		D235C93E26D419AC002F459A /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserData+CoreDataClass.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/UserData+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		D235C93F26D419AC002F459A /* AnyFormUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AnyFormUser+CoreDataClass.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/AnyFormUser+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		D235C94026D419AC002F459A /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserData+CoreDataProperties.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/UserData+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		D2424F4D26DE07D50089A2E1 /* SignatureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureController.swift; sourceTree = "<group>"; };
 		D245779326BB430C00C7FED8 /* AnyFormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFormHelper.swift; sourceTree = "<group>"; };
 		D25D3E6226D64FF800F16E93 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		D25D3E6326D64FF800F16E93 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				061755BB26B49B270051B18D /* ProfileViewController.swift */,
 				061755BE26B590500051B18D /* TabBarController.swift */,
 				D245779326BB430C00C7FED8 /* AnyFormHelper.swift */,
+				D2424F4D26DE07D50089A2E1 /* SignatureController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -872,6 +875,7 @@
 				D25D3EBC26D64FF800F16E93 /* UIApplication+Extensions.swift in Sources */,
 				D25D3EB126D64FF800F16E93 /* Array+Extensions.swift in Sources */,
 				D25D3EB226D64FF800F16E93 /* UISegmentedControl+Extensions.swift in Sources */,
+				D2424F4E26DE07D50089A2E1 /* SignatureController.swift in Sources */,
 				0617557026AD01440051B18D /* WhatsAppShare.swift in Sources */,
 				D25D3ECE26D64FF800F16E93 /* CurrencyCell.swift in Sources */,
 				D25D3ED626D64FF800F16E93 /* SearchHistoryManager.swift in Sources */,

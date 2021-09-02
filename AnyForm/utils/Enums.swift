@@ -44,6 +44,7 @@ enum FormType {
             return form101template
         }
     }
+    
     func getCleanFilePath() -> String {
         switch self {
         case .loanrequest:

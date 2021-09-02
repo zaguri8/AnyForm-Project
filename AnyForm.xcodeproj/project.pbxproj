@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0617552F26A86AD30051B18D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0617552E26A86AD30051B18D /* Main.storyboard */; };
-		0617554226A9A8C90051B18D /* Form101.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0617554126A9A8C90051B18D /* Form101.swift */; };
 		0617554C26AA42AD0051B18D /* FormDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0617554B26AA42AC0051B18D /* FormDecodable.swift */; };
 		0617556526AC36B40051B18D /* FormCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0617556326AC36B30051B18D /* FormCollectionViewCell.swift */; };
 		0617556626AC36B40051B18D /* FormCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0617556426AC36B40051B18D /* FormCollectionViewCell.xib */; };
@@ -32,7 +31,6 @@
 		06785FB026A374B900E565E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06785FAE26A374B900E565E2 /* LaunchScreen.storyboard */; };
 		06785FBF26A377E900E565E2 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06785FBE26A377E900E565E2 /* Networking.swift */; };
 		06785FC826A3A08F00E565E2 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06785FC726A3A08F00E565E2 /* FormView.swift */; };
-		06785FCC26A3A51700E565E2 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06785FCB26A3A51700E565E2 /* FormViewController.swift */; };
 		06785FD226A3ADC300E565E2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06785FD126A3ADC300E565E2 /* Extensions.swift */; };
 		06785FD826A3B58500E565E2 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06785FD726A3B58500E565E2 /* Form.swift */; };
 		06785FE126A3FD2B00E565E2 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06785FE026A3FD2B00E565E2 /* CheckBox.swift */; };
@@ -42,7 +40,6 @@
 		06CB069126A480FB005DFD49 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB069026A480FB005DFD49 /* Enums.swift */; };
 		6E94A24D14A759F4AB9623CC /* Pods_AnyForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6A6FD14081D317631F6AD6 /* Pods_AnyForm.framework */; };
 		D2146ECC26DAC89A00645275 /* FormMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2146ECB26DAC89A00645275 /* FormMenu.swift */; };
-		D219F21E26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219F21D26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift */; };
 		D235C93C26D41995002F459A /* AnyForm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D235C93A26D41995002F459A /* AnyForm.xcdatamodeld */; };
 		D2424F4E26DE07D50089A2E1 /* SignatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2424F4D26DE07D50089A2E1 /* SignatureController.swift */; };
 		D245779426BB430C00C7FED8 /* AnyFormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245779326BB430C00C7FED8 /* AnyFormHelper.swift */; };
@@ -109,7 +106,6 @@
 
 /* Begin PBXFileReference section */
 		0617552E26A86AD30051B18D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		0617554126A9A8C90051B18D /* Form101.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form101.swift; sourceTree = "<group>"; };
 		0617554B26AA42AC0051B18D /* FormDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDecodable.swift; sourceTree = "<group>"; };
 		0617556326AC36B30051B18D /* FormCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCollectionViewCell.swift; sourceTree = "<group>"; };
 		0617556426AC36B40051B18D /* FormCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FormCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -136,7 +132,6 @@
 		06785FB126A374B900E565E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06785FBE26A377E900E565E2 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		06785FC726A3A08F00E565E2 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
-		06785FCB26A3A51700E565E2 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		06785FD126A3ADC300E565E2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		06785FD726A3B58500E565E2 /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		06785FE026A3FD2B00E565E2 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
@@ -146,7 +141,6 @@
 		06CB069026A480FB005DFD49 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C757CB9D303CCAB83547AF27 /* Pods-AnyForm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyForm.debug.xcconfig"; path = "Target Support Files/Pods-AnyForm/Pods-AnyForm.debug.xcconfig"; sourceTree = "<group>"; };
 		D2146ECB26DAC89A00645275 /* FormMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormMenu.swift; sourceTree = "<group>"; };
-		D219F21D26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExmplaeViewController.swift; sourceTree = SOURCE_ROOT; };
 		D235C93B26D41995002F459A /* AnyForm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnyForm.xcdatamodel; sourceTree = "<group>"; };
 		D2424F4D26DE07D50089A2E1 /* SignatureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureController.swift; sourceTree = "<group>"; };
 		D245779326BB430C00C7FED8 /* AnyFormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFormHelper.swift; sourceTree = "<group>"; };
@@ -311,7 +305,6 @@
 				06785FAC26A374B900E565E2 /* Assets.xcassets */,
 				06785FAE26A374B900E565E2 /* LaunchScreen.storyboard */,
 				06785FB126A374B900E565E2 /* Info.plist */,
-				D219F21D26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift */,
 			);
 			path = AnyForm;
 			sourceTree = "<group>";
@@ -342,7 +335,6 @@
 			isa = PBXGroup;
 			children = (
 				0617556826AC36BD0051B18D /* FormPickerViewController.swift */,
-				06785FCB26A3A51700E565E2 /* FormViewController.swift */,
 				0617556C26AC43370051B18D /* FormFieldsViewController.swift */,
 				0617559E26B1DFE80051B18D /* SplashScreenViewController.swift */,
 				061755BB26B49B270051B18D /* ProfileViewController.swift */,
@@ -365,14 +357,6 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
-		06785FD626A3B57200E565E2 /* form101 */ = {
-			isa = PBXGroup;
-			children = (
-				0617554126A9A8C90051B18D /* Form101.swift */,
-			);
-			path = form101;
-			sourceTree = "<group>";
-		};
 		06CB067E26A47457005DFD49 /* forms */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,7 +364,6 @@
 				06785FD726A3B58500E565E2 /* Form.swift */,
 				06CB066C26A4673F005DFD49 /* FormFieldsHolder.swift */,
 				0617554B26AA42AC0051B18D /* FormDecodable.swift */,
-				06785FD626A3B57200E565E2 /* form101 */,
 			);
 			path = forms;
 			sourceTree = "<group>";
@@ -799,7 +782,6 @@
 				D245779426BB430C00C7FED8 /* AnyFormHelper.swift in Sources */,
 				D2B5F9F926E0F60B0031D700 /* Assets.swift in Sources */,
 				D2B5F9F126E0F60B0031D700 /* LocaleStore.swift in Sources */,
-				0617554226A9A8C90051B18D /* Form101.swift in Sources */,
 				D2B5F9F826E0F60B0031D700 /* OneTextFieldViewController.swift in Sources */,
 				061755BF26B590510051B18D /* TabBarController.swift in Sources */,
 				D2B5FA0626E0F60B0031D700 /* DatePickerViewController.swift in Sources */,
@@ -808,7 +790,6 @@
 				D2B5FA0926E0F60B0031D700 /* PhotoLayout.swift in Sources */,
 				0617558C26AE2D5B0051B18D /* FormLightDesign.swift in Sources */,
 				06CB069126A480FB005DFD49 /* Enums.swift in Sources */,
-				D219F21E26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift in Sources */,
 				D2B5F9EA26E0F60B0031D700 /* Optional+Extensions.swift in Sources */,
 				D2B5F9FA26E0F60B0031D700 /* PhotoLibraryPickerViewController.swift in Sources */,
 				06785FD226A3ADC300E565E2 /* Extensions.swift in Sources */,
@@ -863,7 +844,6 @@
 				D2B5F9EB26E0F60B0031D700 /* Common+Extensions.swift in Sources */,
 				06CB066D26A4673F005DFD49 /* FormFieldsHolder.swift in Sources */,
 				D2B5F9E626E0F60B0031D700 /* UIImage+Extensions.swift in Sources */,
-				06785FCC26A3A51700E565E2 /* FormViewController.swift in Sources */,
 				D2B5F9EF26E0F60B0031D700 /* TextViewController.swift in Sources */,
 				D235C93C26D41995002F459A /* AnyForm.xcdatamodeld in Sources */,
 				D2B5F9FE26E0F60B0031D700 /* Location.swift in Sources */,

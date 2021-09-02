@@ -36,6 +36,8 @@ class CoreDataManager {
             }
         }
     }
+    
+    
     func getUser() -> AnyFormUser? {
         return user
     }
@@ -49,7 +51,9 @@ class CoreDataManager {
         guard let user = self.user,!value.isEmpty else {
             return}
         for n in user.getUserData() {
-            if ( (n.category == category) && (n.key == key) ) || ( (n.key == key) && (n.value == value) ) {
+            if (n.key == key) {
+                n.value = value
+                saveContext()
                 return
             }
         }
@@ -71,7 +75,6 @@ class CoreDataManager {
                 saveContext()
                 return
             }
-            
             self.user =  result.first
         }catch {
             print(error)

@@ -23,6 +23,7 @@ class Networking {
             }
         }
     }
+    
     func getGenericForm(url:String, callback:@escaping (Data?,Error?)->Void) {
         DispatchQueue.global(qos:.userInteractive).async {
             guard let url = URL(string:url) else {

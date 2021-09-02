@@ -44,10 +44,6 @@
 		D2146ECC26DAC89A00645275 /* FormMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2146ECB26DAC89A00645275 /* FormMenu.swift */; };
 		D219F21E26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D219F21D26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift */; };
 		D235C93C26D41995002F459A /* AnyForm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D235C93A26D41995002F459A /* AnyForm.xcdatamodeld */; };
-		D235C94126D419AC002F459A /* AnyFormUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235C93D26D419AC002F459A /* AnyFormUser+CoreDataProperties.swift */; };
-		D235C94226D419AC002F459A /* AnyFormUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235C93F26D419AC002F459A /* AnyFormUser+CoreDataClass.swift */; };
-		D235C94326D419AC002F459A /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235C94026D419AC002F459A /* UserData+CoreDataProperties.swift */; };
-		D235C94426D419AC002F459A /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235C93E26D419AC002F459A /* UserData+CoreDataClass.swift */; };
 		D2424F4E26DE07D50089A2E1 /* SignatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2424F4D26DE07D50089A2E1 /* SignatureController.swift */; };
 		D245779426BB430C00C7FED8 /* AnyFormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245779326BB430C00C7FED8 /* AnyFormHelper.swift */; };
 		D269FF4C26D6D4A9004973DF /* Tube.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269FF4A26D6D4A9004973DF /* Tube.swift */; };
@@ -105,6 +101,10 @@
 		D2B5FA0F26E0F60B0031D700 /* GradientSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5F9DA26E0F60B0031D700 /* GradientSlider.swift */; };
 		D2B5FA1026E0F60B0031D700 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5F9DB26E0F60B0031D700 /* TextField.swift */; };
 		D2B5FA1126E0F60B0031D700 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5F9DC26E0F60B0031D700 /* Button.swift */; };
+		D2B5FA1626E0F7730031D700 /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5FA1226E0F7730031D700 /* UserData+CoreDataClass.swift */; };
+		D2B5FA1726E0F7730031D700 /* AnyFormUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5FA1326E0F7730031D700 /* AnyFormUser+CoreDataClass.swift */; };
+		D2B5FA1826E0F7730031D700 /* AnyFormUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5FA1426E0F7730031D700 /* AnyFormUser+CoreDataProperties.swift */; };
+		D2B5FA1926E0F7730031D700 /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5FA1526E0F7730031D700 /* UserData+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,10 +148,6 @@
 		D2146ECB26DAC89A00645275 /* FormMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormMenu.swift; sourceTree = "<group>"; };
 		D219F21D26C543AF000D9DBA /* ViewControllerExmplaeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExmplaeViewController.swift; sourceTree = SOURCE_ROOT; };
 		D235C93B26D41995002F459A /* AnyForm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnyForm.xcdatamodel; sourceTree = "<group>"; };
-		D235C93D26D419AC002F459A /* AnyFormUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AnyFormUser+CoreDataProperties.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/AnyFormUser+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		D235C93E26D419AC002F459A /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserData+CoreDataClass.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/UserData+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		D235C93F26D419AC002F459A /* AnyFormUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AnyFormUser+CoreDataClass.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/AnyFormUser+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		D235C94026D419AC002F459A /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserData+CoreDataProperties.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/UserData+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		D2424F4D26DE07D50089A2E1 /* SignatureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureController.swift; sourceTree = "<group>"; };
 		D245779326BB430C00C7FED8 /* AnyFormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFormHelper.swift; sourceTree = "<group>"; };
 		D269FF4A26D6D4A9004973DF /* Tube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tube.swift; sourceTree = "<group>"; };
@@ -209,6 +205,10 @@
 		D2B5F9DA26E0F60B0031D700 /* GradientSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientSlider.swift; sourceTree = "<group>"; };
 		D2B5F9DB26E0F60B0031D700 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		D2B5F9DC26E0F60B0031D700 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		D2B5FA1226E0F7730031D700 /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D2B5FA1326E0F7730031D700 /* AnyFormUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnyFormUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D2B5FA1426E0F7730031D700 /* AnyFormUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnyFormUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D2B5FA1526E0F7730031D700 /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E4CEEB25EC892A2EAECA5E23 /* Pods-AnyForm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyForm.release.xcconfig"; path = "Target Support Files/Pods-AnyForm/Pods-AnyForm.release.xcconfig"; sourceTree = "<group>"; };
 		FA6A6FD14081D317631F6AD6 /* Pods_AnyForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -265,10 +265,10 @@
 		061755A126B281C90051B18D /* coredata */ = {
 			isa = PBXGroup;
 			children = (
-				D235C93E26D419AC002F459A /* UserData+CoreDataClass.swift */,
-				D235C94026D419AC002F459A /* UserData+CoreDataProperties.swift */,
-				D235C93F26D419AC002F459A /* AnyFormUser+CoreDataClass.swift */,
-				D235C93D26D419AC002F459A /* AnyFormUser+CoreDataProperties.swift */,
+				D2B5FA1326E0F7730031D700 /* AnyFormUser+CoreDataClass.swift */,
+				D2B5FA1426E0F7730031D700 /* AnyFormUser+CoreDataProperties.swift */,
+				D2B5FA1226E0F7730031D700 /* UserData+CoreDataClass.swift */,
+				D2B5FA1526E0F7730031D700 /* UserData+CoreDataProperties.swift */,
 				061755AA26B282210051B18D /* CoreDataManager.swift */,
 			);
 			path = coredata;
@@ -795,10 +795,8 @@
 				D2B5F9E426E0F60B0031D700 /* UITextView+Extensions.swift in Sources */,
 				D2B5F9FC26E0F60B0031D700 /* LocationPickerViewController.swift in Sources */,
 				D2B5F9F426E0F60B0031D700 /* PhoneCodeCell.swift in Sources */,
-				D235C94326D419AC002F459A /* UserData+CoreDataProperties.swift in Sources */,
 				0617557F26AE1F860051B18D /* FormDesign.swift in Sources */,
 				D245779426BB430C00C7FED8 /* AnyFormHelper.swift in Sources */,
-				D235C94126D419AC002F459A /* AnyFormUser+CoreDataProperties.swift in Sources */,
 				D2B5F9F926E0F60B0031D700 /* Assets.swift in Sources */,
 				D2B5F9F126E0F60B0031D700 /* LocaleStore.swift in Sources */,
 				0617554226A9A8C90051B18D /* Form101.swift in Sources */,
@@ -825,6 +823,7 @@
 				D2B5FA0C26E0F60B0031D700 /* LikeButtonCell.swift in Sources */,
 				D2B5FA1126E0F60B0031D700 /* Button.swift in Sources */,
 				0617556926AC36BD0051B18D /* FormPickerViewController.swift in Sources */,
+				D2B5FA1626E0F7730031D700 /* UserData+CoreDataClass.swift in Sources */,
 				061755BC26B49B270051B18D /* ProfileViewController.swift in Sources */,
 				D2B5F9DD26E0F60B0031D700 /* Array+Extensions.swift in Sources */,
 				D2B5FA0F26E0F60B0031D700 /* GradientSlider.swift in Sources */,
@@ -844,10 +843,10 @@
 				D2B5F9E726E0F60B0031D700 /* UISearchBar+Extensions.swift in Sources */,
 				06785FC826A3A08F00E565E2 /* FormView.swift in Sources */,
 				D2B5F9E926E0F60B0031D700 /* UIAlertController+Extensions.swift in Sources */,
-				D235C94426D419AC002F459A /* UserData+CoreDataClass.swift in Sources */,
 				0617559226AE2F2A0051B18D /* FormProudDesign.swift in Sources */,
 				D2B5F9F526E0F60B0031D700 /* CurrencyCell.swift in Sources */,
 				D2B5F9E226E0F60B0031D700 /* Date+Extension.swift in Sources */,
+				D2B5FA1726E0F7730031D700 /* AnyFormUser+CoreDataClass.swift in Sources */,
 				0617556526AC36B40051B18D /* FormCollectionViewCell.swift in Sources */,
 				D269FF4C26D6D4A9004973DF /* Tube.swift in Sources */,
 				D2B5F9FF26E0F60B0031D700 /* Address.swift in Sources */,
@@ -859,8 +858,8 @@
 				D2B5F9E026E0F60B0031D700 /* UIViewController+Extensions.swift in Sources */,
 				D2B5FA1026E0F60B0031D700 /* TextField.swift in Sources */,
 				D2B5F9DF26E0F60B0031D700 /* UIImageView+Extensions.swift in Sources */,
+				D2B5FA1826E0F7730031D700 /* AnyFormUser+CoreDataProperties.swift in Sources */,
 				D2B5FA0526E0F60B0031D700 /* ColorPickerViewController.swift in Sources */,
-				D235C94226D419AC002F459A /* AnyFormUser+CoreDataClass.swift in Sources */,
 				D2B5F9EB26E0F60B0031D700 /* Common+Extensions.swift in Sources */,
 				06CB066D26A4673F005DFD49 /* FormFieldsHolder.swift in Sources */,
 				D2B5F9E626E0F60B0031D700 /* UIImage+Extensions.swift in Sources */,
@@ -868,6 +867,7 @@
 				D2B5F9EF26E0F60B0031D700 /* TextViewController.swift in Sources */,
 				D235C93C26D41995002F459A /* AnyForm.xcdatamodeld in Sources */,
 				D2B5F9FE26E0F60B0031D700 /* Location.swift in Sources */,
+				D2B5FA1926E0F7730031D700 /* UserData+CoreDataProperties.swift in Sources */,
 				D2424F4E26DE07D50089A2E1 /* SignatureController.swift in Sources */,
 				D2B5FA0A26E0F60B0031D700 /* TelegramPickerViewController.swift in Sources */,
 				D2B5FA0026E0F60B0031D700 /* PickerViewViewController.swift in Sources */,

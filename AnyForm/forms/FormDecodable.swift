@@ -44,7 +44,9 @@ struct FormCheckBox : Codable {
 struct FormCheckBoxProps : Codable{
     var bitmap:String = ""
     var category:String = ""
+    var type:String
 }
 
 struct FormTextFieldProps : Codable {
+    var type:String
 }

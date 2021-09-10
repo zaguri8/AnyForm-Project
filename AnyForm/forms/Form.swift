@@ -35,6 +35,9 @@ class Form  {
     func setFieldValue(for key:String,newValue:String) {
         self.holder.setFieldValue(for: key, value: newValue)
     }
+    func setSignature(val:CGImage?) {
+        self.holder.setSignature(val: val)
+    }
     
     
     
@@ -52,8 +55,7 @@ class Form  {
     /// we then write the data to a new pdf file on the the device
     /// and finally we copy that file and add the values from our field's holder
     /// as annotations to the copied new pdf form file
-    func fill(callback:@escaping (URL
-    ) -> Void) {
+    func fill(callback:@escaping (URL) -> Void) {
         let net = Networking()
         net.getForm(type:type) { [weak self] (d, e) in
             if let e = e {
@@ -95,10 +97,48 @@ class Form  {
                     freeTextAnnotation.font = UIFont.boldSystemFont(ofSize: 12)
                     page.addAnnotation(freeTextAnnotation)
                 }
+                if let signature = strongSelf.holder.signature, let signatureField = self?.getTextFields().first(where: { field in
+                    field.key.contains("חתימה")
+                }) {
+                    var bounds = CGRect(x: signatureField.point.x, y: signatureField.point.y, width: 100, height: 50)
+                    let x = PDFImageAnnotation(imageBounds: bounds, image: signature)
+                    x.page = page
+                    x.backgroundColor = .clear
+                    x.color = .clear
+                    page.addAnnotation(x)
+                }
+
                 doc.write(to: filledPath)
                 print(filledPath.absoluteString)
+                UIGraphicsEndPDFContext()
                 callback(filledPath)
             }
         }
     }
 }
+class PDFImageAnnotation: PDFAnnotation {
+
+   private var _image: CGImage?
+
+   public init(imageBounds: CGRect, image: CGImage?) {
+       self._image = image
+       super.init(bounds: imageBounds, forType: .stamp, withProperties: nil)
+   }
+
+   required public init?(coder aDecoder: NSCoder) {
+       fatalError("init(coder:) has not been implemented")
+   }
+
+   override public func draw(with box: PDFDisplayBox, in context: CGContext) {
+       guard let cgImage = self._image else {
+           return
+       }
+      let drawingBox = self.page?.bounds(for: box)
+      //Virtually changing reference frame since the context is agnostic of them. Necessary hack.
+      context.draw(cgImage, in: self.bounds.applying(CGAffineTransform(
+      translationX: (drawingBox?.origin.x)! * -1.0,
+                 y: (drawingBox?.origin.y)! * -1.0)))
+   }
+
+}
+

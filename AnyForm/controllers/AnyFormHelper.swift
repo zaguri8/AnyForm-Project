@@ -19,9 +19,9 @@ class AnyFormHelper {
         var nDataClean:[(String,String)] = []
         nData.forEach { data in
             guard let key = data.key, let val = data.value else {return}
-            let userFriendlyKey = key.replacingOccurrences(of: "_", with: " ")
+            let userFriendlyKey = key.textFromKey()
             var userFriendlyVal:String  = ""
-            userFriendlyVal = val.replacingOccurrences(of: "_", with: " ")
+            userFriendlyVal = val.textFromKey()
             if userFriendlyVal == "false" {
                 userFriendlyVal = "לא נכון"
             } else if userFriendlyVal == "true" {

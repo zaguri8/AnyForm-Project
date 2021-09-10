@@ -11,6 +11,7 @@ class FormFieldsHolder {
     fileprivate var textfields:[FormTextField] = []
     fileprivate var formcheckboxes:[FormCheckBox] = []
     let formType:FormType
+    var signature:CGImage?
     init(formType:FormType) {
         self.formType = formType
         loadFromTemplate()
@@ -46,6 +47,9 @@ class FormFieldsHolder {
         }
     }
     
+    func setSignature(val:CGImage?) {
+        self.signature = val
+    }
     /// **Load**
     /// we first create a reference to the generated file from template generator
     /// we then use   **JSONDecoder** to instantiate a new template holder

@@ -93,7 +93,7 @@ extension UIViewController {
         label.centerXAnchor.constraint(equalTo: messageBox.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: messageBox.centerYAnchor).isActive = true
         label.widthAnchor.constraint(equalToConstant: messageBoxSize.width ).isActive = true
-        label.heightAnchor.constraint(equalToConstant: messageBoxSize.height / 1.5).isActive = true
+        label.heightAnchor.constraint(equalToConstant: messageBoxSize.height).isActive = true
         let removeTask:() -> Void = {
             UIView.animate(withDuration: 0.7) {
                messageBox.frame.origin.y = parentHeight
@@ -202,5 +202,10 @@ extension CGPoint {
     func pdfPoint(docView:UIView) -> CGPoint {
         // location.y = documentView.bounds.height - location.y
         return CGPoint(x:x ,y: docView.bounds.height - y)
+    }
+}
+extension String {
+    func textFromKey() -> String {
+       return self.replacingOccurrences(of: "_", with: " ")
     }
 }

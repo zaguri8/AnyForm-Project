@@ -22,8 +22,10 @@ class UITextFieldForm : UITextField {
         super.init(coder: coder)
     }
 }
+
 class UIDatePickerForm : UIDatePicker {
     var formtextfield:FormTextField?
+    let type:FormFieldType = .singleOneChoiceField
     convenience init(_ field: FormTextField) {
         self.init()
         self.formtextfield = field
@@ -35,6 +37,7 @@ class UIDatePickerForm : UIDatePicker {
         super.init(coder: coder)
     }
 }
+
 struct Line {
     let strokeWidth: Float
     let color: UIColor
@@ -46,7 +49,6 @@ class AnyFormSignatureField: UIView {
     // public function
     fileprivate var strokeColor = UIColor.black
     fileprivate var strokeWidth: Float = 1
-
     func setStrokeWidth(width: Float) {
         self.strokeWidth = width
     }
@@ -67,6 +69,7 @@ class AnyFormSignatureField: UIView {
 
     fileprivate var lines = [Line]()
     fileprivate var context:CGContext!
+    fileprivate var image:CGImage?
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         context = UIGraphicsGetCurrentContext()
@@ -83,10 +86,12 @@ class AnyFormSignatureField: UIView {
             }
             context.strokePath()
         }
+        context.setFillColor(UIColor.clear.cgColor)
+        image = context.makeImage()
     }
     
     func getSignature() -> CGImage? {
-       return context.makeImage()
+       return image
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -109,7 +114,7 @@ class AnyFormSegmentControl  {
         self.segmentControl = segmentControl
         self.items = items
         self.segmentControl.buttonTitles = items.compactMap({ item in
-           return  item.key.replacingOccurrences(of: "_", with: " ")
+           return  item.key.textFromKey()
         }).joined(separator: ",")
         self.segmentControl.buttonImages = items.compactMap({ item in
             item.props.bitmap
@@ -159,7 +164,6 @@ class AnyFormSegmentControl  {
 
 class UITextFieldFormGamified : UIView, UITextFieldDelegate{
     var textColor:UIColor = .black
-    
     var arg1:String?
     var arg2:String?
     
@@ -167,6 +171,7 @@ class UITextFieldFormGamified : UIView, UITextFieldDelegate{
     var savedData:String   {
         set {
             animateLabelTextChange(text: newValue)
+            print(newValue)
         }
         get {
             ""
@@ -305,6 +310,10 @@ class UICheckBoxForm : CheckBox {
     convenience init(_ field: FormCheckBox) {
         self.init()
         self.formcheckbox = field
+    }
+    func isMultiChoiceField() -> Bool {
+        guard let type = formcheckbox?.props.type else {return false}
+        return FormFieldType.fromString(type) == .categoryMultiChoiceField
     }
     override init(frame: CGRect) {
         super.init(frame: frame)

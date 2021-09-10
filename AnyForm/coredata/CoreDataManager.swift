@@ -52,9 +52,7 @@ class CoreDataManager {
             return}
         for n in user.getUserData() {
             if (n.key == key) {
-                n.value = value
-                saveContext()
-                return
+                user.removeFromUserdata(n)
             }
         }
         let userData = UserData.insertUserData(key: key, value: value, category: category)

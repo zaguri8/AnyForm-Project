@@ -6,6 +6,29 @@
 //
 
 import Foundation
+import UIKit
+
+enum FormFieldType {
+    case categoryOneChoiceField,
+         categoryMultiChoiceField,
+         singleOneChoiceField,
+         undefined
+    static func fromString(_ str:String) -> FormFieldType  {
+        switch str {
+        case "SOCF":
+            return .singleOneChoiceField
+        case "CMCF":
+            return .categoryMultiChoiceField
+        case "COCF":
+            return .categoryOneChoiceField
+        default:
+            return .undefined
+        }
+    }
+    
+}
+
+
 enum FormError :Error{
     case unDefinedFieldKey(String)
 }

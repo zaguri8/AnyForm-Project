@@ -7,14 +7,18 @@
 
 import Foundation
 import UIKit
-class FormFieldsHolder {
-    fileprivate var textfields:[FormTextField] = []
-    fileprivate var formcheckboxes:[FormCheckBox] = []
-    let formType:FormType
+class FormPage {
+    var textfields:[FormTextField] = []
+    var formcheckboxes:[FormCheckBox] = []
     var signature:CGImage?
-    init(formType:FormType) {
-        self.formType = formType
-        loadFromTemplate()
+    var index:Int
+    var optional:Bool
+    var pageTitle:String
+    
+    init(index:Int) {
+        self.index = index
+        self.optional = false
+        self.pageTitle = ""
     }
     func getTextFields() -> [FormTextField] {
         return self.textfields
@@ -49,26 +53,6 @@ class FormFieldsHolder {
     
     func setSignature(val:CGImage?) {
         self.signature = val
-    }
-    /// **Load**
-    /// we first create a reference to the generated file from template generator
-    /// we then use   **JSONDecoder** to instantiate a new template holder
-    /// finally we pass the template's fields to the form field holder
-    func loadFromTemplate() {
-        guard let url = Bundle.main.url(
-                forResource: formType.getFormTemplateFile()
-                ,withExtension: "json") else {
-            print("Invalid filename/path: ." )
-            return}
-        do {
-            let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            let templateHolder = try decoder.decode(FormTemplateHolder.self, from: data)
-            self.textfields = templateHolder.textfields
-            self.formcheckboxes = templateHolder.formcheckboxes
-        } catch let error {
-            print("parse error: \(error.localizedDescription)")
-        }
     }
     
 }

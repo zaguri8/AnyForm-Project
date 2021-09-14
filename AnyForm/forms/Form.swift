@@ -11,35 +11,114 @@ import PDFKit
 
 
 class Form  {
-    fileprivate let holder:FormFieldsHolder
-    fileprivate let design:FormDesign
+    var pages:[FormPage] = []
+    let design:FormDesign
     let type:FormType
+    
+    
     init(type:FormType, design:FormDesign) {
         self.type = type
         self.design = design
-        self.holder = FormFieldsHolder(formType: type)
+        for i in 1...type.getPages() {
+            let page = FormPage(index: i)
+            pages.append(page)
+        }
+        loadForm()
     }
+    
     func getDesign() -> FormDesign {
         return design
     }
-    func getHolder() -> FormFieldsHolder {
-        return holder
+    func getPage(at:Int) -> FormPage {
+        return pages[at]
     }
-    func getTextFields() -> [FormTextField] {
-        return self.holder.getTextFields()
+    func getOptionalPages() -> [FormPage] {
+        return pages.filter{$0.optional}
     }
-    func getCheckBoxes() -> [FormCheckBox] {
-        return self.holder.getCheckBoxes()
-    }
-    
-    func setFieldValue(for key:String,newValue:String) {
-        self.holder.setFieldValue(for: key, value: newValue)
-    }
-    func setSignature(val:CGImage?) {
-        self.holder.setSignature(val: val)
+    func getRequiredPages() -> [FormPage] {
+        return pages.filter{!$0.optional}
     }
     
+    func getOptionalTextFields() -> [FormTextField] {
+        return self.pages.filter{$0.optional}.compactMap{$0.textfields}.reduce([]) { res, arr in
+            var ret = res
+            ret.append(arr)
+            return ret
+        }
+    }
+    func getRequiredTextFields() -> [FormTextField] {
+        return self.pages.filter{!$0.optional}.compactMap{$0.textfields}.reduce([]) { res, arr in
+            var ret = res
+            ret.append(arr)
+            return ret
+        }
+    }
     
+    
+    func getOptionalCheckBoxes() -> [FormCheckBox] {
+        return self.pages.filter{$0.optional}.compactMap{$0.formcheckboxes}.reduce([]) { res, arr in
+            var ret = res
+            ret.append(arr)
+            return ret
+        }
+    }
+    func getRequiredCheckBoxes() -> [FormCheckBox] {
+        return self.pages.filter{!$0.optional}.compactMap{$0.formcheckboxes}.reduce([]) { res, arr in
+            var ret = res
+            ret.append(arr)
+            return ret
+        }
+    }
+    func getPageCount() -> Int {
+        return pages.count
+    }
+    func getCheckBoxes(page:Int) -> [FormCheckBox] {
+        return self.pages[page].getCheckBoxes()
+    }
+    func getTextFields(page:Int) -> [FormTextField] {
+        return self.pages[page].getTextFields()
+    }
+    func setFieldValue(for key:String,newValue:String,page:Int) {
+        self.pages[page].setFieldValue(for: key, value: newValue)
+    }
+    func setSignature(val:CGImage?,page:Int) {
+        self.pages[page].setSignature(val: val)
+    }
+    
+    /// **Load**
+    /// we first create a reference to the generated file from template generator
+    /// we then use   **JSONDecoder** to instantiate a new template holder
+    /// finally we pass the template's fields to the form field holder
+    func loadForm() {
+        guard let url = Bundle.main.url(
+                forResource: type.getFormTemplateFile()
+                ,withExtension: "json") else {
+            print("Invalid filename/path: ." )
+            return}
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            guard let formData = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] else {return}
+            let formPages = formData["pages"] as! [Any]
+            var pageTemplates:[FormTemplatePage] = []
+            for pageTemplateData in formPages {
+                    let pData = try JSONSerialization.data(withJSONObject: pageTemplateData, options: [])
+                    let templatePage = try decoder.decode(FormTemplatePage.self, from: pData)
+                    pageTemplates.append(templatePage)
+            }
+            
+            for (index,page) in pages.enumerated() {
+                if pageTemplates.count <= index {continue}
+                page.textfields = pageTemplates[index].textfields
+                page.formcheckboxes = pageTemplates[index].formcheckboxes
+                page.index = pageTemplates[index].index
+                page.optional = pageTemplates[index].optional
+                page.pageTitle = pageTemplates[index].pageTitle
+            }
+        } catch let error {
+            print("parse error: \(error.localizedDescription)")
+        }
+    }
     
     /// `Form Text Attributes`
     /// a variable containing the form's text attributes
@@ -74,9 +153,11 @@ class Form  {
                 print(error)
             }
             if let doc: PDFDocument = PDFDocument(url: unfilledPath) {
-                let page = doc.page(at: 0)!
-                let checkboxfields = strongSelf.getHolder().getCheckBoxes()
-                let textFields = strongSelf.getHolder().getTextFields()
+                var i = 0
+                var page = doc.page(at: i)
+                while page != nil {
+                    let checkboxfields = strongSelf.getCheckBoxes(page: i)
+                    let textFields = strongSelf.getTextFields(page:i)
                 if !checkboxfields.isEmpty {
                     checkboxfields.forEach { field in
                         let freeTextAnnotation = PDFAnnotation(bounds: CGRect(x: field.point.x, y: field.point.y, width: 200, height: 50), forType: .freeText, withProperties: nil)
@@ -85,7 +166,7 @@ class Form  {
                         freeTextAnnotation.color = .clear
                         freeTextAnnotation.contents = field.checked ? "✓" : ""
                         freeTextAnnotation.font = UIFont(name: "TimesNewRomanPSMT", size: 10)
-                        page.addAnnotation(freeTextAnnotation)
+                        page?.addAnnotation(freeTextAnnotation)
                     }
                 }
                 for field in textFields {
@@ -95,22 +176,23 @@ class Form  {
                     freeTextAnnotation.color = .clear
                     freeTextAnnotation.contents = field.value
                     freeTextAnnotation.font = UIFont.boldSystemFont(ofSize: 12)
-                    page.addAnnotation(freeTextAnnotation)
+                    page?.addAnnotation(freeTextAnnotation)
                 }
-                if let signature = strongSelf.holder.signature, let signatureField = self?.getTextFields().first(where: { field in
+                if let signature = strongSelf.getPage(at: i).signature, let signatureField = strongSelf.getTextFields(page: i).first(where: { field in
                     field.key.contains("חתימה")
                 }) {
-                    var bounds = CGRect(x: signatureField.point.x, y: signatureField.point.y, width: 100, height: 50)
+                    let bounds = CGRect(x: signatureField.point.x, y: signatureField.point.y, width: 100, height: 50)
                     let x = PDFImageAnnotation(imageBounds: bounds, image: signature)
                     x.page = page
                     x.backgroundColor = .clear
                     x.color = .clear
-                    page.addAnnotation(x)
+                    page?.addAnnotation(x)
                 }
-
+                    i += 1
+                    page = doc.page(at: i)
+                }
                 doc.write(to: filledPath)
                 print(filledPath.absoluteString)
-                UIGraphicsEndPDFContext()
                 callback(filledPath)
             }
         }

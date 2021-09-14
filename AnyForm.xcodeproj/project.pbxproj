@@ -35,7 +35,7 @@
 		06785FD826A3B58500E565E2 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06785FD726A3B58500E565E2 /* Form.swift */; };
 		06785FE126A3FD2B00E565E2 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06785FE026A3FD2B00E565E2 /* CheckBox.swift */; };
 		06785FE426A3FE3400E565E2 /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06785FE326A3FE3400E565E2 /* UIUtils.swift */; };
-		06CB066D26A4673F005DFD49 /* FormFieldsHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB066C26A4673F005DFD49 /* FormFieldsHolder.swift */; };
+		06CB066D26A4673F005DFD49 /* FormPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB066C26A4673F005DFD49 /* FormPage.swift */; };
 		06CB068D26A47E06005DFD49 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB068C26A47E06005DFD49 /* Strings.swift */; };
 		06CB069126A480FB005DFD49 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB069026A480FB005DFD49 /* Enums.swift */; };
 		6E94A24D14A759F4AB9623CC /* Pods_AnyForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6A6FD14081D317631F6AD6 /* Pods_AnyForm.framework */; };
@@ -136,7 +136,7 @@
 		06785FD726A3B58500E565E2 /* Form.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		06785FE026A3FD2B00E565E2 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		06785FE326A3FE3400E565E2 /* UIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
-		06CB066C26A4673F005DFD49 /* FormFieldsHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormFieldsHolder.swift; sourceTree = "<group>"; };
+		06CB066C26A4673F005DFD49 /* FormPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPage.swift; sourceTree = "<group>"; };
 		06CB068C26A47E06005DFD49 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		06CB069026A480FB005DFD49 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C757CB9D303CCAB83547AF27 /* Pods-AnyForm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyForm.debug.xcconfig"; path = "Target Support Files/Pods-AnyForm/Pods-AnyForm.debug.xcconfig"; sourceTree = "<group>"; };
@@ -362,7 +362,7 @@
 			children = (
 				0617557926AE1B6F0051B18D /* ui */,
 				06785FD726A3B58500E565E2 /* Form.swift */,
-				06CB066C26A4673F005DFD49 /* FormFieldsHolder.swift */,
+				06CB066C26A4673F005DFD49 /* FormPage.swift */,
 				0617554B26AA42AC0051B18D /* FormDecodable.swift */,
 			);
 			path = forms;
@@ -842,7 +842,7 @@
 				D2B5FA1826E0F7730031D700 /* AnyFormUser+CoreDataProperties.swift in Sources */,
 				D2B5FA0526E0F60B0031D700 /* ColorPickerViewController.swift in Sources */,
 				D2B5F9EB26E0F60B0031D700 /* Common+Extensions.swift in Sources */,
-				06CB066D26A4673F005DFD49 /* FormFieldsHolder.swift in Sources */,
+				06CB066D26A4673F005DFD49 /* FormPage.swift in Sources */,
 				D2B5F9E626E0F60B0031D700 /* UIImage+Extensions.swift in Sources */,
 				D2B5F9EF26E0F60B0031D700 /* TextViewController.swift in Sources */,
 				D235C93C26D41995002F459A /* AnyForm.xcdatamodeld in Sources */,

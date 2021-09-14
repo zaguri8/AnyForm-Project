@@ -9,9 +9,12 @@ import Foundation
 import UIKit
 
 /// an object used to hold all the fields of the form
-struct FormTemplateHolder : Codable {
+struct FormTemplatePage : Codable {
     var textfields:[FormTextField]
     var formcheckboxes:[FormCheckBox]
+    var index:Int
+    var optional:Bool
+    var pageTitle:String
 }
 
 /// an object type used to reference a text field in a form

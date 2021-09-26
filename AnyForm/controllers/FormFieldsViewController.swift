@@ -19,6 +19,7 @@ protocol FormTextFieldDelegate {
 }
 
 
+
 class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBoxDelegate,FormTextFieldDelegate, UIDocumentInteractionControllerDelegate {
     // we dont use this anymore
     // next&prev buttons replaced with swiping.
@@ -138,7 +139,8 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
     var menu:FormMenu!
     var form:Form!
     var fieldHeaders:[String] = []
-    var textFields:[Any] = [] // UIFormTextField
+    var textFields:[SearchTextField] = [] // UIFormTextField
+    var gameFields:[UITextFieldFormGamified] = []
     var checkBoxes:[UICheckBoxForm] = []
     var datePickers:[UIDatePickerForm] = []
     var fieldStack:[UIStackView] = []
@@ -152,9 +154,17 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
             current supporting שם_משפחה,שם_פרטי
      */
     func setFieldValue(arg1: String, arg2: String) {
-        form.setFieldValue(for: "שם_פרטי", newValue: arg2,page: pageIndex)
-        form.setFieldValue(for: "שם_משפחה", newValue: arg1,page: pageIndex)
+        form.setFieldValue(for: "שם פרטי", newValue: arg2,page: pageIndex)
+        form.setFieldValue(for: "שם משפחה", newValue: arg1,page: pageIndex)
+        
         clearField()
+    }
+    
+    func saveTextFieldValue(key:String,value:String) {
+        CoreDataManager.shared.saveFieldValue(key: key, val: value)
+    }
+    func fetchTextFieldValues(key:String) -> [String] {
+        return CoreDataManager.shared.getSavedFieldValues(key)
     }
     
     func presentFromView(vc: UIViewController) {
@@ -176,45 +186,40 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         progTunnel.scrollToItem(at: IndexPath(row: currentField, section: 0), at: .centeredHorizontally, animated: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {[weak self] in
             guard let strong = self else {return}
-            guard let tube = strong.progTunnel.cellForItem(at: IndexPath(row: strong.currentField, section: 0)) as? Tube else {
-                print("bad tube")
+             guard let tube = strong.progTunnel.cellForItem(at: IndexPath(row: strong.currentField, section: 0)) as? Tube else {
                 return}
             if !strong.clearedFieldKeys.contains(tube.tubeLabel.text!) {
                 strong.clearedFieldKeys.append(tube.tubeLabel.text!)
-           
-            tube.clear()
+                tube.clear()
                 let count = strong.totalFieldCount()
                 if (((count - strong.clearedFieldCount() - 2) != 0)
                         && (strong.clearedFieldCount() == 1 || strong.clearedFieldCount() % 5 == 0 && strong.clearedFieldCount() > 0 )) {
                     strong.showFormFillingToast(message: "קדימה! נשארו עוד \(count - strong.clearedFieldCount()) שאלות")
             }else if (cleared) {
                 strong.showFormFillingToast(message: "ענית על כל השאלות! לחץ על הכפתור למעלה ליצירת קובץ")
-            }
-               
+            } 
             }
         }
     }
     func totalFieldCount() -> Int {
         var count = 0
+        
         for v in fieldHolder.values {
             count += v.count
         }
         return count
     }
+    
     func pageFieldCount(page:Int) -> Int {
         return fieldHolder[page]!.count
     }
     
+    
+    // Populate with user data (clearing all saved fields)
     func clearFields(keys:[String]) {
-        for (i,h) in fieldHeaders.enumerated() {
-            if keys.contains(h) {
-                guard let tube = progTunnel.cellForItem(at: IndexPath(row: i, section: 0)) as? Tube else {
-                    print("no tube")
-                return}
-            tube.clear()
-            clearedFieldKeys.append(h)
-            }
-        }
+        let relevant = keys.filter{fieldHeaders.contains($0)}
+        relevant.forEach{clearedFieldKeys.append($0)}
+        progTunnel.reloadData()
     }
     
     
@@ -224,10 +229,9 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         self.view.backgroundColor = form.getDesign().backgroundColor()
         hideKeyboardWhenTappedAround()
         createNavBar()
-        createAllFieldInputs {
-            createProgressionTunnel()
-            sendTip()
-        }
+        createAllFieldInputs()
+        createProgressionTunnel()
+        sendTip()
         createPageSegmentControl()
         addFieldQuestionCounter()
         showFirstField()
@@ -376,91 +380,61 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
-        guard let tf = textField as? UITextFieldForm, let formfield = tf.formtextfield else {return false}
+        guard let tf = textField as? SearchTextField, let formfield = tf.formtextfield else {return false}
         if FieldProps.isPhoneNumberField(formfield.key)  || FieldProps.isNumericField(formfield.key){
             return allowedCharacters.isSuperset(of: characterSet)
         }
         return true
     }
     
-
-    
     func populateWithUserData() {
-        guard let allData = CoreDataManager.shared.getUserData(), !allData.isEmpty else {
-            return}
-        let saved =  allData.compactMap{$0.key}
-        let toclear =  allData.compactMap{$0.key?.textFromKey()}
-        clearFields(keys: toclear)
-        var gamefields:[UITextFieldFormGamified] = []
-        var tfs:[UITextFieldForm] = []
-        self.textFields.forEach { any in
-            if let gamefield = any as? UITextFieldFormGamified {
-                guard let key = gamefield.field?.key else {return }
-                if saved.contains(key) && FieldProps.isNameField(key) {gamefields.append(gamefield)}
-            }else if let tf  = any as? UITextFieldForm {
-                guard let key = tf.formtextfield?.key else {return }
-                if saved.contains(key) {tfs.append(tf)}
-            }
-        }
-          
-          for d in allData {
-            let trueKey = FieldProps.savedKey(for: d.key!).textFromKey()
-              if self.form.getTextFields(page: pageIndex).contains(where: { (textfield)  in
-                textfield.key.textFromKey() == d.key!.textFromKey()
-              })  {
-                  guard let match = tfs.first(where: { tf in
-                    tf.formtextfield?.key.textFromKey() == trueKey
-                  })else {
-                      guard let gamifiedMatch = gamefields.first(where: { gamefield in
-                        gamefield.field?.key.textFromKey() == trueKey
-                      }) else {
-                          return}
-                      guard let firstName = allData.first(where: { nextD in
-                        return   nextD.key!.textFromKey() == "שם פרטי"
-                      })?.value  else {
-                          return}
-                      guard let lastName = allData.first(where: { nextD in
-                        nextD.key!.textFromKey() == "שם משפחה"
-                      })?.value else {
-                          return}
-                      gamifiedMatch.savedData = firstName + " " + lastName
-                      return
-                  }
-                  
-                  let data = d.value ?? ""
-                  match.text = data
-                  match.formtextfield!.value = data
-              }
-              if(self.form.getCheckBoxes(page: pageIndex).contains(where: { (checkbox)  in
-                checkbox.key.textFromKey() == d.key?.textFromKey()
-              }) ) {
-                  guard let match = (self.checkBoxes.first { (checkbox)  in
-                    checkbox.formcheckbox!.key.textFromKey() == d.key?.textFromKey()
-                  }) else {return}
-                  let data = d.value == "false" ? false : true
-                  match.isChecked = data
-                  match.formcheckbox?.checked = data
+        let allData = CoreDataManager.shared.getUserData()
+        if allData.isEmpty {return}
+//        let gameFields:[UITextFieldFormGamified] = self.gameFields.filter{saved.contains($0.getFieldKey())}
+//        let textFields:[UITextFieldForm] = self.textFields.filter{saved.contains($0.getFieldKey())}
+        for dataPiece in allData {
+            let key = FieldProps.savedKey(for: dataPiece.getKey())
+            if form.hasTextField(key: key) {
+                let textField = textFields.first{$0.getFieldKey() == key}
+                let gameField = gameFields.first{$0.field.key == key}
+                let firstName = allData.first{$0.getKey() == "שם פרטי"}?.value ?? ""
+                let lastName =  allData.first{$0.getKey() == "שם משפחה"}?.value ?? ""
+                let data = dataPiece.value ?? ""
+                   gameField?.savedData = (firstName) + " " + (lastName)
+                   textField?.text = data
+                   textField?.formtextfield.value = data
+            }else if(form.hasCheckBox(key: key)) {
+                 let match = (checkBoxes.first{$0.getFieldKey() == key})
+                 let data = dataPiece.value == "false" ? false : true
+                   match?.isChecked = data
+                   match?.formcheckbox.checked = data
               }
           }
-        
+        var categories:[String] = []
+        var categoryKeys:[String] = []
+        for field in allData {
+            guard let  c = field.category else {return}
+            categoryKeys.append(field.getKey())
+            categories.append(c)
+        }
+//        clearFields(keys: saved.compactMap{FieldProps.getRootFieldKey($0)})
+        categories.forEach{print($0)}
+        clearFields(keys: categories)
     }
     
     func saveUserData() {
         for checkBox in self.checkBoxes {
-            guard let formData  = checkBox.formcheckbox else {
-                return}
-            let strVal = checkBox.isChecked ? "true" : "false"
-            CoreDataManager.shared.addUserData(key: formData.key, value: strVal,category: formData.props.category)
+            let strVal = checkBox.Bool
+            CoreDataManager.shared.addUserData(key: checkBox.getFieldKey(), value: strVal,category: checkBox.formcheckbox.props.category)
         }
         for textField in self.textFields {
-            if let tf = textField as? UITextFieldForm {
-                guard let formData = tf.formtextfield, let strVal = tf.text, !strVal.isEmpty else {return}
-                CoreDataManager.shared.addUserData(key: formData.key, value: strVal,category: "")
-            }else if let gamifiedtf = textField as? UITextFieldFormGamified {
-                guard let arg1 = gamifiedtf.arg1,let arg2 = gamifiedtf.arg2, !arg1.isEmpty, !arg2.isEmpty else {return}
-                CoreDataManager.shared.addUserData(key: "שם_פרטי", value: arg2,category: "")
-                CoreDataManager.shared.addUserData(key: "שם_משפחה", value: arg1, category: "")
-            }
+            guard let formData = textField.formtextfield, let strVal = textField.text, !strVal.isEmpty else {return}
+            CoreDataManager.shared.addUserData(key: formData.key, value: strVal,category: "")
+        }
+        for gameField in gameFields {
+            guard let arg1 = gameField.arg1,let arg2 = gameField.arg2, !arg1.isEmpty, !arg2.isEmpty else {return}
+            CoreDataManager.shared.addUserData(key: "שם פרטי", value: arg2,category: "")
+            CoreDataManager.shared.addUserData(key: "שם משפחה", value: arg1, category: "")
         }
     }
     
@@ -471,20 +445,24 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
     }
 
 
-    func setFieldText(tf:UITextFieldForm) {
+    func setFieldText(tf:SearchTextField) {
         canSwipeField = true
-        guard let key = tf.formtextfield?.key, let value = tf.text,!value.replacingOccurrences(of: " ", with: "").isEmpty else {return}
+        guard let value = tf.text,!value.replacingOccurrences(of: " ", with: "").isEmpty else {return}
+        let key = tf.getFieldKey()
         showFormFillingToast(message: key.textFromKey() + " " +  "השתנה בהצלחה\n" + value)
         form.setFieldValue(for: key, newValue: value,page: pageIndex)
+        saveTextFieldValue(key: key, value: value)
         clearField()
     }
+    
     func setFieldSignature(cgImage:CGImage?) {
         canSwipeField = true
         form.setSignature(val: cgImage,page: pageIndex)
         clearField()
     }
+    
       func setFieldDate(_ picker: UIDatePickerForm) {
-        guard  let key = picker.formtextfield?.key else {return}
+        let key = picker.getFieldKey()
         showFormFillingToast(message: key.textFromKey() + " " +  "השתנה בהצלחה\n" + picker.date.dateString())
         let strVal = picker.date.string()
         form.setFieldValue(for: key, newValue: strVal,page: pageIndex)
@@ -503,40 +481,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         progTunnel.heightAnchor.constraint(equalToConstant:100).isActive = true
     }
     
-    class FieldProps {
-         static func isDateField(_ key:String) -> Bool {return key.contains("תאריך")}
-        static  func isLocationField(_ key:String) -> Bool{
-            let k = key.replacingOccurrences(of:"_",with:" ")
-            return k.contains("עיר")}
-         static func isNameField(_ key:String) -> Bool {
-            let fieldKey = key.textFromKey()
-            return fieldKey.contains("שם פרטי")
-         }
-        static func isNumericField(_ key:String) -> Bool{
-            let k = key.textFromKey()
-            return k.contains("מספר") || k.contains("תעודה") || k.contains("תעודת")
-        }
-        static func isPhoneNumberField(_ key:String) -> Bool{
-            let k = key.textFromKey()
-            return k.contains("מספר") || k.contains("פלאפון") || k.contains("טלפון")  || k.contains("נייד")
-        }
-        static func savedKey(for childKey:String) -> String {
-                if childKey == "שם_משפחה" {return "שם_פרטי"}
-                else if childKey == "עיר_מגורים" {return "כתובת"}
-                return childKey
-            }
-        
-         static func isSubField(_ key:String) -> Bool {
-            let k = key.textFromKey()
-            return k.contains("שם משפחה") || k.contains("רחוב") ||  k.contains("מיקוד") || k.contains("חתימה")
-         }
-         static func getRootFieldKey(_ childKey:String) -> String {
-            let k = childKey.textFromKey()
-            if k == ("שם משפחה") || k == ("שם פרטי") {return "שם_מלא"}
-            else if k.contains("עיר") || k.contains("רחוב") {return "כתובת"}
-             return childKey
-         }
-    }
+
     
     func createFieldInput(_ formTextField:FormTextField,_ pageView:UIView) {
         if(FieldProps.isSubField(formTextField.key)) {return}
@@ -608,7 +553,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
                 textFieldGamified.delegate = self
                 textFieldGamified.alertTitle = "הכנס שם מלא"
                 header.text = "שם מלא"
-                self.textFields.append(textFieldGamified)
+                self.gameFields.append(textFieldGamified)
                 
             }else if (FieldProps.isLocationField(formTextField.key)) {
                 let btn = UIButton()
@@ -619,7 +564,9 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
                 }), for: .touchUpInside)
                 stack = UIStackView(arrangedSubviews: [header,btn])
             } else {
-            let textfield = UITextFieldForm(formTextField)
+                let textfield = SearchTextField(formTextField)
+                let saved = fetchTextFieldValues(key: formTextField.key)
+                textfield.filterStrings(saved)
             textfield.attributedPlaceholder = form.getDesign().answerTextFieldAttributes(text: "הזן תשובה")
             textfield.delegate = self
             textfield.layer.borderWidth = 0.1
@@ -751,7 +698,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
     
     func createFieldInput(_ formCheckBox:FormCheckBox,_ pageView:UIView) {
      
-        let question = formCheckBox.key.replacingOccurrences(of: "_", with:" ").capitalized
+        let question = formCheckBox.key
         let header = headerLabel(question)
     
         self.fieldHeaders.append(header.text ?? "")
@@ -820,7 +767,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
     func createFieldInputCategory(category:String,formCheckBoxes:[FormCheckBox],_ pageView:UIView) {
         let isBinaryQuestion = formCheckBoxes.count == 2
         let isMultiChoice = !formCheckBoxes.filter{FormFieldType.fromString($0.props.type) == .categoryMultiChoiceField}.isEmpty
-        let question = category.replacingOccurrences(of: "_", with:" ").capitalized
+        let question = category.capitalized
         let header = headerLabel(question)
         header.numberOfLines = 2
         header.translatesAutoresizingMaskIntoConstraints = false
@@ -882,7 +829,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
                             let yes = UILabel()
                             yes.textAlignment = .center
                             yes.numberOfLines = 2
-                            let question = formCheckBox.key.replacingOccurrences(of: "_", with:" ").capitalized
+                            let question = formCheckBox.key.capitalized
                             yes.attributedText = form.getDesign().questionCheckBoxTextAttributrs(text: question)
                             var cstack:UIStackView?
                             if(formCheckBox.props.bitmap.isEmpty) {
@@ -979,7 +926,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
     }
     
     
-    func createAllFieldInputs(callback:() -> Void = {}) {
+    func createAllFieldInputs() {
         let c = form.getPageCount()
         for i in 0...c {
             fieldHolder[i] = []
@@ -990,7 +937,7 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
         var tfs = page.getTextFields()
         var cbxs = page.getCheckBoxes()
         var categories:[String:[FormCheckBox]] = [:]
-        var pageSignature = page.textfields.first{$0.key.contains("חתימה")}
+        let pageSignature = page.textfields.first{$0.key.contains("חתימה")}
         cbxs.sort { fcbx1, fcbx2 in
             (fcbx1.point.y > fcbx2.point.y) && ( (fcbx1.point.x > fcbx2.point.x))
         }
@@ -1024,7 +971,6 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
             }
             self.pageViews.append(pageView)
         }
-        callback()
     }
     
     func nextField() {
@@ -1117,9 +1063,9 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
                 }
             }
             
-            strongSelf.form.setFieldValue(for: "עיר_מגורים", newValue: city.replacingOccurrences(of: postalcode, with: ""),page: strongSelf.pageIndex)
+            strongSelf.form.setFieldValue(for: "עיר מגורים", newValue: city.replacingOccurrences(of: postalcode, with: ""),page: strongSelf.pageIndex)
             strongSelf.form.setFieldValue(for: "רחוב", newValue: street.replacingOccurrences(of: "Street", with: ""),page: strongSelf.pageIndex)
-            strongSelf.form.setFieldValue(for: "מספר_רחוב", newValue: String(street_num),page: strongSelf.pageIndex)
+            strongSelf.form.setFieldValue(for: "מספר רחוב", newValue: String(street_num),page: strongSelf.pageIndex)
             strongSelf.form.setFieldValue(for: "מיקוד", newValue: postalcode,page: strongSelf.pageIndex)
             strongSelf.clearField()
             btn.setAttributedTitle(NSAttributedString(string: loc.address, attributes: [.foregroundColor : strongSelf.form.getDesign().questionBoxHeaderBgColor(), .font : UIFont.boldSystemFont(ofSize: 14)]), for: .normal)
@@ -1136,6 +1082,8 @@ class FormFieldsViewController: UIViewController,UITextFieldDelegate,FormCheckBo
        return clearedFieldKeys.count
     }
     func allCleared() -> Bool {
+        print(clearedFieldCount())
+        print(totalFieldCount())
         return clearedFieldCount() == totalFieldCount()
     }
     func complete() {

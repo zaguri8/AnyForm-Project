@@ -9,22 +9,51 @@ import Foundation
 import UIKit
 import RoundedSwitch
 import WMSegmentControl
-class UITextFieldForm : UITextField {
-    var formtextfield:FormTextField?
-    convenience init(_ field: FormTextField) {
-        self.init()
-        self.formtextfield = field
+class FieldProps {
+     static func isDateField(_ key:String) -> Bool {return key.contains("תאריך")}
+    static  func isLocationField(_ key:String) -> Bool{
+        let k = key
+        return k.contains("עיר")}
+     static func isNameField(_ key:String) -> Bool {
+        let fieldKey = key
+        return fieldKey.contains("שם פרטי")
+     }
+    static func isNumericField(_ key:String) -> Bool{
+        let k = key
+        return k.contains("מספר") || k.contains("תעודה") || k.contains("תעודת")
     }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    static func isPhoneNumberField(_ key:String) -> Bool{
+        let k = key
+        return k.contains("מספר") || k.contains("פלאפון") || k.contains("טלפון")  || k.contains("נייד")
     }
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    static func isSignatureField(_ key:String) -> Bool {
+        return key.contains("חתימה")
     }
+    static func savedKey(for childKey:String) -> String {
+        if childKey.contains("שם משפחה") {return "שם פרטי"}
+            else if childKey == "עיר מגורים" {return "כתובת"}
+            return childKey
+        }
+    
+     static func isSubField(_ key:String) -> Bool {
+        let k = key.textFromKey()
+        return k.contains("שם משפחה") || k.contains("רחוב") ||  k.contains("מיקוד") || k.contains("חתימה")
+     }
+     static func getRootFieldKey(_ childKey:String) -> String {
+        let k = childKey.textFromKey()
+        if k == ("שם משפחה") || k == ("שם פרטי") {return "שם מלא"}
+        else if k.contains("עיר") || k.contains("רחוב") {return "כתובת"}
+        return childKey
+     }
+    
 }
 
-class UIDatePickerForm : UIDatePicker {
-    var formtextfield:FormTextField?
+class UIDatePickerForm : UIDatePicker, FormUIComponent {
+    func getFieldKey() -> String {
+        return formtextfield.key
+    }
+    
+    var formtextfield:FormTextField!
     let type:FormFieldType = .singleOneChoiceField
     convenience init(_ field: FormTextField) {
         self.init()
@@ -162,25 +191,28 @@ class AnyFormSegmentControl  {
     
  */
 
-class UITextFieldFormGamified : UIView, UITextFieldDelegate{
+class UITextFieldFormGamified : UIView, UITextFieldDelegate, FormUIComponent{
+    func getFieldKey() -> String {
+        return field.key
+    }
+    
     var textColor:UIColor = .black
     var arg1:String?
     var arg2:String?
     
-    var field:FormTextField?
+    var field:FormTextField!
     var savedData:String   {
         set {
             animateLabelTextChange(text: newValue)
-            print(newValue)
         }
         get {
             ""
         }
     }
     
-    var design:FormDesign?
+    var design:FormDesign!
     var alertTitle:String?
-    var delegate:FormTextFieldDelegate?
+    var delegate:FormTextFieldDelegate!
     
     var imageView:UIImageView = {
         let image = UIImageView()
@@ -191,7 +223,7 @@ class UITextFieldFormGamified : UIView, UITextFieldDelegate{
         let lbl = UILabel()
         lbl.font = UIFont.boldSystemFont(ofSize: 13.5)
         lbl.highlightedTextColor = .blue
-        lbl.textColor = design?.holderBackgroundColor()
+        lbl.textColor = design.holderBackgroundColor()
         lbl.textAlignment = .right
         lbl.text = savedData.isEmpty ?  "לחץ כאן" : savedData
         lbl.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 200))
@@ -238,7 +270,8 @@ class UITextFieldFormGamified : UIView, UITextFieldDelegate{
                 nameTextField.delegate = self
                 nameTextField.textAlignment = .right
                 nameTextField.placeholder = "הכנס שם פרטי"
-                if let data = AnyFormHelper.shared.data, let firstname = data.first(where: {$0.key == "שם_פרטי"}) {
+                let data = AnyFormHelper.shared.data
+                if let firstname = data.first(where: {$0.key == "שם פרטי"}) {
                     nameTextField.text = firstname.value
                 }else {
                     nameTextField.text = strong.arg2
@@ -250,7 +283,8 @@ class UITextFieldFormGamified : UIView, UITextFieldDelegate{
                 lastNameTextField.delegate = self
                 lastNameTextField.textAlignment = .right
                 lastNameTextField.placeholder = "הכנס שם משפחה"
-                if let data = AnyFormHelper.shared.data, let lastname = data.first(where: {$0.key == "שם_משפחה"}) {
+                let data = AnyFormHelper.shared.data
+                if let lastname = data.first(where: {$0.key == "שם משפחה"}) {
                     lastNameTextField.text = lastname.value
                 }else {
                     lastNameTextField.text = strong.arg1
@@ -294,7 +328,7 @@ class UITextFieldFormGamified : UIView, UITextFieldDelegate{
                 self?.label.font = .boldSystemFont(ofSize: 8.5)
             }, delay: 0, duration: 0.1)
         }, delay: 0, duration: 0.3)
-        field?.value = text
+        field.value = text
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -305,20 +339,28 @@ class UITextFieldFormGamified : UIView, UITextFieldDelegate{
 }
 
 
-class UICheckBoxForm : CheckBox {
-    var formcheckbox:FormCheckBox?
-    convenience init(_ field: FormCheckBox) {
-        self.init()
+class UICheckBoxForm : CheckBox,FormUIComponent {
+    
+    var formcheckbox:FormCheckBox!
+     init(_ field: FormCheckBox) {
         self.formcheckbox = field
+        super.init(frame:CGRect())
     }
-    func isMultiChoiceField() -> Bool {
-        guard let type = formcheckbox?.props.type else {return false}
-        return FormFieldType.fromString(type) == .categoryMultiChoiceField
-    }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
+    
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    func isMultiChoiceField() -> Bool {
+        let type = formcheckbox.props.type
+        return FormFieldType.fromString(type) == .categoryMultiChoiceField
+    }
+    func getFieldKey() -> String {
+        return formcheckbox.key
+    }
+}
+
+
+protocol FormUIComponent {
+    func getFieldKey() -> String
 }

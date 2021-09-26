@@ -28,6 +28,9 @@ class CheckBox: UIButton {
             }
         }
     }
+    lazy var Bool:String = {
+       return isChecked ? "true" : "false"
+    }()
         
     override func awakeFromNib() {
         self.addTarget(self, action:#selector(buttonClicked(sender:)), for: UIControl.Event.touchUpInside)

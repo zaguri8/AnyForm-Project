@@ -4,6 +4,10 @@
         <attribute name="firstEntrance" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="userdata" toMany="YES" deletionRule="Nullify" destinationEntity="UserData"/>
     </entity>
+    <entity name="SavedFields" representedClassName="SavedFields" syncable="YES">
+        <attribute name="fieldKey" optional="YES" attributeType="String"/>
+        <attribute name="saved" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+    </entity>
     <entity name="UserData" representedClassName="UserData" parentEntity="AnyFormUser" syncable="YES">
         <attribute name="category" attributeType="String" defaultValueString=""/>
         <attribute name="key" attributeType="String" defaultValueString=""/>
@@ -11,6 +15,7 @@
     </entity>
     <elements>
         <element name="AnyFormUser" positionX="-54" positionY="-18" width="128" height="59"/>
+        <element name="SavedFields" positionX="-45" positionY="18" width="128" height="59"/>
         <element name="UserData" positionX="-54" positionY="0" width="128" height="74"/>
     </elements>
 </model>

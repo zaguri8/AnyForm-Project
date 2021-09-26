@@ -29,6 +29,7 @@ struct FormTextField : Codable {
         self.props = props
     }
 }
+
 //// an object type used to reference a check box in a form
 struct FormCheckBox : Codable {
     var key:String

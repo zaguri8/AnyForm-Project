@@ -19,10 +19,6 @@ class Form  {
     init(type:FormType, design:FormDesign) {
         self.type = type
         self.design = design
-        for i in 1...type.getPages() {
-            let page = FormPage(index: i)
-            pages.append(page)
-        }
         loadForm()
     }
     
@@ -85,6 +81,23 @@ class Form  {
         self.pages[page].setSignature(val: val)
     }
     
+    func hasTextField(key:String) -> Bool {
+        for p in pages {
+            if p.getTextFields().contains(where: {$0.key == key}) {
+                return true
+            }
+        }
+        return false
+    }
+    func hasCheckBox(key:String) -> Bool {
+        for p in pages {
+            if p.getCheckBoxes().contains(where: {$0.key == key}) {
+                return true
+            }
+        }
+        return false
+    }
+
     /// **Load**
     /// we first create a reference to the generated file from template generator
     /// we then use   **JSONDecoder** to instantiate a new template holder
@@ -105,6 +118,10 @@ class Form  {
                     let pData = try JSONSerialization.data(withJSONObject: pageTemplateData, options: [])
                     let templatePage = try decoder.decode(FormTemplatePage.self, from: pData)
                     pageTemplates.append(templatePage)
+            }
+            for i in 1...formPages.count {
+                let page = FormPage(index: i)
+                pages.append(page)
             }
             
             for (index,page) in pages.enumerated() {
@@ -155,7 +172,7 @@ class Form  {
             if let doc: PDFDocument = PDFDocument(url: unfilledPath) {
                 var i = 0
                 var page = doc.page(at: i)
-                while page != nil {
+                while (page != nil && i < strongSelf.pages.count) {
                     let checkboxfields = strongSelf.getCheckBoxes(page: i)
                     let textFields = strongSelf.getTextFields(page:i)
                 if !checkboxfields.isEmpty {
@@ -179,7 +196,7 @@ class Form  {
                     page?.addAnnotation(freeTextAnnotation)
                 }
                 if let signature = strongSelf.getPage(at: i).signature, let signatureField = strongSelf.getTextFields(page: i).first(where: { field in
-                    field.key.contains("חתימה")
+                    FieldProps.isSignatureField(field.key)
                 }) {
                     let bounds = CGRect(x: signatureField.point.x, y: signatureField.point.y, width: 100, height: 50)
                     let x = PDFImageAnnotation(imageBounds: bounds, image: signature)

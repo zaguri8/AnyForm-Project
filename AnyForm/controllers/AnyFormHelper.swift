@@ -15,7 +15,7 @@ class AnyFormHelper {
     }
     
     func getUserStoredData() -> [(String , String)] {
-        guard let nData = CoreDataManager.shared.getUserData() else {return []}
+        let nData = CoreDataManager.shared.getUserData()
         var nDataClean:[(String,String)] = []
         nData.forEach { data in
             guard let key = data.key, let val = data.value else {return}

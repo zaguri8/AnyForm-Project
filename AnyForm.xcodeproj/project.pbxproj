@@ -45,6 +45,9 @@
 		D245779426BB430C00C7FED8 /* AnyFormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245779326BB430C00C7FED8 /* AnyFormHelper.swift */; };
 		D269FF4C26D6D4A9004973DF /* Tube.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269FF4A26D6D4A9004973DF /* Tube.swift */; };
 		D269FF4D26D6D4A9004973DF /* Tube.xib in Resources */ = {isa = PBXBuildFile; fileRef = D269FF4B26D6D4A9004973DF /* Tube.xib */; };
+		D26FEB4426F621B200F62FE0 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FEB4326F621B200F62FE0 /* SearchTextField.swift */; };
+		D26FEB4F26F628B600F62FE0 /* SavedFields+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FEB4D26F628B600F62FE0 /* SavedFields+CoreDataClass.swift */; };
+		D26FEB5026F628B600F62FE0 /* SavedFields+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26FEB4E26F628B600F62FE0 /* SavedFields+CoreDataProperties.swift */; };
 		D2B5F9DD26E0F60B0031D700 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5F98E26E0F60B0031D700 /* Array+Extensions.swift */; };
 		D2B5F9DE26E0F60B0031D700 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5F98F26E0F60B0031D700 /* UISegmentedControl+Extensions.swift */; };
 		D2B5F9DF26E0F60B0031D700 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B5F99026E0F60B0031D700 /* UIImageView+Extensions.swift */; };
@@ -146,6 +149,9 @@
 		D245779326BB430C00C7FED8 /* AnyFormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFormHelper.swift; sourceTree = "<group>"; };
 		D269FF4A26D6D4A9004973DF /* Tube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tube.swift; sourceTree = "<group>"; };
 		D269FF4B26D6D4A9004973DF /* Tube.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tube.xib; sourceTree = "<group>"; };
+		D26FEB4326F621B200F62FE0 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		D26FEB4D26F628B600F62FE0 /* SavedFields+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SavedFields+CoreDataClass.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/SavedFields+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		D26FEB4E26F628B600F62FE0 /* SavedFields+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SavedFields+CoreDataProperties.swift"; path = "/Users/nadavavnon/Documents/Xcode Projects/AnyForm-Project/AnyForm/coredata/SavedFields+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		D2B5F98E26E0F60B0031D700 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		D2B5F98F26E0F60B0031D700 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
 		D2B5F99026E0F60B0031D700 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
@@ -259,6 +265,8 @@
 		061755A126B281C90051B18D /* coredata */ = {
 			isa = PBXGroup;
 			children = (
+				D26FEB4D26F628B600F62FE0 /* SavedFields+CoreDataClass.swift */,
+				D26FEB4E26F628B600F62FE0 /* SavedFields+CoreDataProperties.swift */,
 				D2B5FA1326E0F7730031D700 /* AnyFormUser+CoreDataClass.swift */,
 				D2B5FA1426E0F7730031D700 /* AnyFormUser+CoreDataProperties.swift */,
 				D2B5FA1226E0F7730031D700 /* UserData+CoreDataClass.swift */,
@@ -327,6 +335,7 @@
 				D269FF4A26D6D4A9004973DF /* Tube.swift */,
 				D269FF4B26D6D4A9004973DF /* Tube.xib */,
 				D2146ECB26DAC89A00645275 /* FormMenu.swift */,
+				D26FEB4326F621B200F62FE0 /* SearchTextField.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -803,6 +812,7 @@
 				D2B5FA0E26E0F60B0031D700 /* SegmentedControl.swift in Sources */,
 				D2B5FA0C26E0F60B0031D700 /* LikeButtonCell.swift in Sources */,
 				D2B5FA1126E0F60B0031D700 /* Button.swift in Sources */,
+				D26FEB5026F628B600F62FE0 /* SavedFields+CoreDataProperties.swift in Sources */,
 				0617556926AC36BD0051B18D /* FormPickerViewController.swift in Sources */,
 				D2B5FA1626E0F7730031D700 /* UserData+CoreDataClass.swift in Sources */,
 				061755BC26B49B270051B18D /* ProfileViewController.swift in Sources */,
@@ -820,11 +830,13 @@
 				D2B5F9EC26E0F60B0031D700 /* Locale+Extensions.swift in Sources */,
 				D2B5F9F226E0F60B0031D700 /* LocaleInfo.swift in Sources */,
 				D2B5FA0826E0F60B0031D700 /* ItemWithImage.swift in Sources */,
+				D26FEB4F26F628B600F62FE0 /* SavedFields+CoreDataClass.swift in Sources */,
 				D2B5FA0D26E0F60B0031D700 /* Label.swift in Sources */,
 				D2B5F9E726E0F60B0031D700 /* UISearchBar+Extensions.swift in Sources */,
 				06785FC826A3A08F00E565E2 /* FormView.swift in Sources */,
 				D2B5F9E926E0F60B0031D700 /* UIAlertController+Extensions.swift in Sources */,
 				0617559226AE2F2A0051B18D /* FormProudDesign.swift in Sources */,
+				D26FEB4426F621B200F62FE0 /* SearchTextField.swift in Sources */,
 				D2B5F9F526E0F60B0031D700 /* CurrencyCell.swift in Sources */,
 				D2B5F9E226E0F60B0031D700 /* Date+Extension.swift in Sources */,
 				D2B5FA1726E0F7730031D700 /* AnyFormUser+CoreDataClass.swift in Sources */,

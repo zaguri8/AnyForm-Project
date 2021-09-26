@@ -18,4 +18,8 @@ public class UserData: AnyFormUser {
         userData.category = category
         return userData
     }
+    
+    func getKey() -> String {
+        return key!
+    }
 }

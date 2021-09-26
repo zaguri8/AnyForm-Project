@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 class CoreDataManager {
     static let shared: CoreDataManager = CoreDataManager()
-    lazy var user:AnyFormUser? = nil
+    var user:AnyFormUser?
     
     lazy var persistentContainer: NSPersistentContainer = {
         
@@ -41,8 +41,9 @@ class CoreDataManager {
     func getUser() -> AnyFormUser? {
         return user
     }
-    func getUserData() -> [UserData]? {
-        return user?.getUserData()
+    func getUserData() -> [UserData] {
+        guard let data = user?.getUserData() else {return []}
+        return data
     }
     
     
@@ -59,6 +60,33 @@ class CoreDataManager {
         user.addToUserdata(userData)
         saveContext()
     }
+    
+    func getSavedFieldValues(_ key:String) -> [String] {
+        let context = persistentContainer.viewContext
+        let request:NSFetchRequest<SavedFields> = SavedFields.fetchRequest()
+        do {
+        let res =  try context.fetch(request)
+        guard let savedField = (res.first {$0.fieldKey == key}) else {return []}
+            return savedField.saved!
+        }catch{
+            print(error)
+            return []
+        }
+    }
+    
+    func saveFieldValue(key:String,val:String) {
+        let context = persistentContainer.viewContext
+        let request:NSFetchRequest<SavedFields>  = SavedFields.fetchRequest()
+        guard let res = try? context.fetch(request) else {return}
+        if let savedField = (res.first{$0.fieldKey == key}) {
+    
+            savedField.save(val)
+        }else {
+            SavedFields.insertNewSavedField(key: key, initial: [val])
+        }
+        saveContext()
+    }
+    
     
     func fetchUser() {
         let context = persistentContainer.viewContext

@@ -57,14 +57,6 @@ enum FormType {
         guard let url = URL(string: str) else {return nil}
         return url
     }
-    func getPages() -> Int {
-        switch self {
-        case .form101:
-            return 1
-        case .loanrequest:
-            return 1
-        }
-    }
     
     func getFormTemplateFile() -> String {
         switch self {

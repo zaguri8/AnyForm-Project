@@ -48,7 +48,6 @@ class CoreDataManager {
     
     
     func addUserData(key:String,value:String,category:String) {
-        print("adding user data: \(key) + \(value)")
         guard let user = self.user,!value.isEmpty else {
             return}
         for n in user.getUserData() {
@@ -94,7 +93,6 @@ class CoreDataManager {
         do {
             let result = try context.fetch(request)
             guard !result.isEmpty else {
-                print("Empty user list")
                 let newUser  = AnyFormUser(context: context)
                 newUser.firstEntrance = true
                 self.user =  newUser

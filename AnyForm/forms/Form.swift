@@ -110,16 +110,15 @@ class Form  {
             return}
         do {
             let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
             guard let formData = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] else {return}
-            let formPages = formData["pages"] as! [Any]
+            let formPages = formData["pages"] as! [[String:Any]]
             var pageTemplates:[FormTemplatePage] = []
             for pageTemplateData in formPages {
-                    let pData = try JSONSerialization.data(withJSONObject: pageTemplateData, options: [])
-                    let templatePage = try decoder.decode(FormTemplatePage.self, from: pData)
+                    let templatePage = FormTemplatePage.objectFromData(pageTemplateData)
                     pageTemplates.append(templatePage)
             }
-            for i in 1...formPages.count {
+            print(pageTemplates.count)
+            for i in 0...formPages.count - 1{
                 let page = FormPage(index: i)
                 pages.append(page)
             }
@@ -177,17 +176,17 @@ class Form  {
                     let textFields = strongSelf.getTextFields(page:i)
                 if !checkboxfields.isEmpty {
                     checkboxfields.forEach { field in
-                        let freeTextAnnotation = PDFAnnotation(bounds: CGRect(x: field.point.x, y: field.point.y, width: 200, height: 50), forType: .freeText, withProperties: nil)
+                        let freeTextAnnotation = PDFAnnotation(bounds: CGRect(x: field.point.x, y:field.point.y - ( page!.bounds(for: .mediaBox).height) - 10, width: 200, height: 50), forType: .freeText, withProperties: nil)
                         freeTextAnnotation.fontColor = .black
                         // We need to set this to clear, otherwise the background will be yellow by default.
                         freeTextAnnotation.color = .clear
                         freeTextAnnotation.contents = field.checked ? "✓" : ""
                         freeTextAnnotation.font = UIFont(name: "TimesNewRomanPSMT", size: 10)
-                        page?.addAnnotation(freeTextAnnotation)
+                        page!.addAnnotation(freeTextAnnotation)
                     }
                 }
                 for field in textFields {
-                    let freeTextAnnotation = PDFAnnotation(bounds: CGRect(x: field.point.x, y: field.point.y, width: 200, height: 50), forType: .freeText, withProperties: nil)
+                    let freeTextAnnotation = PDFAnnotation(bounds: CGRect(x: field.point.x, y: field.point.y - ( page!.bounds(for: .mediaBox).height) - 8, width: 200, height: 50), forType: .freeText, withProperties: nil)
                     freeTextAnnotation.fontColor = .black
                     // We need to set this to clear, otherwise the background will be yellow by default.
                     freeTextAnnotation.color = .clear

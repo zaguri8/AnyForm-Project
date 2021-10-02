@@ -130,6 +130,126 @@ extension PDFView {
     }
 }
 extension UIView {
+    
+    func enableCustomConstraints() {
+        if translatesAutoresizingMaskIntoConstraints  {
+            translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
+    func constraintTopToTopOf(_ view:UIView,_ spacing:CGFloat = 0,safe:Bool = false) {
+        enableCustomConstraints()
+        let anchor:NSLayoutAnchor = safe ? view.safeAreaLayoutGuide.topAnchor : view.topAnchor
+        let constraint = topAnchor.constraint(equalTo: anchor,constant: spacing)
+        constraint.identifier = "top" + String(hash)
+        constraint.isActive = true
+    }
+    
+    func constraintTopToBottomOf(_ view:UIView,_ spacing:CGFloat = 0,safe:Bool = false) {
+        enableCustomConstraints()
+        let anchor:NSLayoutAnchor = safe ? view.safeAreaLayoutGuide.bottomAnchor : view.bottomAnchor
+        let constraint = topAnchor.constraint(equalTo: anchor,constant: spacing)
+        constraint.identifier = "top" + String(hash)
+        constraint.isActive = true
+    }
+    
+    func constraintBottomToTopOf(_ view:UIView,_ spacing:CGFloat = 0,safe:Bool = false) {
+        enableCustomConstraints()
+        let anchor:NSLayoutAnchor = safe ? view.safeAreaLayoutGuide.topAnchor : view.topAnchor
+        let constraint =  bottomAnchor.constraint(equalTo: anchor,constant: -spacing)
+        constraint.identifier = "bottom" + String(hash)
+        constraint.isActive = true
+    }
+    
+    func constraintBottomToBottomOf(_ view:UIView,_ spacing:CGFloat = 0,safe:Bool = false) {
+        enableCustomConstraints()
+        let anchor:NSLayoutAnchor = safe ? view.safeAreaLayoutGuide.bottomAnchor : view.bottomAnchor
+        let constraint =  bottomAnchor.constraint(equalTo: anchor,constant: -spacing)
+        constraint.identifier = "bottom" + String(hash)
+        constraint.isActive = true
+    }
+    
+    
+    func constraintStartToStartOf(_ view:UIView,_ spacing:CGFloat = 0,safe:Bool = false) {
+        enableCustomConstraints()
+        let anchor:NSLayoutAnchor = safe ? view.safeAreaLayoutGuide.leadingAnchor : view.leadingAnchor
+        let constraint = leadingAnchor.constraint(equalTo: anchor,constant: spacing)
+        constraint.identifier = "start" + String(hash)
+        constraint.isActive = true
+    }
+    
+    func constraintStartToEndOf(_ view:UIView,_ spacing:CGFloat = 0,safe:Bool = false) {
+        enableCustomConstraints()
+        let anchor:NSLayoutAnchor = safe ? view.safeAreaLayoutGuide.trailingAnchor : view.trailingAnchor
+        let constraint = leadingAnchor.constraint(equalTo: anchor,constant: spacing)
+        constraint.identifier = "start" + String(hash)
+        constraint.isActive = true
+    }
+    
+    func constraintEndToStartOf(_ view:UIView,_ spacing:CGFloat = 0,safe:Bool = false) {
+        enableCustomConstraints()
+        let anchor:NSLayoutAnchor = safe ? view.safeAreaLayoutGuide.leadingAnchor : view.leadingAnchor
+        let constraint = trailingAnchor.constraint(equalTo: anchor,constant: -spacing)
+        constraint.identifier = "end" +  String(hash)
+        constraint.isActive = true
+    }
+    
+    func constraintEndToEndOf(_ view:UIView,_ spacing:CGFloat = 0,safe:Bool = false) {
+        enableCustomConstraints()
+        let anchor:NSLayoutAnchor = safe ? view.safeAreaLayoutGuide.trailingAnchor : view.trailingAnchor
+        let constraint =  trailingAnchor.constraint(equalTo: anchor,constant: -spacing)
+        constraint.identifier = "end" + String(hash)
+        constraint.isActive = true
+    }
+    
+    func constraintCenterHorizontallyIn(_ view:UIView,_ spacing:CGFloat = 0) {
+        enableCustomConstraints()
+        let constraint =  centerXAnchor.constraint(equalTo: view.centerXAnchor,constant: spacing)
+        constraint.identifier = "centerX" + String(hash)
+        constraint.isActive = true
+    }
+    func constraintCenterVerticallyIn(_ view:UIView,_ spacing:CGFloat = 0) {
+        enableCustomConstraints()
+        let constraint = centerYAnchor.constraint(equalTo: view.centerYAnchor,constant: spacing)
+        constraint.identifier = "centerY" + String(hash)
+        constraint.isActive = true
+    }
+    func constraintHeight(_ value: CGFloat) {
+        enableCustomConstraints()
+        let constraint = heightAnchor.constraint(equalToConstant: value)
+        constraint.identifier = "height" + String(hash)
+        constraint.isActive = true
+    }
+    func constraintWidth(_ value:CGFloat) {
+        enableCustomConstraints()
+        let constraint = widthAnchor.constraint(equalToConstant: value)
+        constraint.identifier = "width" + String(hash)
+        constraint.isActive = true
+    }
+    
+    func animateConstraint(_ type:ConstraintType,constant:CGFloat,duration:TimeInterval = 0.5) {
+        var constraint:NSLayoutConstraint?
+        if type == .height ||
+            type == .width {
+            constraint = constraints.first { $0.identifier == type.rawValue + String(hash)}
+        }else {
+            constraint = superview?.constraints.first {$0.identifier == type.rawValue + String(hash)}
+            
+        }
+        constraint?.constant = constant
+
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.8, options: []) {
+            self.superview?.layoutIfNeeded()
+            self.layoutIfNeeded()
+        }
+    }
+    enum ConstraintType :String {
+        case top = "top",bottom = "bottom",
+             start = "start",end = "end",
+             centerX = "centerX",centerY = "centerY",
+             height = "height",width = "width"
+    }
+    
     enum Side {
             case top
             case bottom

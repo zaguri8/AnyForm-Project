@@ -40,6 +40,7 @@ class FormPage {
             for (i,tf) in self.textfields.enumerated() {
                 if tf.key == key {
                     self.textfields[i].value = value
+                    print("SETTINGS",value,key)
                 }
             }
             return
@@ -47,6 +48,7 @@ class FormPage {
         for (i,cb) in self.formcheckboxes.enumerated() {
             if cb.key == key {
                 self.formcheckboxes[i].checked = check
+                print("SETTINGS",value,key)
             }
         }
     }

@@ -23,7 +23,7 @@ class FormCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var formName: UILabel!
     @IBOutlet weak var formView: FormView!
     var type:FormType?
-    var delegate:FormPickerDelegate?
+    weak var delegate:FormPickerDelegate?
     
     /// `Form Cell Populate`
     /// populate the form's cell with a pdf document

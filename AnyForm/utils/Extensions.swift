@@ -115,6 +115,12 @@ extension UIViewController {
     
        
 }
+extension String {
+    var digits: String {
+        return components(separatedBy: CharacterSet.decimalDigits.inverted)
+            .joined()
+    }
+}
 extension Date {
     func string() -> String {
         let dateComponents = NSCalendar.current.dateComponents([.year, .month, .day], from: self)
@@ -227,7 +233,7 @@ extension UIView {
         constraint.isActive = true
     }
     
-    func animateConstraint(_ type:ConstraintType,constant:CGFloat,duration:TimeInterval = 0.5) {
+    func animateConstraint(_ type:ConstraintType,constant:CGFloat,duration:TimeInterval = 0.5,cancelLayout:Bool = false) {
         var constraint:NSLayoutConstraint?
         if type == .height ||
             type == .width {
@@ -239,7 +245,9 @@ extension UIView {
         constraint?.constant = constant
 
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.8, options: []) {
+            if !cancelLayout {
             self.superview?.layoutIfNeeded()
+            }
             self.layoutIfNeeded()
         }
     }
@@ -303,7 +311,7 @@ extension UIView {
         layer.colors = [color0,color1,color2,color3,color4,color5,color6]
         self.layer.insertSublayer(layer, at: 0)
     }
-    func addShadowAround(size:CGSize) {
+    func addShadowAround(size:CGSize, offset:CGSize? = nil) {
         let shadowSize : CGFloat = 15.0
         let shadowPath = UIBezierPath(rect: CGRect(x: -shadowSize / 2,
                                                     y: -shadowSize / 2,
@@ -311,10 +319,22 @@ extension UIView {
                                                     height: size.height +  shadowSize))
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.black.withAlphaComponent(0.4).cgColor
+        if let offset = offset {
+            self.layer.shadowOffset = offset
+        }else {
         self.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        }
         self.layer.shadowOpacity = 0.2
         self.layer.shadowRadius = 8
         self.layer.shadowPath = shadowPath.cgPath
+    }
+    func removeShadow() {
+        self.layer.masksToBounds = true
+        self.layer.shadowColor = .none
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.layer.shadowOpacity = 0
+        self.layer.shadowRadius = 0
+        self.layer.shadowPath = nil
     }
 }
 
@@ -327,5 +347,38 @@ extension CGPoint {
 extension String {
     func textFromKey() -> String {
        return self.replacingOccurrences(of: "_", with: " ")
+    }
+}
+extension NSPointerArray {
+    func addObject(_ object: AnyObject?) {
+        guard let strongObject = object else { return }
+
+        let pointer = Unmanaged.passUnretained(strongObject).toOpaque()
+        addPointer(pointer)
+    }
+
+    func insertObject(_ object: AnyObject?, at index: Int) {
+        guard index < count, let strongObject = object else { return }
+
+        let pointer = Unmanaged.passUnretained(strongObject).toOpaque()
+        insertPointer(pointer, at: index)
+    }
+
+    func replaceObject(at index: Int, withObject object: AnyObject?) {
+        guard index < count, let strongObject = object else { return }
+
+        let pointer = Unmanaged.passUnretained(strongObject).toOpaque()
+        replacePointer(at: index, withPointer: pointer)
+    }
+
+    func object(at index: Int) -> AnyObject? {
+        guard index < count, let pointer = self.pointer(at: index) else { return nil }
+        return Unmanaged<AnyObject>.fromOpaque(pointer).takeUnretainedValue()
+    }
+
+    func removeObject(at index: Int) {
+        guard index < count else { return }
+
+        removePointer(at: index)
     }
 }

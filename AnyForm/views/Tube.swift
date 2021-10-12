@@ -17,7 +17,8 @@ class Tube: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    func initTube(tube:String,cleared:[String] = []) {
+    func initTube(tube:String,cleared:Set<String> = []) {
+        
         tubeLabel.text = tube
         tubeLabel.textColor = .black
         rightPipe.addBorders(edges: [.top,.bottom], color: .black, width: 0.6)
@@ -30,7 +31,7 @@ class Tube: UICollectionViewCell {
             tubeLabel.textColor = .white
         }
     }
-    func isCleared(from:[String]) -> Bool {
+    func isCleared(from:Set<String>) -> Bool {
         return from.contains(tubeLabel.text!)
     }
     func clear() {

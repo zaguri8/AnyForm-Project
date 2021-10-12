@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol FormPickerDelegate {
+protocol FormPickerDelegate: AnyObject  {
     func didPickForm(type:FormType)
 }
 
@@ -14,7 +14,6 @@ class FormPickerViewController: UIViewController , UICollectionViewDelegate , UI
     func didPickForm(type: FormType) {
         performSegue(withIdentifier: "startformedit", sender: type)
     }
-    
     var types:[FormType] = [.form101,.loanrequest]
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -28,17 +27,21 @@ class FormPickerViewController: UIViewController , UICollectionViewDelegate , UI
         }
     }
     
+    @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {
+        navigationController?.popToRootViewController(animated: true)
+        showNavBar()
+        showTabBar()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "formCollectionCell", for: indexPath) as! FormCollectionViewCell
         cell.delegate = self
         cell.populate(type: types[indexPath.row])
         return cell
     }
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 180, height: 200)
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "startformedit", sender: types[indexPath.row])
     }
     
     

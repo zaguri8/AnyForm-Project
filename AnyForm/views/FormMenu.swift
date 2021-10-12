@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol FormMenuDelegate {
-
+protocol FormMenuDelegate : AnyObject {
+    func showFormButtonClicked()
 }
 
 class FormMenu: UIView {
-    var menuDelegate:FormMenuDelegate?
+    weak var menuDelegate:FormMenuDelegate?
     
     lazy var tabs:[UIButton] = {
         var tabs:[UIButton] = []
@@ -22,8 +22,8 @@ class FormMenu: UIView {
         }
         
         // Second tab - Show tunnel
-        let tunnel = menuButton(title: "שדות") { tapAction in
-            //..
+        let tunnel = menuButton(title: "שדות") {[weak self] tapAction in
+            self?.menuDelegate?.showFormButtonClicked()
         }
         // Third tab preferences
         let prefrences = menuButton(title: "העדפות משתמש") { tapAction in
@@ -69,6 +69,7 @@ class FormMenu: UIView {
     override func didMoveToSuperview() {
         // Maybe stuff happening when view enters the screen?
     }
+    
     var tabStackConstraints:[NSLayoutConstraint] = []
     override init(frame: CGRect) {
         super.init(frame: frame)

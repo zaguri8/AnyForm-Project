@@ -12,7 +12,7 @@ import PDFKit
 
 class Form  {
     var pages:[FormPage] = []
-    let design:FormDesign
+    weak var design:FormDesign?
     let type:FormType
     
     
@@ -23,7 +23,7 @@ class Form  {
     }
     
     func getDesign() -> FormDesign {
-        return design
+        return design ?? FormElegantDesign()
     }
     func getPage(at:Int) -> FormPage {
         return pages[at]
@@ -117,7 +117,6 @@ class Form  {
                     let templatePage = FormTemplatePage.objectFromData(pageTemplateData)
                     pageTemplates.append(templatePage)
             }
-            print(pageTemplates.count)
             for i in 0...formPages.count - 1{
                 let page = FormPage(index: i)
                 pages.append(page)
@@ -197,7 +196,7 @@ class Form  {
                 if let signature = strongSelf.getPage(at: i).signature, let signatureField = strongSelf.getTextFields(page: i).first(where: { field in
                     FieldProps.isSignatureField(field.key)
                 }) {
-                    let bounds = CGRect(x: signatureField.point.x, y: signatureField.point.y, width: 100, height: 50)
+                    let bounds = CGRect(x: signatureField.point.x - 50, y: signatureField.point.y + 20, width: 100, height: 50)
                     let x = PDFImageAnnotation(imageBounds: bounds, image: signature)
                     x.page = page
                     x.backgroundColor = .clear

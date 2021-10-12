@@ -50,16 +50,19 @@ class CoreDataManager {
     func addUserData(key:String,value:String,category:String) {
         guard let user = self.user,!value.isEmpty else {
             return}
+        var exists = false
         for n in user.getUserData() {
             if (n.key == key) {
-                user.removeFromUserdata(n)
+                n.value = value
+                exists = true
             }
         }
+        if !exists {
         let userData = UserData.insertUserData(key: key, value: value, category: category)
         user.addToUserdata(userData)
+        }
         saveContext()
     }
-    
     func getSavedFieldValues(_ key:String) -> [String] {
         let context = persistentContainer.viewContext
         let request:NSFetchRequest<SavedFields> = SavedFields.fetchRequest()

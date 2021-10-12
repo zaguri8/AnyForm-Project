@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-protocol FormDesign {
+protocol FormDesign : AnyObject {
     func questionCounterAttributes(text:String) -> NSAttributedString
     func questionTextAttributes(text:String) -> NSAttributedString
     func questionCheckBoxTextAttributrs(text:String) -> NSAttributedString

@@ -7,12 +7,21 @@
 
 import Foundation
 class Networking {
-    func getForm(type:FormType,callback:@escaping (Data?,Error?)->Void) {
+    static var globalFormViewData:Data?
+    static var formCachedData:[FormType : Data] = [:]
+      func getForm(type:FormType,callback:@escaping (Data?,Error?)->Void) {
+          if let globalFormViewData = Networking.formCachedData[type] {
+              DispatchQueue.main.async {
+              callback(globalFormViewData,nil)
+              }
+              return
+          }
         DispatchQueue.global(qos:.userInteractive).async {
             guard let url = type.getFormURL() else {return}
             do {
                 var data:Data?
                 data = try Data(contentsOf: url)
+                Networking.formCachedData[type] = data
                 DispatchQueue.main.async {
                     callback(data,nil)
                 }

@@ -15,8 +15,8 @@ class FieldProps {
         let k = key
         return k.contains("עיר")}
      static func isNameField(_ key:String) -> Bool {
-        let fieldKey = key
-        return fieldKey.contains("שם פרטי")
+         let fieldKey = key
+         return fieldKey.contains("שם פרטי") || fieldKey.contains("שם משפחה") || fieldKey.contains("שם מלא")
      }
     static func isNumericField(_ key:String) -> Bool{
         let k = key
@@ -136,38 +136,40 @@ class AnyFormSignatureField: UIView {
     }
 }
 class AnyFormSegmentControl  {
-    var segmentControl:WMSegment
-    var items: [FormCheckBox]
-    var delegate:FormCheckBoxDelegate!
-    init (items:[FormCheckBox], segmentControl:WMSegment,delegate: FormCheckBoxDelegate,defaultColor:UIColor) {
+    weak var segmentControl:WMSegment?
+    weak var delegate:FormCheckBoxDelegate!
+    init (items:[FormCheckBox], segmentControl:WMSegment,delegate: FormCheckBoxDelegate,defaultColor:UIColor?) {
         self.segmentControl = segmentControl
-        self.items = items
-        self.segmentControl.buttonTitles = items.compactMap({ item in
+        self.segmentControl?.buttonTitles = items.compactMap({ item in
            return  item.key.textFromKey()
         }).joined(separator: ",")
-        self.segmentControl.buttonImages = items.compactMap({ item in
+        for item in items {
+            optionListSelection.append((item.props.category,item.checked,key:item.key))
+        }
+        self.segmentControl?.buttonImages = items.compactMap({ item in
             item.props.bitmap
         }).joined(separator: ",")
         self.delegate = delegate
-        self.setupViews()
-        self.segmentControl.selectorColor = defaultColor
-        self.segmentControl.selectorTextColor = defaultColor
-        self.segmentControl.isUserInteractionEnabled = true
-        self.segmentControl.selectorType = .bottomBar
-        self.segmentControl.normalFont = UIFont.boldSystemFont(ofSize: 16)
-        self.segmentControl.SelectedFont = UIFont.boldSystemFont(ofSize: 16)
-        self.segmentControl.isRounded = true
+        self.setupViews(items)
+        self.segmentControl?.selectorColor = defaultColor ?? .black
+        self.segmentControl?.selectorTextColor = defaultColor ?? .black
+        self.segmentControl?.isUserInteractionEnabled = true
+        self.segmentControl?.selectorType = .bottomBar
+        self.segmentControl?.normalFont = UIFont.boldSystemFont(ofSize: 16)
+        self.segmentControl?.SelectedFont = UIFont.boldSystemFont(ofSize: 16)
+        self.segmentControl?.isRounded = true
     }
     
-
-    func setupViews() {
-        segmentControl.addAction(UIAction(handler: {act in
-            self.items[self.segmentControl.selectedSegmentIndex].checked = true
-            for (index,item) in self.items.enumerated() {
-                if item.key != self.items[self.segmentControl.selectedSegmentIndex].key {
-                    self.items[index].checked =  false
+    var optionListSelection:[(category:String,checked:Bool,key:String)] = []
+    func setupViews(_ items:[FormCheckBox]) {
+        segmentControl?.addAction(UIAction(handler: {[weak self] act in
+            guard let strong = self,let segmentControl = strong.segmentControl else {return}
+            strong.optionListSelection[segmentControl.selectedSegmentIndex].checked = true
+            for (index,item) in items.enumerated() {
+                if item.key != items[segmentControl.selectedSegmentIndex].key {
+                    strong.optionListSelection[index].checked =  false
                 }
-                self.delegate.didCheckValue(checkBox: self.items[index])
+                strong.delegate.didCheckValue(checkBox: items[index])
             }
         }), for: .valueChanged)
         
@@ -203,6 +205,7 @@ class UITextFieldFormGamified : UIView, UITextFieldDelegate, FormUIComponent{
     var field:FormTextField!
     var savedData:String   {
         set {
+            
             animateLabelTextChange(text: newValue)
         }
         get {
@@ -210,9 +213,9 @@ class UITextFieldFormGamified : UIView, UITextFieldDelegate, FormUIComponent{
         }
     }
     
-    var design:FormDesign!
+    weak var design:FormDesign?
     var alertTitle:String?
-    var delegate:FormTextFieldDelegate!
+    weak var delegate:FormTextFieldDelegate!
     
     var imageView:UIImageView = {
         let image = UIImageView()
@@ -223,14 +226,14 @@ class UITextFieldFormGamified : UIView, UITextFieldDelegate, FormUIComponent{
         let lbl = UILabel()
         lbl.font = UIFont.boldSystemFont(ofSize: 13.5)
         lbl.highlightedTextColor = .blue
-        lbl.textColor = design.holderBackgroundColor()
+        lbl.textColor = design?.holderBackgroundColor()
         lbl.textAlignment = .right
         lbl.text = savedData.isEmpty ?  "לחץ כאן" : savedData
         lbl.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 200))
         return lbl
     }()
 
-    convenience init(image:UIImage,field:FormTextField ,design:FormDesign) {
+    convenience init(image:UIImage,field:FormTextField ,design:FormDesign?) {
         self.init(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 300, height: 300)))
         self.imageView.image = image
         self.field = field
@@ -270,12 +273,7 @@ class UITextFieldFormGamified : UIView, UITextFieldDelegate, FormUIComponent{
                 nameTextField.delegate = self
                 nameTextField.textAlignment = .right
                 nameTextField.placeholder = "הכנס שם פרטי"
-                let data = AnyFormHelper.shared.data
-                if let firstname = data.first(where: {$0.key == "שם פרטי"}) {
-                    nameTextField.text = firstname.value
-                }else {
-                    nameTextField.text = strong.arg2
-                }
+                nameTextField.text = strong.arg2
             }
             alert.addTextField { lastNameTextField in
                 guard let strong = self else {
@@ -283,16 +281,11 @@ class UITextFieldFormGamified : UIView, UITextFieldDelegate, FormUIComponent{
                 lastNameTextField.delegate = self
                 lastNameTextField.textAlignment = .right
                 lastNameTextField.placeholder = "הכנס שם משפחה"
-                let data = AnyFormHelper.shared.data
-                if let lastname = data.first(where: {$0.key == "שם משפחה"}) {
-                    lastNameTextField.text = lastname.value
-                }else {
-                    lastNameTextField.text = strong.arg1
-                }
+                lastNameTextField.text = strong.arg1
             }
         
             
-            alert.addAction(UIAlertAction(title: "אישור", style: .default, handler: { act in
+            alert.addAction(UIAlertAction(title: "אישור", style: .default, handler: { [weak self] act in
                 guard let strong = self else {return}
                 if !strong.savedData.isEmpty {
                     let d = strong.savedData.split(separator: " ").map { ss in
@@ -361,6 +354,6 @@ class UICheckBoxForm : CheckBox,FormUIComponent {
 }
 
 
-protocol FormUIComponent {
+protocol FormUIComponent : AnyObject {
     func getFieldKey() -> String
 }

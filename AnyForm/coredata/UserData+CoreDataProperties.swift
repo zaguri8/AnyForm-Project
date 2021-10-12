@@ -19,5 +19,4 @@ extension UserData {
     @NSManaged public var category: String?
     @NSManaged public var key: String?
     @NSManaged public var value: String?
-
 }

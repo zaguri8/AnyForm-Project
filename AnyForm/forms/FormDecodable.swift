@@ -55,7 +55,7 @@ struct FormTextField : Codable {
 }
 
 //// an object type used to reference a check box in a form
-struct FormCheckBox : Codable {
+struct FormCheckBox : Codable{
     var key:String
     var point:CGPoint
     var checked:Bool

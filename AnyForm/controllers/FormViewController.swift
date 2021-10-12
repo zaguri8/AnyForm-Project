@@ -31,7 +31,7 @@ class FormViewController: UIViewController,UIGestureRecognizerDelegate {
         draggedView?.center = location
         formView.scrollView?.zoom(to: CGRect(x:location.x,y:location.y,width:120,height:120), animated: true)
         if gesture.state == .ended {
-            formView.scrollView?.setZoomScale(1.0, animated: true)
+            formView.scrollView?.setZoomScale(0.6, animated: true)
         }
         
     }

@@ -7,15 +7,21 @@
 
 import UIKit
 import PDFKit
-class FormViewController: UIViewController {
+class FormViewController: UIViewController,UIGestureRecognizerDelegate {
 
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if(gestureRecognizer.state == .ended) {
+            formView.scrollView?.setZoomScale(1.0, animated: true)
+        }
+        return true
+    }
     
     lazy var zoomView : ZoomView = {
        let zoomView = ZoomView()
-        zoomView.maximumZoomScale = 5.0
-        zoomView.minimumZoomScale = 10.5
-        formView.scrollView?.zoom(to: CGRect(x:0,y:0,width:120,height:120), animated: true)
-        zoomView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(dragZoomView)))
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(dragZoomView))
+        gesture.delegate = self
+        zoomView.addGestureRecognizer(gesture)
+        
         return zoomView
     }()
     
@@ -23,6 +29,11 @@ class FormViewController: UIViewController {
         let location = gesture.location(in: self.view)
         let draggedView = gesture.view
         draggedView?.center = location
+        formView.scrollView?.zoom(to: CGRect(x:location.x,y:location.y,width:120,height:120), animated: true)
+        if gesture.state == .ended {
+            formView.scrollView?.setZoomScale(1.0, animated: true)
+        }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,8 +100,7 @@ class FormViewController: UIViewController {
             strongSelf.formView.scrollView?.bounces = false
             strongSelf.formView.backgroundColor = UIUtils.hexStringToUIColor(hex: "FFFFFF")
             strongSelf.formView.scaleFactor = 0.6
-            strongSelf.formView.minScaleFactor = strongSelf.formView.scaleFactor
-            strongSelf.formView.maxScaleFactor = strongSelf.formView.scaleFactor
+
                 var i = 0
                 var page = doc.page(at: i)
             alert.dismiss(animated: true)

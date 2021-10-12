@@ -11,11 +11,11 @@ class ZoomView: UIScrollView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .none
-        layer.cornerRadius = 60
+        layer.cornerRadius = 150
         layer.borderWidth = 1
         layer.borderColor = UIColor.black.cgColor
-        constraintHeight(120)
-        constraintWidth(120)
+        constraintHeight(300)
+        constraintWidth(300)
         contentSize = CGSize(width: 120, height: 120)
         isUserInteractionEnabled = true
     }

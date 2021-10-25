@@ -18,6 +18,9 @@ class FieldProps {
          let fieldKey = key
          return fieldKey.contains("שם פרטי") || fieldKey.contains("שם משפחה") || fieldKey.contains("שם מלא")
      }
+    static func isChildrenField(_ key:String) -> Bool {
+        return key.contains("ילדים")
+    }
     static func isNumericField(_ key:String) -> Bool{
         let k = key
         return k.contains("מספר") || k.contains("תעודה") || k.contains("תעודת")

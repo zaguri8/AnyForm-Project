@@ -9,6 +9,12 @@ import UIKit
 import PDFKit
 class FormViewController: UIViewController,UIGestureRecognizerDelegate {
 
+    
+    lazy var pageRefs:[PDFPage] = {
+       return []
+    }()
+ 
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if(gestureRecognizer.state == .ended) {
             formView.scrollView?.setZoomScale(1.0, animated: true)
@@ -17,7 +23,7 @@ class FormViewController: UIViewController,UIGestureRecognizerDelegate {
     }
     
     lazy var zoomView : ZoomView = {
-       let zoomView = ZoomView()
+        let zoomView = ZoomView(frame:CGRect())
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(dragZoomView))
         gesture.delegate = self
         zoomView.addGestureRecognizer(gesture)
@@ -26,15 +32,20 @@ class FormViewController: UIViewController,UIGestureRecognizerDelegate {
     }()
     
     @objc func dragZoomView(gesture:UIPanGestureRecognizer) {
-        let location = gesture.location(in: self.view)
+        let location = gesture.location(in: self.formView)
         let draggedView = gesture.view
         draggedView?.center = location
         formView.scrollView?.zoom(to: CGRect(x:location.x,y:location.y,width:120,height:120), animated: true)
         if gesture.state == .ended {
-            formView.scrollView?.setZoomScale(0.6, animated: true)
+        formView.scrollView?.setZoomScale(0.6, animated: true)
         }
-        
     }
+    
+    @objc func formClicked(gesture:UITapGestureRecognizer) {
+        let location = gesture.location(in: self.view)
+        zoomView.center = location
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(toolBar)
@@ -48,8 +59,9 @@ class FormViewController: UIViewController,UIGestureRecognizerDelegate {
         label.constraintTopToTopOf(self.toolBar , 16 ,safe: false)
         label.constraintStartToStartOf(self.toolBar,8)
         label.constraintEndToEndOf(self.toolBar,8)
-        view.addSubview(zoomView)
-
+        formView.addSubview(zoomView)
+        segmentedControl.removeAllSegments()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(formClicked)))
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +73,6 @@ class FormViewController: UIViewController,UIGestureRecognizerDelegate {
         let toolBarView = UIView()
         toolBarView.backgroundColor = .systemOrange
         return toolBarView
-        
     }()
     
     lazy var titleLabel:((String) -> UILabel) = { titleText in
@@ -100,9 +111,9 @@ class FormViewController: UIViewController,UIGestureRecognizerDelegate {
             strongSelf.formView.scrollView?.bounces = false
             strongSelf.formView.backgroundColor = UIUtils.hexStringToUIColor(hex: "FFFFFF")
             strongSelf.formView.scaleFactor = 0.6
-
                 var i = 0
                 var page = doc.page(at: i)
+                
             alert.dismiss(animated: true)
                 while (page != nil && i < form.pages.count) {
                     let checkboxfields = form.getCheckBoxes(page: i)
@@ -140,20 +151,22 @@ class FormViewController: UIViewController,UIGestureRecognizerDelegate {
                     i += 1
                     page = doc.page(at: i)
                 }
-        
+            for i in 0...doc.pageCount - 1 {
+                strongSelf.pageRefs.append(doc.page(at: i)!)
+                strongSelf.segmentedControl.insertSegment(action: UIAction(handler:{act in
+                    strongSelf.formView.document?.removePage(at: 0)
+                    strongSelf.formView.document?.insert(strongSelf.pageRefs[i], at: 0)
+                }), at: i, animated: true)
+                strongSelf.segmentedControl.setTitle("עמוד \(i+1)", forSegmentAt: i)
+                
+            }
+
+            for i in 1...doc.pageCount {
+                doc.removePage(at: i)
+            }
         }
                   
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

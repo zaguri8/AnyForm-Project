@@ -7,17 +7,14 @@
 
 import UIKit
 
-class ZoomView: UIScrollView {
+class ZoomView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .none
-        layer.cornerRadius = 150
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.black.cgColor
-        constraintHeight(300)
-        constraintWidth(300)
-        contentSize = CGSize(width: 120, height: 120)
+        constraintHeight(200)
+        constraintWidth(200)
         isUserInteractionEnabled = true
+        image = UIImage(named:"magnify")
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)

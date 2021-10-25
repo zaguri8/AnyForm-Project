@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="center" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="vfb-pr-2uK">
-                        <rect key="frame" x="16" y="16" width="143" height="119"/>
+                        <rect key="frame" x="16" y="2" width="143" height="147"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tube" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPM-Df-3N1">
-                                <rect key="frame" x="0.0" y="49.5" width="143" height="20"/>
+                                <rect key="frame" x="0.0" y="63.5" width="143" height="20"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="18"/>
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -91,11 +91,11 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="kIa-Ak-biG" secondAttribute="trailing" id="BGi-RD-Kye"/>
                 <constraint firstItem="myY-bc-ckX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="R03-t6-eXg"/>
-                <constraint firstItem="vfb-pr-2uK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="U9l-ek-c5k"/>
+                <constraint firstItem="vfb-pr-2uK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="U9l-ek-c5k"/>
                 <constraint firstItem="vfb-pr-2uK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="aMf-5J-xas"/>
                 <constraint firstAttribute="trailing" secondItem="vfb-pr-2uK" secondAttribute="trailing" constant="16" id="aml-pS-S91"/>
                 <constraint firstItem="kIa-Ak-biG" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="dqY-ZB-TrR"/>
-                <constraint firstAttribute="bottom" secondItem="vfb-pr-2uK" secondAttribute="bottom" constant="16" id="uOd-QH-GR1"/>
+                <constraint firstAttribute="bottom" secondItem="vfb-pr-2uK" secondAttribute="bottom" constant="2" id="uOd-QH-GR1"/>
                 <constraint firstItem="myY-bc-ckX" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="zW8-aB-Hvo"/>
             </constraints>
             <size key="customSize" width="175" height="151"/>

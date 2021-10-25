@@ -236,26 +236,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcP-8k-ai0" customClass="FormView" customModule="AnyForm" customModuleProvider="target">
-                                <rect key="frame" x="32" y="108" width="350" height="690"/>
+                                <rect key="frame" x="32" y="174" width="350" height="624"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f5g-kz-s5v">
+                                <rect key="frame" x="32" y="108" width="350" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="vuQ-G6-aFv"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9Qa-Yo-2j9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zcP-8k-ai0" firstAttribute="top" secondItem="9Qa-Yo-2j9" secondAttribute="top" constant="64" id="I1L-4E-1we"/>
                             <constraint firstItem="9Qa-Yo-2j9" firstAttribute="bottom" secondItem="zcP-8k-ai0" secondAttribute="bottom" constant="64" id="Upz-Hn-Jcu"/>
+                            <constraint firstItem="f5g-kz-s5v" firstAttribute="top" secondItem="9Qa-Yo-2j9" secondAttribute="top" constant="64" id="VB6-kM-zjr"/>
                             <constraint firstItem="zcP-8k-ai0" firstAttribute="leading" secondItem="9Qa-Yo-2j9" secondAttribute="leading" constant="32" id="fZI-lV-vn0"/>
+                            <constraint firstItem="9Qa-Yo-2j9" firstAttribute="trailing" secondItem="f5g-kz-s5v" secondAttribute="trailing" constant="32" id="jfS-Nd-ECX"/>
+                            <constraint firstItem="zcP-8k-ai0" firstAttribute="top" secondItem="f5g-kz-s5v" secondAttribute="bottom" constant="16" id="mKy-VT-IAP"/>
+                            <constraint firstItem="f5g-kz-s5v" firstAttribute="leading" secondItem="9Qa-Yo-2j9" secondAttribute="leading" constant="32" id="n0O-1V-yqF"/>
                             <constraint firstItem="9Qa-Yo-2j9" firstAttribute="trailing" secondItem="zcP-8k-ai0" secondAttribute="trailing" constant="32" id="u04-Ia-c8X"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="formView" destination="zcP-8k-ai0" id="84R-7U-xXD"/>
+                        <outlet property="segmentedControl" destination="f5g-kz-s5v" id="0L4-6m-EJz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AEF-RJ-dEz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2671" y="532"/>
+        </scene>
+        <!--View Tester View Controller-->
+        <scene sceneID="H3G-zh-n5S">
+            <objects>
+                <viewController id="gaN-89-FGT" customClass="ViewTesterViewController" customModule="AnyForm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QCr-Iw-xRI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="TrC-rj-LUg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZJ-P9-WQf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3477" y="1053"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1ZP-lg-VKs">

@@ -18,8 +18,6 @@ extension UIAlertController {
         // TODO: for iPad or other views
         let isPad: Bool = UIDevice.current.userInterfaceIdiom == .pad
         let root = UIApplication.shared.keyWindow?.rootViewController?.view
-        
-        //self.responds(to: #selector(getter: popoverPresentationController))
         if let source = source {
             Log("----- source")
             popoverPresentationController?.sourceView = source
@@ -28,7 +26,6 @@ extension UIAlertController {
             Log("----- is pad")
             popoverPresentationController?.sourceView = source
             popoverPresentationController?.sourceRect = CGRect(x: source.bounds.midX, y: source.bounds.midY, width: 0, height: 0)
-            //popoverPresentationController?.permittedArrowDirections = .down
             popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
         }
         
@@ -139,9 +136,7 @@ extension UIAlertController {
     func set(vc: UIViewController?, width: CGFloat? = nil, height: CGFloat? = nil) {
         guard let vc = vc else { return }
         setValue(vc, forKey: "contentViewController")
-        if let height = height {
-            vc.preferredContentSize.height = height
-            preferredContentSize.height = height
+        if let height = height,let width = width {
         }
     }
 }
